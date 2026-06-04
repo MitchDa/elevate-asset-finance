@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevate Asset Finance | Commercial Asset Finance Brokers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0a0e1a;
+  --ink-mid: #141929;
+  --ink-soft: #1e2640;
+  --slate: #2a3350;
+  --rule: rgba(255,255,255,0.08);
+  --rule-light: #dde3ef;
+  --paper: #f4f6fb;
+  --paper-mid: #e8ecf5;
+  --white: #ffffff;
+  --blue: #0ea5e9;
+  --blue-bright: #38bdf8;
+  --blue-dark: #0369a1;
+  --blue-glow: rgba(14,165,233,0.25);
+  --gold: #f59e0b;
+  --text-on-dark: #f1f5f9;
+  --text-on-dark-2: #94a3b8;
+  --text-on-dark-3: #475569;
+  --text-on-light: #0a0e1a;
+  --text-on-light-2: #334155;
+  --text-on-light-3: #64748b;
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--ink); color: var(--text-on-dark); overflow-x: hidden; line-height: 1.6; }
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px;
+  transition: all 0.4s var(--ease);
+}
+nav.scrolled {
+  background: rgba(10,14,26,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--rule);
+  height: 60px;
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo-e {
+  width: 38px; height: 38px;
+  background: var(--blue);
+  clip-path: polygon(0 0, 100% 0, 100% 30%, 30% 30%, 30% 42%, 85% 42%, 85% 58%, 30% 58%, 30% 70%, 100% 70%, 100% 100%, 0 100%);
+  flex-shrink: 0;
+}
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.2rem; font-weight: 800; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--text-on-dark);
+  line-height: 1;
+}
+.nav-logo-text span { color: var(--blue); }
+.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+.nav-links a {
+  font-family: var(--font-display); font-size: 0.95rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-on-dark-2); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text-on-dark); }
+.nav-cta {
+  font-family: var(--font-display); font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--blue); color: #fff;
+  padding: 10px 24px; text-decoration: none;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: all 0.25s;
+}
+.nav-cta:hover { background: var(--blue-bright); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  position: relative; overflow: hidden;
+}
+.hero-left {
+  background: var(--ink);
+  padding: 160px 56px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; z-index: 2;
+}
+.hero-left::after {
+  content: '';
+  position: absolute; top: 0; right: -1px; bottom: 0; width: 2px;
+  background: linear-gradient(180deg, transparent, var(--blue), transparent);
+}
+.hero-right {
+  position: relative; overflow: hidden;
+  background: var(--ink-mid);
+}
+.hero-right-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(135deg, rgba(14,165,233,0.08) 0%, transparent 50%),
+    linear-gradient(to bottom, var(--ink-mid), var(--ink-soft));
+}
+.hero-right-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.hero-right-content {
+  position: relative; z-index: 1;
+  height: 100%; display: flex; flex-direction: column; justify-content: center;
+  padding: 160px 64px 80px 56px;
+}
+.hero-kicker {
+  font-family: var(--font-display);
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--blue);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 24px;
+}
+.hero-kicker::before {
+  content: ''; width: 32px; height: 2px; background: var(--blue);
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.8rem, 7vw, 7rem);
+  font-weight: 900; line-height: 0.92;
+  letter-spacing: -0.01em; text-transform: uppercase;
+  color: var(--text-on-dark);
+  margin-bottom: 28px;
+}
+.hero-title .accent { color: var(--blue); display: block; }
+.hero-title .thin { font-weight: 300; }
+.hero-sub {
+  font-size: 1.05rem; font-weight: 400;
+  color: var(--text-on-dark-2); line-height: 1.75;
+  max-width: 440px; margin-bottom: 44px;
+}
+.hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.btn-hero-primary {
+  font-family: var(--font-display); font-size: 0.9rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--blue); color: #fff;
+  padding: 15px 36px; text-decoration: none; border: none; cursor: pointer;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: all 0.25s var(--ease);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-hero-primary:hover { background: var(--blue-bright); transform: translateY(-2px); box-shadow: 0 12px 40px var(--blue-glow); }
+.btn-hero-secondary {
+  font-family: var(--font-display); font-size: 0.9rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: transparent; color: var(--text-on-dark-2);
+  padding: 14px 32px; text-decoration: none; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.2);
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: all 0.25s;
+}
+.btn-hero-secondary:hover { color: var(--text-on-dark); border-color: rgba(255,255,255,0.4); }
+.hero-trust {
+  margin-top: 48px; padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  display: flex; gap: 28px; flex-wrap: wrap;
+}
+.trust-pill {
+  font-family: var(--font-display); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-on-dark-3);
+  display: flex; align-items: center; gap: 7px;
+}
+.trust-pill svg { color: var(--blue); }
+
+/* HERO RIGHT — STAT CARDS */
+.hero-stat-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 24px;
+}
+.hero-stat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--rule);
+  padding: 24px 20px;
+  position: relative; overflow: hidden;
+  transition: all 0.3s;
+}
+.hero-stat-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--blue); opacity: 0;
+  transition: opacity 0.3s;
+}
+.hero-stat-card:hover { background: rgba(14,165,233,0.06); border-color: rgba(14,165,233,0.2); }
+.hero-stat-card:hover::before { opacity: 1; }
+.stat-big {
+  font-family: var(--font-display);
+  font-size: 2.8rem; font-weight: 900; line-height: 1;
+  color: var(--text-on-dark); letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.stat-big span { color: var(--blue); }
+.stat-desc { font-size: 0.78rem; font-weight: 500; color: var(--text-on-dark-2); line-height: 1.4; }
+.hero-feature-card {
+  background: rgba(14,165,233,0.07);
+  border: 1px solid rgba(14,165,233,0.2);
+  padding: 24px 28px;
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.hero-feature-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: var(--blue); display: flex; align-items: center; justify-content: center;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  font-size: 20px;
+}
+.hero-feature-text h4 {
+  font-family: var(--font-display); font-size: 1rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text-on-dark); margin-bottom: 4px;
+}
+.hero-feature-text p { font-size: 0.85rem; color: var(--text-on-dark-2); line-height: 1.6; }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--blue); padding: 14px 0;
+  overflow: hidden; position: relative;
+}
+.ticker-inner {
+  display: flex; gap: 0; white-space: nowrap;
+  animation: ticker 30s linear infinite;
+}
+.ticker-item {
+  font-family: var(--font-display); font-size: 0.82rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.9);
+  padding: 0 40px;
+  display: flex; align-items: center; gap: 16px;
+}
+.ticker-item::after {
+  content: '//'; color: rgba(255,255,255,0.4); font-size: 1rem;
+}
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── SERVICES ── */
+.services-section {
+  background: var(--paper);
+  padding: 112px 56px;
+}
+.services-header {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: end;
+  margin-bottom: 64px;
+}
+.services-header-left {}
+.services-header-right {
+  display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end;
+}
+.section-eyebrow {
+  font-family: var(--font-display); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--blue-dark);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.section-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--blue-dark); }
+.section-title-dark {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 900; line-height: 0.95;
+  letter-spacing: -0.01em; text-transform: uppercase;
+  color: var(--text-on-light);
+}
+.section-title-dark .accent { color: var(--blue-dark); }
+.section-body {
+  font-size: 0.975rem; color: var(--text-on-light-2);
+  line-height: 1.75; max-width: 380px; text-align: right;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 2px;
+}
+.service-tile {
+  background: var(--white);
+  padding: 40px 36px;
+  position: relative; overflow: hidden;
+  transition: all 0.35s var(--ease);
+  cursor: default;
+  border: 1px solid var(--rule-light);
+}
+.service-tile::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: var(--blue); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+.service-tile:hover { background: var(--ink); }
+.service-tile:hover::after { transform: scaleX(1); }
+.service-tile:hover .tile-num { color: rgba(255,255,255,0.1); }
+.service-tile:hover .tile-icon { background: var(--blue); }
+.service-tile:hover h3 { color: var(--text-on-dark); }
+.service-tile:hover p { color: var(--text-on-dark-2); }
+.service-tile:hover .tile-link { color: var(--blue); }
+.service-tile.featured {
+  background: var(--ink);
+  grid-column: span 1;
+}
+.service-tile.featured h3 { color: var(--text-on-dark); }
+.service-tile.featured p { color: var(--text-on-dark-2); }
+.service-tile.featured .tile-num { color: rgba(255,255,255,0.07); }
+.service-tile.featured .tile-icon { background: var(--blue); }
+.service-tile.featured .tile-link { color: var(--blue-bright); }
+.service-tile.featured::after { background: var(--blue-bright); transform: scaleX(1); }
+.tile-num {
+  font-family: var(--font-display); font-size: 4rem; font-weight: 900;
+  line-height: 1; color: rgba(0,0,0,0.06);
+  position: absolute; top: 20px; right: 24px;
+  transition: color 0.35s;
+}
+.tile-icon {
+  width: 48px; height: 48px;
+  background: var(--paper-mid);
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 20px;
+  transition: background 0.35s;
+}
+.service-tile h3 {
+  font-family: var(--font-display); font-size: 1.35rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--text-on-light); margin-bottom: 10px;
+  transition: color 0.35s; line-height: 1.1;
+}
+.service-tile p {
+  font-size: 0.875rem; color: var(--text-on-light-2);
+  line-height: 1.65; transition: color 0.35s;
+  margin-bottom: 20px;
+}
+.tile-link {
+  font-family: var(--font-display); font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--blue-dark); text-decoration: none;
+  transition: all 0.25s; display: inline-flex; align-items: center; gap: 6px;
+}
+.tile-link:hover { gap: 10px; }
+
+/* ── WHY US ── */
+.why-section { background: var(--ink); padding: 112px 56px; }
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
+.why-left {}
+.section-title-light {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 900; line-height: 0.95;
+  letter-spacing: -0.01em; text-transform: uppercase;
+  color: var(--text-on-dark);
+}
+.section-title-light .accent { color: var(--blue); }
+.why-intro {
+  font-size: 0.975rem; color: var(--text-on-dark-2);
+  line-height: 1.75; margin-top: 20px; margin-bottom: 48px;
+}
+.why-points { display: flex; flex-direction: column; gap: 0; }
+.why-point {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule);
+  transition: all 0.3s;
+}
+.why-point:first-child { border-top: 1px solid var(--rule); }
+.why-num {
+  font-family: var(--font-display); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.1em; color: var(--blue);
+  padding-top: 4px; flex-shrink: 0; min-width: 24px;
+}
+.why-point-body h4 {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text-on-dark); margin-bottom: 6px;
+}
+.why-point-body p { font-size: 0.875rem; color: var(--text-on-dark-2); line-height: 1.65; }
+.why-right { display: flex; flex-direction: column; gap: 16px; padding-top: 60px; }
+.callout-card {
+  background: var(--ink-soft);
+  border: 1px solid var(--rule);
+  padding: 32px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.3s;
+}
+.callout-card:hover { border-color: rgba(14,165,233,0.3); }
+.callout-card.primary {
+  background: linear-gradient(135deg, rgba(14,165,233,0.08), rgba(14,165,233,0.03));
+  border-color: rgba(14,165,233,0.25);
+}
+.callout-tag {
+  font-family: var(--font-display); font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.callout-tag::before { content: ''; width: 16px; height: 1px; background: var(--blue); }
+.callout-card h4 {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--text-on-dark); line-height: 1.2; margin-bottom: 10px;
+}
+.callout-card p { font-size: 0.875rem; color: var(--text-on-dark-2); line-height: 1.65; }
+
+/* ── HOW IT WORKS ── */
+.process-section { background: var(--paper); padding: 112px 56px; }
+.process-header { margin-bottom: 72px; }
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute; top: 36px; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rule-light), var(--rule-light), transparent);
+}
+.process-step { padding: 0 24px; text-align: center; }
+.process-step-num {
+  width: 72px; height: 72px;
+  background: var(--white); border: 2px solid var(--rule-light);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.6rem; font-weight: 900;
+  color: var(--blue-dark); margin: 0 auto 24px;
+  clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+  transition: all 0.3s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.process-step:hover .process-step-num {
+  background: var(--ink); color: var(--blue);
+  border-color: var(--blue);
+}
+.process-step h3 {
+  font-family: var(--font-display); font-size: 1rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text-on-light); margin-bottom: 10px;
+}
+.process-step p { font-size: 0.85rem; color: var(--text-on-light-2); line-height: 1.65; }
+
+/* ── LENDERS ── */
+.lenders-section { background: var(--paper); padding: 72px 56px; border-top: 1px solid var(--rule-light); border-bottom: 1px solid var(--rule-light); }
+.lenders-eyebrow {
+  font-family: var(--font-display); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-on-light-3);
+  text-align: center; margin-bottom: 36px;
+}
+.lenders-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 900px; margin: 0 auto; }
+.lender-tag {
+  font-family: var(--font-display); font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-on-light-2); padding: 10px 22px;
+  border: 1.5px solid var(--rule-light); background: var(--white);
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  transition: all 0.25s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.lender-tag:hover { color: var(--blue-dark); border-color: var(--blue); background: var(--white); box-shadow: 0 4px 16px rgba(14,165,233,0.12); }
+
+/* ── TESTIMONIALS ── */
+.testimonials-section { background: var(--ink); padding: 112px 56px; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; }
+.testi-card {
+  background: var(--ink-soft); padding: 36px 32px;
+  border: 1px solid var(--rule);
+  position: relative; overflow: hidden;
+  transition: all 0.3s;
+}
+.testi-card:hover { border-color: rgba(14,165,233,0.25); }
+.testi-card::before {
+  content: '\201C';
+  font-family: var(--font-display); font-size: 8rem; font-weight: 900;
+  color: rgba(14,165,233,0.08); line-height: 1;
+  position: absolute; top: -8px; right: 16px;
+}
+.testi-stars { color: var(--gold); font-size: 13px; margin-bottom: 18px; letter-spacing: 2px; }
+.testi-text {
+  font-size: 0.9rem; color: var(--text-on-dark-2); line-height: 1.75;
+  font-style: italic; margin-bottom: 28px;
+}
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 42px; height: 42px;
+  background: var(--blue); color: #fff;
+  font-family: var(--font-display); font-size: 0.85rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  flex-shrink: 0;
+}
+.testi-author-info h5 {
+  font-family: var(--font-display); font-size: 0.9rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text-on-dark);
+}
+.testi-author-info span { font-size: 0.78rem; color: var(--text-on-dark-3); }
+
+/* ── FAQ ── */
+.faq-section { background: var(--paper); padding: 112px 56px; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.faq-left {}
+.faq-list { margin-top: 0; }
+.faq-item { border-bottom: 1px solid var(--rule-light); }
+.faq-item:first-child { border-top: 1px solid var(--rule-light); }
+.faq-q {
+  width: 100%; background: none; border: none;
+  font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+  letter-spacing: 0.02em; text-transform: uppercase;
+  color: var(--text-on-light); text-align: left;
+  padding: 20px 0; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--blue-dark); }
+.faq-icon-wrap {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border: 1.5px solid var(--rule-light);
+  clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--text-on-light-3);
+  transition: all 0.3s;
+}
+.faq-item.open .faq-icon-wrap { transform: rotate(45deg); border-color: var(--blue-dark); color: var(--blue-dark); background: rgba(3,105,161,0.08); }
+.faq-a {
+  font-size: 0.9rem; color: var(--text-on-light-2); line-height: 1.75;
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s var(--ease), padding 0.3s;
+  padding-bottom: 0;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-bottom: 20px; }
+.faq-right { padding-top: 8px; }
+.faq-cta-block {
+  background: var(--ink);
+  padding: 48px 40px;
+  position: relative; overflow: hidden;
+}
+.faq-cta-block::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-bright));
+}
+.faq-cta-block h3 {
+  font-family: var(--font-display); font-size: 1.8rem; font-weight: 900;
+  text-transform: uppercase; letter-spacing: 0.02em;
+  color: var(--text-on-dark); line-height: 1.05; margin-bottom: 14px;
+}
+.faq-cta-block h3 span { color: var(--blue); }
+.faq-cta-block p { font-size: 0.9rem; color: var(--text-on-dark-2); line-height: 1.7; margin-bottom: 28px; }
+
+/* ── CONTACT FORM SECTION ── */
+.contact-section { background: var(--ink-mid); padding: 112px 56px; border-top: 1px solid var(--rule); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
+.contact-left {}
+.contact-left .section-title-light { margin-bottom: 20px; }
+.contact-left p { font-size: 0.975rem; color: var(--text-on-dark-2); line-height: 1.75; margin-bottom: 36px; }
+.contact-details { display: flex; flex-direction: column; gap: 18px; }
+.contact-detail { display: flex; align-items: center; gap: 14px; }
+.contact-detail-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.2);
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  display: flex; align-items: center; justify-content: center; font-size: 17px;
+}
+.contact-detail-text h5 {
+  font-family: var(--font-display); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-on-dark-3); margin-bottom: 2px;
+}
+.contact-detail-text p { font-size: 0.9rem; color: var(--text-on-dark-2); }
+.contact-form { background: var(--ink-soft); border: 1px solid var(--rule); padding: 40px; position: relative; overflow: hidden; }
+.contact-form::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-bright));
+}
+.contact-form h3 {
+  font-family: var(--font-display); font-size: 1.4rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text-on-dark); margin-bottom: 6px;
+}
+.contact-form > p { font-size: 0.85rem; color: var(--text-on-dark-2); margin-bottom: 28px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-group { margin-bottom: 14px; }
+.form-group label {
+  display: block; font-family: var(--font-display); font-size: 0.7rem;
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-on-dark-3); margin-bottom: 7px;
+}
+.form-group input, .form-group select {
+  width: 100%; background: rgba(255,255,255,0.05);
+  border: 1px solid var(--rule); color: var(--text-on-dark);
+  font-family: var(--font-body); font-size: 0.9rem;
+  padding: 12px 16px; outline: none; transition: all 0.25s;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  appearance: none;
+}
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--blue); background: rgba(14,165,233,0.05);
+  box-shadow: 0 0 0 3px rgba(14,165,233,0.1);
+}
+.form-group input::placeholder { color: var(--text-on-dark-3); }
+.form-group select option { background: var(--ink-soft); }
+.form-submit {
+  width: 100%; font-family: var(--font-display); font-size: 0.9rem;
+  font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--blue); color: #fff; border: none; cursor: pointer;
+  padding: 15px; margin-top: 6px;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: all 0.25s;
+}
+.form-submit:hover { background: var(--blue-bright); transform: translateY(-1px); box-shadow: 0 8px 28px var(--blue-glow); }
+.form-note { font-size: 0.72rem; color: var(--text-on-dark-3); text-align: center; margin-top: 12px; line-height: 1.5; }
+
+/* ── MJ BANNER ── */
+.mj-banner {
+  background: var(--ink); border-top: 1px solid var(--rule);
+  padding: 32px 56px;
+}
+.mj-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.mj-left { display: flex; align-items: center; gap: 18px; }
+.mj-avi {
+  width: 48px; height: 48px;
+  background: var(--blue); color: #fff;
+  font-family: var(--font-display); font-weight: 900; font-size: 0.95rem;
+  display: flex; align-items: center; justify-content: center;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  flex-shrink: 0;
+}
+.mj-copy h4 {
+  font-family: var(--font-display); font-size: 0.9rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text-on-dark); margin-bottom: 2px;
+}
+.mj-copy p { font-size: 0.82rem; color: var(--text-on-dark-2); }
+.mj-copy p a { color: var(--blue); text-decoration: none; }
+.mj-copy p a:hover { color: var(--blue-bright); }
+.btn-outline-light {
+  font-family: var(--font-display); font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-on-dark-2); padding: 10px 22px; text-decoration: none;
+  border: 1px solid var(--rule);
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: all 0.25s; white-space: nowrap;
+}
+.btn-outline-light:hover { color: var(--text-on-dark); border-color: rgba(255,255,255,0.3); }
+
+/* ── FOOTER ── */
+footer {
+  background: #050810; border-top: 1px solid var(--rule);
+  padding: 64px 56px 32px;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 56px; margin-bottom: 56px;
+}
+.footer-brand p { font-size: 0.85rem; color: var(--text-on-dark-3); line-height: 1.7; margin-top: 16px; max-width: 260px; }
+.footer-col h5 {
+  font-family: var(--font-display); font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-on-dark-3); margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul a { font-size: 0.85rem; color: #2d3a52; text-decoration: none; transition: color 0.2s; }
+.footer-col ul a:hover { color: var(--text-on-dark-3); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.04); padding-top: 24px;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;
+}
+.footer-bottom p { font-size: 0.74rem; color: #1e293b; line-height: 1.65; max-width: 680px; }
+.footer-bottom-right { font-size: 0.74rem; color: #1e293b; white-space: nowrap; flex-shrink: 0; }
+
+/* ── CONTAINER ── */
+.container { max-width: 1200px; margin: 0 auto; width: 100%; }
+
+/* ── ANIMATIONS ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s var(--ease), transform 0.65s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4) { transition-delay: 0.24s; }
+.reveal:nth-child(5) { transition-delay: 0.32s; }
+.reveal:nth-child(6) { transition-delay: 0.40s; }
+
+/* ── MOBILE ── */
+@media (max-width: 960px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 120px 24px 60px; }
+  .hero-right { display: none; }
+  .services-section, .why-section, .process-section, .testimonials-section, .faq-section, .contact-section { padding: 72px 24px; }
+  .lenders-section { padding: 56px 24px; }
+  .services-header { grid-template-columns: 1fr; gap: 24px; }
+  .services-header-right { align-items: flex-start; }
+  .section-body { text-align: left; }
+  .services-grid { grid-template-columns: 1fr; gap: 2px; }
+  .why-grid { grid-template-columns: 1fr; gap: 48px; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-steps::before { display: none; }
+  .testimonials-grid { grid-template-columns: 1fr; gap: 2px; }
+  .faq-grid { grid-template-columns: 1fr; gap: 48px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; }
+  .mj-banner { padding: 24px; }
+  .mj-inner { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-e"></div>
+    <div class="nav-logo-text">ELEVATE <span>ASSET FINANCE</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-kicker">Commercial Asset Finance</div>
+    <h1 class="hero-title">
+      <span class="thin">Funded</span>
+      <span class="accent">Right.</span>
+      First Time.
+    </h1>
+    <p class="hero-sub">We work with sole traders, small business owners, and growing SMEs to fund the vehicles, equipment, and assets that keep operations moving. Fully disclosed. No hidden margins.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-hero-primary">Get a Free Quote <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#process" class="btn-hero-secondary">How It Works</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>ACL Licensed</div>
+      <div class="trust-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Commission Disclosed</div>
+      <div class="trust-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>30+ Lenders</div>
+      <div class="trust-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Brisbane Based</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="hero-right-grid"></div>
+    <div class="hero-right-content">
+      <div class="hero-stat-grid">
+        <div class="hero-stat-card">
+          <div class="stat-big">30<span>+</span></div>
+          <div class="stat-desc">Lenders on panel.<br>More options, better outcomes.</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="stat-big"><span>$</span>0</div>
+          <div class="stat-desc">Hidden fees.<br>What you see is what you pay.</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="stat-big">100<span>%</span></div>
+          <div class="stat-desc">Commission disclosed.<br>You know what we earn. Always.</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="stat-big">24<span>hr</span></div>
+          <div class="stat-desc">Response time.<br>We don't leave you waiting.</div>
+        </div>
+      </div>
+      <div class="hero-feature-card">
+        <div class="hero-feature-icon">🔍</div>
+        <div class="hero-feature-text">
+          <h4>Fully Transparent Broking</h4>
+          <p>Before you sign anything, you know exactly what we earn, what the lender charges, and what the total cost of your deal looks like.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Commercial Vehicles</span>
+    <span class="ticker-item">Plant & Equipment</span>
+    <span class="ticker-item">Chattel Mortgage</span>
+    <span class="ticker-item">Finance Lease</span>
+    <span class="ticker-item">Medical & Dental</span>
+    <span class="ticker-item">Commercial Hire Purchase</span>
+    <span class="ticker-item">Sole Traders</span>
+    <span class="ticker-item">SME Business Finance</span>
+    <span class="ticker-item">30+ Lenders</span>
+    <span class="ticker-item">Brisbane Based</span>
+    <span class="ticker-item">Commercial Vehicles</span>
+    <span class="ticker-item">Plant & Equipment</span>
+    <span class="ticker-item">Chattel Mortgage</span>
+    <span class="ticker-item">Finance Lease</span>
+    <span class="ticker-item">Medical & Dental</span>
+    <span class="ticker-item">Commercial Hire Purchase</span>
+    <span class="ticker-item">Sole Traders</span>
+    <span class="ticker-item">SME Business Finance</span>
+    <span class="ticker-item">30+ Lenders</span>
+    <span class="ticker-item">Brisbane Based</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="services-header-left">
+        <div class="section-eyebrow">What We Fund</div>
+        <h2 class="section-title-dark">If your business<br><span class="accent">needs it,</span><br>we can fund it.</h2>
+      </div>
+      <div class="services-header-right">
+        <p class="section-body">From a single work ute to a full equipment fleet. We structure deals that fit your cash flow, your tax position, and your timeline. We don't push one product or one lender.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-tile reveal featured">
+        <span class="tile-num">01</span>
+        <div class="tile-icon">🚛</div>
+        <h3>Commercial Vehicles</h3>
+        <p>Cars, utes, vans, trucks, and fleets. Whether you're a sole trader needing one work vehicle or an SME building out a fleet, we place deals fast with lenders who understand commercial use.</p>
+        <a href="#contact" class="tile-link">Get a quote →</a>
+      </div>
+      <div class="service-tile reveal">
+        <span class="tile-num">02</span>
+        <div class="tile-icon">🏗️</div>
+        <h3>Plant & Equipment</h3>
+        <p>Earthmoving, construction, manufacturing, agriculture, and transport equipment. High value assets structured with the right product for your business.</p>
+        <a href="#contact" class="tile-link">Get a quote →</a>
+      </div>
+      <div class="service-tile reveal">
+        <span class="tile-num">03</span>
+        <div class="tile-icon">🦷</div>
+        <h3>Medical & Dental</h3>
+        <p>Practice fit-outs, dental chairs, imaging equipment, surgical technology. We work with lenders who specialise in healthcare business finance.</p>
+        <a href="#contact" class="tile-link">Get a quote →</a>
+      </div>
+      <div class="service-tile reveal">
+        <span class="tile-num">04</span>
+        <div class="tile-icon">📋</div>
+        <h3>Chattel Mortgage</h3>
+        <p>Own the asset from day one. Claim the GST upfront and depreciate over time. The most widely used structure for business asset purchases.</p>
+        <a href="#contact" class="tile-link">Get a quote →</a>
+      </div>
+      <div class="service-tile reveal">
+        <span class="tile-num">05</span>
+        <div class="tile-icon">📄</div>
+        <h3>Finance Lease</h3>
+        <p>Keep the asset off your balance sheet with fixed monthly payments and a purchase option at end of term. Works well for businesses managing working capital closely.</p>
+        <a href="#contact" class="tile-link">Get a quote →</a>
+      </div>
+      <div class="service-tile reveal">
+        <span class="tile-num">06</span>
+        <div class="tile-icon">🤝</div>
+        <h3>Commercial Hire Purchase</h3>
+        <p>Use the asset while paying it down. Ownership transfers at the final payment. Predictable repayments, clear end date, straightforward structure.</p>
+        <a href="#contact" class="tile-link">Get a quote →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section" id="why-us">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-left">
+        <div class="section-eyebrow" style="color:var(--blue);">Why Elevate</div>
+        <h2 class="section-title-light">You're running<br>a business.<br><span class="accent">You need straight</span><br>answers.</h2>
+        <p class="why-intro">We give you the full picture on every deal. What the lender charges, what we earn, and what it actually costs you. No fluff, no runaround.</p>
+        <div class="why-points">
+          <div class="why-point reveal">
+            <span class="why-num">01</span>
+            <div class="why-point-body">
+              <h4>Full Commission Disclosure</h4>
+              <p>Before you sign anything, you know exactly what we earn. It's a legal requirement, but we treat it as a baseline not a ceiling.</p>
+            </div>
+          </div>
+          <div class="why-point reveal">
+            <span class="why-num">02</span>
+            <div class="why-point-body">
+              <h4>30+ Lenders on Panel</h4>
+              <p>We're not wedded to one bank or one product. More lenders means more options, better pricing, and a higher chance of approval even for unusual assets.</p>
+            </div>
+          </div>
+          <div class="why-point reveal">
+            <span class="why-num">03</span>
+            <div class="why-point-body">
+              <h4>Plain English, Always</h4>
+              <p>Finance contracts are dense. We walk you through what matters before you sign. If something doesn't make sense, ask us and we'll explain it properly.</p>
+            </div>
+          </div>
+          <div class="why-point reveal">
+            <span class="why-num">04</span>
+            <div class="why-point-body">
+              <h4>Fast Turnaround</h4>
+              <p>Business moves fast and good assets don't wait. Most straightforward deals are approved within 24 to 48 hours of a complete application.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-right">
+        <div class="callout-card primary reveal">
+          <div class="callout-tag">Transparency First</div>
+          <h4>That rate you were quoted? There's margin built into it.</h4>
+          <p>Most finance arrangements include a rate margin above what the lender actually charges. That margin can be thousands of dollars over the life of the loan. We don't operate that way. Our commission is fixed, disclosed, and comes from the lender.</p>
+        </div>
+        <div class="callout-card reveal">
+          <div class="callout-tag">No Surprises</div>
+          <h4>Fees only when it's complex</h4>
+          <p>For straightforward deals, we charge no broker fee. If your situation requires significant structuring work, we'll tell you upfront what the fee is and why before any work begins.</p>
+        </div>
+        <div class="callout-card reveal">
+          <div class="callout-tag">Insider Knowledge</div>
+          <h4>We know how the industry works</h4>
+          <p>We've worked inside finance departments and know exactly how margins get built into deals. We use that knowledge to protect you, not profit from you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="process">
+  <div class="container">
+    <div class="process-header">
+      <div class="section-eyebrow">The Process</div>
+      <h2 class="section-title-dark">No runaround.<br><span class="accent">Here's exactly</span> how it works.</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="process-step-num">01</div>
+        <h3>Tell Us What You Need</h3>
+        <p>Fill out the enquiry form or call us directly. A few quick questions about the asset, the amount, and your business situation.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-step-num">02</div>
+        <h3>We Shop the Market</h3>
+        <p>We go to our full panel of 30+ lenders and find the product and rate that suits your circumstances, not the one that pays us the most.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-step-num">03</div>
+        <h3>We Present Your Options</h3>
+        <p>A clear breakdown of your options. What each lender charges, what we earn, and what the total cost looks like. No hidden numbers.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-step-num">04</div>
+        <h3>Approved and Funded</h3>
+        <p>Once you're happy, we handle the paperwork and coordinate settlement. Most straightforward deals are funded within 24 to 48 hours of approval.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LENDERS -->
+<div class="lenders-section">
+  <div class="container">
+    <p class="lenders-eyebrow">We shop all of these so you don't have to</p>
+    <div class="lenders-row">
+      <div class="lender-tag">Macquarie Bank</div>
+      <div class="lender-tag">Westpac</div>
+      <div class="lender-tag">NAB</div>
+      <div class="lender-tag">ANZ</div>
+      <div class="lender-tag">CBA</div>
+      <div class="lender-tag">Pepper Money</div>
+      <div class="lender-tag">Liberty Financial</div>
+      <div class="lender-tag">Latitude</div>
+      <div class="lender-tag">Grow Finance</div>
+      <div class="lender-tag">Scottish Pacific</div>
+      <div class="lender-tag">Firstmac</div>
+      <div class="lender-tag">Capital Finance</div>
+      <div class="lender-tag">Metro Finance</div>
+      <div class="lender-tag">Angle Finance</div>
+      <div class="lender-tag">+ More</div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-eyebrow" style="color:var(--blue);">Client Stories</div>
+    <h2 class="section-title-light">Don't take <span class="accent">our word</span> for it.</h2>
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I had no idea how much margin was being added to my rate until I was shown the comparison. Ended up saving over $4,000 across the loan term just by going through a broker."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JT</div>
+          <div class="testi-author-info"><h5>Jason T.</h5><span>Tradesman, Brisbane QLD</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Had my work ute approved in 24 hours and everything was explained in plain English. Refreshing to deal with someone who actually tells you what they earn on the deal."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SK</div>
+          <div class="testi-author-info"><h5>Sarah K.</h5><span>Small Business Owner, Gold Coast QLD</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Used Elevate for three pieces of equipment this year. Better rate than my bank offered and the whole process was done remotely without me leaving the job site once."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">DM</div>
+          <div class="testi-author-info"><h5>Daniel M.</h5><span>Civil Contractor, Ipswich QLD</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-left">
+        <div class="section-eyebrow">Common Questions</div>
+        <h2 class="section-title-dark" style="margin-bottom:40px;">Things people<br><span class="accent">always</span> ask us.</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q">Why use a broker instead of my bank?<span class="faq-icon-wrap">+</span></button>
+            <div class="faq-a">Your bank offers one set of products at their rates. A broker works across 30+ lenders and can match your deal to the right product and rate for your situation. For commercial and equipment finance especially, the difference in pricing between lenders can be significant.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Do you charge a broker fee?<span class="faq-icon-wrap">+</span></button>
+            <div class="faq-a">For most standard deals, no. We earn a commission from the lender at settlement. We only charge a broker fee if your situation requires significant structuring work, and we'll always tell you what that is before any work begins.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How do you make money then?<span class="faq-icon-wrap">+</span></button>
+            <div class="faq-a">We earn an upfront commission from the lender when your deal settles. This is standard practice and is fully disclosed to you before you proceed. We do not mark up rates or earn hidden margins.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">What assets can you finance?<span class="faq-icon-wrap">+</span></button>
+            <div class="faq-a">Commercial vehicles, trucks, earthmoving and construction equipment, manufacturing plant, agricultural machinery, medical and dental equipment, technology, and most business-use assets. If you're unsure, ask us and we'll give you a straight answer quickly.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How long does approval take?<span class="faq-icon-wrap">+</span></button>
+            <div class="faq-a">Most straightforward deals are approved within 24 to 48 hours of a complete application. More complex commercial deals or unusual assets may take longer. We'll keep you updated throughout.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Can you help with impaired credit?<span class="faq-icon-wrap">+</span></button>
+            <div class="faq-a">Yes. We have lenders on our panel who specialise in non-standard applications. We'll assess your situation honestly and tell you what's available rather than wasting your time with options that won't work.</div>
+          </div>
+        </div>
+      </div>
+      <div class="faq-right">
+        <div class="faq-cta-block">
+          <h3>Tell us what you need.<br><span>We'll take it<br>from there.</span></h3>
+          <p>No obligation. No jargon. Just a straight answer on what's available and what it'll cost you.</p>
+          <a href="#contact" class="btn-hero-primary" style="display:inline-flex;">Get a Free Quote <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="section-eyebrow" style="color:var(--blue);">Get in Touch</div>
+        <h2 class="section-title-light" style="margin-bottom:20px;">Let's get your<br><span class="accent">deal moving.</span></h2>
+        <p>Fill out the form and we'll come back to you within a business day with a straight answer on what's available for your situation.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text"><h5>Location</h5><p>Brisbane, Queensland, Australia</p></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📞</div>
+            <div class="contact-detail-text"><h5>Phone</h5><p>+61 4XX XXX XXX</p></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉️</div>
+            <div class="contact-detail-text"><h5>Email</h5><p>hello@elevateassetfinance.com.au</p></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">⏱️</div>
+            <div class="contact-detail-text"><h5>Response Time</h5><p>Within one business day</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Get Your Free Quote</h3>
+        <p>Tell us what you need. We'll find the right fit.</p>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="First name"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Last name"></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@business.com.au"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="04XX XXX XXX"></div>
+        <div class="form-group">
+          <label>Finance Type</label>
+          <select>
+            <option value="">Select a finance type...</option>
+            <option>Commercial Vehicles</option>
+            <option>Plant and Equipment</option>
+            <option>Medical / Dental Equipment</option>
+            <option>Chattel Mortgage</option>
+            <option>Finance Lease</option>
+            <option>Commercial Hire Purchase</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Asset Value (approximate)</label>
+          <select>
+            <option value="">Select a range...</option>
+            <option>Under $25,000</option>
+            <option>$25,000 - $75,000</option>
+            <option>$75,000 - $150,000</option>
+            <option>$150,000 - $500,000</option>
+            <option>$500,000+</option>
+          </select>
+        </div>
+        <button class="form-submit">Submit Enquiry →</button>
+        <p class="form-note">General information only. Not financial advice. Your details are never shared or sold.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MJ BANNER -->
+<div class="mj-banner">
+  <div class="mj-inner">
+    <div class="mj-left">
+      <div class="mj-avi">MJ</div>
+      <div class="mj-copy">
+        <h4>Learn more on the Mitch James channel</h4>
+        <p>Plain English finance content for everyday Australians. <a href="https://www.youtube.com/@mjwilliams086" target="_blank">Watch on YouTube →</a></p>
+      </div>
+    </div>
+    <a href="https://www.youtube.com/@mjwilliams086" target="_blank" class="btn-outline-light">Visit Channel</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner" style="max-width:1200px;margin:0 auto;">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="nav-logo-e"></div>
+          <div class="nav-logo-text">ELEVATE <span>ASSET FINANCE</span></div>
+        </div>
+        <p>Commercial asset finance for sole traders and SMEs. Vehicles, equipment, and high value assets. Full transparency on every deal.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#">Commercial Vehicles</a></li>
+          <li><a href="#">Plant and Equipment</a></li>
+          <li><a href="#">Medical and Dental</a></li>
+          <li><a href="#">Chattel Mortgage</a></li>
+          <li><a href="#">Finance Lease</a></li>
+          <li><a href="#">Commercial Hire Purchase</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">Lender Panel</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="#">Finance Calculator</a></li>
+          <li><a href="#">Finance Guide</a></li>
+          <li><a href="https://www.youtube.com/@mjwilliams086" target="_blank">YouTube Channel</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Credit Guide</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Elevate Asset Finance is a credit representative of [Aggregator Name] ACL XXXXXXX. General information only. Not financial advice. Credit products are subject to eligibility and approval. © 2025 Elevate Asset Finance. All rights reserved.</p>
+      <div class="footer-bottom-right">Brisbane, QLD Australia</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // FAQ
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
