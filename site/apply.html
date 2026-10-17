@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
 <title>Apply Online | Elevate Asset Finance</title>
 <meta name="description" content="Start your asset finance application online in about 5 minutes. No ID needed up front. A real broker reviews everything.">
+<link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
+<meta name="theme-color" content="#0F1422">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
@@ -58,13 +60,24 @@ html,body{height:100%}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="eg" x1="4" y1="40" x2="36" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0EA5E9"/><stop offset=".55" stop-color="#6366F1"/><stop offset="1" stop-color="#A78BFA"/></linearGradient>
+    <linearGradient id="eh" x1="20" y1="0" x2="20" y2="22" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <symbol id="elevate-mark" viewBox="0 0 40 40">
+      <path d="M20 0c11.2 0 15 .9 17.1 2.9S40 8.8 40 20s-.9 15-2.9 17.1S31.2 40 20 40s-15-.9-17.1-2.9S0 31.2 0 20 .9 5 2.9 2.9 8.8 0 20 0z" fill="url(#eg)"/>
+      <path d="M20 0c11.2 0 15 .9 17.1 2.9S40 8.8 40 20H0C0 8.8.9 5 2.9 2.9S8.8 0 20 0z" fill="url(#eh)"/>
+      <path d="M11.5 29.5 20 21l8.5 8.5" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11.5 20.5 20 12l8.5 8.5" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+</svg>
 <div class="shell">
   <header class="nav">
     <div class="container">
       <a href="/" class="logo" aria-label="Elevate Asset Finance home">
-        <svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38BDF8"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs>
-          <rect width="40" height="40" rx="12" fill="url(#lg)"/><rect x="9" y="22" width="5.5" height="9" rx="1.5" fill="#fff" fill-opacity=".55"/><rect x="17.25" y="16" width="5.5" height="15" rx="1.5" fill="#fff" fill-opacity=".8"/><rect x="25.5" y="10" width="5.5" height="21" rx="1.5" fill="#fff"/></svg>
-        <span><b>Elevate</b><small>Asset Finance</small></span>
+        <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#elevate-mark"/></svg>
+        <span class="wordmark"><b>elevate</b><small>Asset Finance</small></span>
       </a>
       <a href="/" class="btn btn-outline btn-sm">Back to site</a>
     </div>

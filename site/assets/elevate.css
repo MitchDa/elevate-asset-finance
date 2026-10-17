@@ -83,11 +83,12 @@ a{color:var(--teal)}
   border:1px solid color-mix(in srgb,var(--teal) 25%,transparent);padding:6px 14px;border-radius:999px;line-height:1.4}
 .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--success);flex:none}
 
-/* Logo */
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);min-width:0}
-.logo svg{width:40px;height:40px;flex:none}
-.logo b{display:block;font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
-.logo small{display:block;font-size:12.5px;font-weight:600;color:var(--teal);line-height:1.2}
+/* Logo: gradient tile with rising chevrons + lowercase wordmark */
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);min-width:0}
+.logo svg{width:40px;height:40px;flex:none;filter:drop-shadow(0 4px 10px rgba(99,102,241,.28))}
+.wordmark{display:flex;flex-direction:column;line-height:1}
+.wordmark b{font-size:23px;font-weight:800;letter-spacing:-.05em;line-height:.95}
+.wordmark small{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);margin-top:5px;padding-left:1px}
 
 /* Sticky glass nav */
 .nav{position:sticky;top:0;z-index:50;height:76px;background:color-mix(in srgb,var(--ground) 88%,transparent);
@@ -105,8 +106,8 @@ a{color:var(--teal)}
 
 @media (max-width:540px){
   .logo svg{width:34px;height:34px}
-  .logo b{font-size:18px}
-  .logo small{font-size:11.5px}
+  .wordmark b{font-size:20px}
+  .wordmark small{font-size:8.5px;letter-spacing:.18em;margin-top:4px}
   .btn-sm{padding:10px 16px;font-size:14px}
 }
 @media (prefers-reduced-motion:reduce){

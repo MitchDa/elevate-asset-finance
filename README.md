@@ -10,6 +10,7 @@ site/                     Everything the public sees (Netlify publishes only thi
   apply.html              Full-page application, served at /apply (for ads, texts and QR codes)
   assets/
     elevate.css           Elevate Design System: colours, type, buttons, nav, footer
+    logo-mark.svg         The Elevate logo mark (also the browser tab icon)
     intake.css            Styles for the application assistant
     intake.js             The application assistant: questions, saving, broker summary
 netlify/

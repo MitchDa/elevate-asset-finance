@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="Elevate Asset Finance">
+  <defs>
+    <linearGradient id="eg" x1="4" y1="40" x2="36" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0EA5E9"/>
+      <stop offset=".55" stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="eh" x1="20" y1="0" x2="20" y2="22" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M20 0c11.2 0 15 .9 17.1 2.9S40 8.8 40 20s-.9 15-2.9 17.1S31.2 40 20 40s-15-.9-17.1-2.9S0 31.2 0 20 .9 5 2.9 2.9 8.8 0 20 0z" fill="url(#eg)"/>
+  <path d="M20 0c11.2 0 15 .9 17.1 2.9S40 8.8 40 20H0C0 8.8.9 5 2.9 2.9S8.8 0 20 0z" fill="url(#eh)"/>
+  <path d="M11.5 29.5 20 21l8.5 8.5" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M11.5 20.5 20 12l8.5 8.5" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
