@@ -5,8 +5,8 @@
 
 .ei-head{flex:none;padding:20px 24px 14px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
 .ei-title{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.ei-title h2{font-size:20px;letter-spacing:-.015em;line-height:1.25}
-.ei-saved{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink-2);background:var(--tint);border:1px solid var(--line);padding:5px 12px;border-radius:999px;white-space:nowrap}
+.ei-title h2{font-size:20px;letter-spacing:-.02em;line-height:1.25;font-weight:700}
+.ei-saved{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink-2);background:var(--tint);border:1px solid var(--line);padding:5px 10px;border-radius:8px;white-space:nowrap}
 .ei-saved i{width:7px;height:7px;border-radius:50%;background:var(--ink-2);flex:none}
 .ei-saved.on{color:var(--ink)}
 .ei-saved.on i{background:var(--success);animation:ei-pulse 2s infinite}
@@ -54,7 +54,7 @@
 
 .ei-composer{flex:none;border-top:1px solid var(--line);padding:14px 24px 16px;display:grid;grid-template-columns:minmax(0,1fr);gap:10px;background:var(--surface)}
 .ei-chips{display:flex;flex-wrap:wrap;gap:8px;max-height:min(40vh,240px);overflow-y:auto}
-.ei-chip{font-size:15px;font-weight:600;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);padding:10px 18px;border-radius:999px;min-height:44px;
+.ei-chip{font-size:15px;font-weight:600;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);padding:10px 16px;border-radius:12px;min-height:44px;
   transition:border-color .2s,background .2s,transform .2s var(--ease)}
 .ei-chip:hover{border-color:var(--teal);background:var(--teal-soft)}
 .ei-chip:active{transform:scale(.98)}
@@ -66,7 +66,7 @@
 .ei-field-wrap .ei-pre{padding-left:15px;color:var(--ink-2);font-weight:600}
 .ei-field-wrap input{flex:1;min-width:0;background:transparent;border:0;outline:none;color:var(--ink);font:500 16.5px var(--body);padding:12px 15px;font-variant-numeric:tabular-nums}
 .ei-field-wrap input::placeholder{color:var(--ink-2);opacity:.8}
-.ei-send{font:600 16px/1 var(--body);background:var(--teal);color:var(--on-accent);border:0;padding:0 24px;border-radius:999px;min-height:48px;transition:background .2s}
+.ei-send{font:600 16px/1 var(--body);background:var(--teal);color:var(--on-accent);border:0;padding:0 22px;border-radius:12px;min-height:48px;transition:background .2s}
 .ei-send:hover{background:var(--teal-hover)}
 .ei-err{color:var(--error);font-size:14px;font-weight:500}
 .ei-err:empty{display:none}

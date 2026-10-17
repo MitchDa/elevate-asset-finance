@@ -26,7 +26,8 @@ The questions live in one place, `site/assets/intake.js` (the `steps` function).
 
 ## How the application works on the homepage
 
-- Customers click **Start online** (in the hero, nav, calculator or contact section) and the application grows out of the corner as a floating panel. They can keep scrolling the page while it's open.
+- The hero headline is a sentence visitors complete ("I'm after a work ute for my business, around $55,000"). The deal sheet beside it updates live, and **Start my application** opens the panel with those answers already filled in. Rows in "What we finance" do the same.
+- Any other **Start application** button opens the panel as it is. It grows out of the corner as a floating panel, and they can keep scrolling the page while it's open.
 - **Minimise** shrinks it back into a small bubble in the corner showing their progress, for example "Continue application, 40% done".
 - **Expand** makes it larger in the middle of the screen. On phones it opens as a full-screen sheet.
 - Progress is kept in their browser, so it survives a refresh and carries over between the homepage and /apply.
@@ -62,7 +63,8 @@ No licence numbers, dates of birth or ID documents are collected online.
 ## Before going live
 - [ ] Add the real Credit Guide at `site/credit-guide.pdf` and a privacy policy page at `site/privacy.html`.
 - [ ] Replace `[Aggregator Name] ACL XXXXXXX` in both page footers.
-- [ ] Replace the placeholder phone number in the homepage contact section.
+- [ ] Replace the placeholder phone number (top menu and the "Ready when you are" section of the homepage).
+- [ ] Swap the "MJ" placeholder in the About section for a photo of Mitch.
 - [ ] Confirm the claims on the homepage (30+ lenders, call back in 1 business day) match your aggregator arrangements.
 - [ ] Have your compliance contact review the privacy wording in `site/assets/intake.js` (search for `consent`) and the retention period in `supabase/schema.sql`.
 - [ ] Set `ALLOWED_ORIGINS` once the domain is live.

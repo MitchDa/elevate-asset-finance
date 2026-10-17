@@ -278,6 +278,7 @@ function mount(root, opts = {}) {
       bubble('bot', textOf(s, a)); a[id] = ans[id];
       bubble('user', display(s, ans[id]), true);
       if (s.after) bubble('bot note', s.after(a));
+      if (id === 'path' && meta.prefill) bubble('bot note', `Got it: <strong>${esc(meta.prefill.label)}</strong>${meta.prefill.amount ? `, around <strong>${money(meta.prefill.amount)}</strong>` : ''}. I'll skip those questions.`);
     }
     render();
     if (finished) finish(false); else askNext(false);
@@ -367,7 +368,8 @@ function mount(root, opts = {}) {
 
   root.addEventListener('click', e => {
     const act = e.target.closest('[data-act]')?.dataset.act; if (!act || busy) return;
-    if (act === 'undo') { if (!order.length) return; const id = order.pop(); delete ans[id]; if (id === 'consent') delete meta.consentAt; finished = false; delete meta.sentAt; persist(); rebuild(); queueSave(); }
+    if (act === 'undo') { if (!order.length) return; const id = order.pop(); delete ans[id]; if (id === 'consent') delete meta.consentAt;
+      if (id === 'path' && meta.prefill) { delete ans.asset; delete ans.amount; delete meta.prefill; } finished = false; delete meta.sentAt; persist(); rebuild(); queueSave(); }
     if (act === 'restart') { ans = {}; order = []; meta = {}; leadId = null; finished = false; clearStore(); setSaved('', 'Not started'); rebuild(); }
   });
 
@@ -390,6 +392,17 @@ function mount(root, opts = {}) {
   return {
     focus() { const el = inputEl.querySelector('input, .ei-chip'); if (el && canFocus()) el.focus({ preventScroll: true }); toEnd(); },
     scrollToEnd: toEnd,
+    // Start with answers chosen elsewhere on the page (e.g. the homepage sentence). Ignored once an application has started.
+    prefill(p) {
+      if (order.length || !p || !p.path) return false;
+      ans.path = p.path; order.push('path');
+      if (p.asset) ans.asset = p.asset;
+      if (p.amount) ans.amount = String(Math.round(p.amount));
+      if (p.asset) meta.prefill = { label: p.label || p.asset, amount: p.amount || null };
+      if (!leadId) leadId = uuid();
+      persist(); rebuild(); return true;
+    },
+    started: () => order.length > 0,
   };
 }
 

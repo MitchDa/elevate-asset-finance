@@ -1,263 +1,341 @@
 <!DOCTYPE html>
-<html lang="en-AU">
+<html lang="en-AU" class="home">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
-<title>Elevate Asset Finance | Car, Equipment and Business Asset Finance, Brisbane</title>
+<title>Elevate Asset Finance | Car, Ute and Equipment Finance, Brisbane</title>
 <meta name="description" content="Brisbane asset finance broker for cars, utes, equipment and business assets. 30+ lenders, plain English and no surprises. Start online in 5 minutes.">
 <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
-<meta name="theme-color" content="#0F1422">
+<meta name="theme-color" content="#0A1424">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,400&display=swap">
 <link rel="stylesheet" href="assets/elevate.css">
 <link rel="stylesheet" href="assets/intake.css">
 <style>
-/* Homepage. Section order follows the design system skeleton. Layout: hero split 1.15/0.85, alternating plain and tint sections. */
-section{scroll-margin-top:76px}
-.section{padding-block:clamp(72px,9vw,120px)}
-.tint{background:var(--tint)}
-.sec-head{max-width:720px;margin-bottom:48px;display:grid;justify-items:start;gap:16px}
-.sec-head.center{margin-inline:auto;justify-items:center;text-align:center}
-h2{font-size:clamp(32px,4.4vw,52px)}
-.lede{font-size:clamp(18px,1.7vw,20px);color:var(--ink-2);max-width:58ch}
-.num-tab{font-variant-numeric:tabular-nums}
+/* Layout concept: a dark "night" hero where the headline is a sentence the visitor completes, with a live deal sheet beside it,
+   over ridgeline contours (the Elevate motif). Below, calm light sections; dark sections return for the founder and the final ask.
+   Single designed look: light page tokens, dark tokens scoped to .night sections. */
+:root.home{
+  color-scheme:light;
+  --ground:#F3F6FA; --surface:#FFFFFF; --tint:#E8EEF5; --ink:#0A1424; --ink-2:#4A5A72; --line:#D8E0EB;
+  --teal:#0284C7; --teal-hover:#0369A1; --teal-soft:#E0F2FE;
+  --gold:#7C6CF2; --gold-ink:#5B4BD6; --gold-soft:#ECEAFE;
+  --deep:#0A1424; --deep-ink:#F2F6FB; --deep-muted:#9AA9C0; --on-accent:#05101E;
+  --cta:#38BDF8; --cta-hover:#7DD3FC;
+  --shadow:0 1px 2px rgba(10,20,36,.06),0 18px 40px -18px rgba(10,20,36,.25);
+  --shadow-lg:0 2px 6px rgba(10,20,36,.1),0 34px 80px -24px rgba(10,20,36,.45);
+}
+.night{
+  color-scheme:dark;
+  --ground:#0A1424; --surface:#111E34; --tint:#0E1A2E; --ink:#F2F6FB; --ink-2:#9AA9C0; --line:rgba(255,255,255,.1);
+  --teal:#4CC3F7; --teal-hover:#8AD8FA; --teal-soft:rgba(76,195,247,.14);
+  --gold:#A99CFA; --gold-ink:#C7BEFD; --gold-soft:rgba(169,156,250,.16);
+  background:var(--ground); color:var(--ink);
+}
+body{font-size:17px}
+section{scroll-margin-top:72px}
+.section{padding-block:clamp(72px,9vw,128px)}
+h2{font-size:clamp(34px,4.6vw,56px);letter-spacing:-.035em}
+.lede{font-size:clamp(17px,1.6vw,19px);color:var(--ink-2);max-width:56ch;line-height:1.6}
+.split-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+.split-head .lede{justify-self:end}
+.btn-primary{background:var(--cta);color:var(--on-accent);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 8px 24px -10px rgba(56,189,248,.7)}
+.btn-primary:hover{background:var(--cta-hover)}
+.btn-lg{padding:19px 28px;font-size:17px;border-radius:14px}
+.textlink{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--teal) 60%,transparent);text-underline-offset:4px;text-decoration-thickness:2px}
+.textlink:hover{text-decoration-color:var(--teal)}
 
-/* Nav */
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+/* Nav (always dark glass) */
+.nav.night{background:rgba(10,20,36,.96)}
+.nav.night.scrolled{border-bottom-color:rgba(255,255,255,.08)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
 .nav-links a{font-size:15.5px;font-weight:500;color:var(--ink-2);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
-.nav-right{display:flex;align-items:center;gap:12px}
-.menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surface);place-items:center}
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav-phone{font-size:15px;font-weight:600;color:var(--ink);text-decoration:none;white-space:nowrap}
+.menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:transparent;place-items:center;color:var(--ink)}
 .menu-btn svg{width:20px;height:20px}
 .nav-menu{display:none}
 
-/* Hero */
-.hero{position:relative;overflow:hidden;padding-block:clamp(40px,7vw,96px) clamp(56px,8vw,104px)}
-.glows{position:absolute;inset:0;z-index:-1;pointer-events:none}
-.glows i{position:absolute;border-radius:50%;filter:blur(60px)}
-.glows i:nth-child(1){width:600px;height:600px;background:var(--teal-soft);top:-220px;left:-160px;animation:drift1 32s var(--ease) infinite alternate}
-.glows i:nth-child(2){width:620px;height:620px;background:var(--gold-soft);top:-80px;right:-240px;animation:drift2 38s var(--ease) infinite alternate}
-.glows i:nth-child(3){width:540px;height:540px;background:var(--teal-soft);bottom:-320px;left:35%;animation:drift1 26s var(--ease) infinite alternate-reverse}
-@keyframes drift1{to{transform:translate(80px,60px)}}
-@keyframes drift2{to{transform:translate(-90px,40px)}}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,6vw,80px);align-items:center}
-.hero-copy{display:grid;justify-items:start;gap:22px}
-.hero h1{font-size:clamp(44px,6.6vw,82px);font-weight:900;letter-spacing:-.05em;line-height:1.02}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
-.ticks{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px;color:var(--ink-2)}
-.ticks li{display:inline-flex;align-items:center;gap:8px}
-.ticks svg{width:18px;height:18px;color:var(--teal);flex:none}
-.intro-card{background:var(--surface);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:14px 14px 24px;display:grid;gap:18px}
-.photo{position:relative;aspect-ratio:5/4;max-width:100%;border-radius:20px;background:linear-gradient(160deg,var(--teal-soft),var(--gold-soft));display:grid;place-items:center;overflow:hidden}
-.monogram{width:44%;aspect-ratio:1;border-radius:50%;background:var(--surface);display:grid;place-items:center;box-shadow:var(--shadow);font-size:clamp(40px,5vw,64px);font-weight:900;letter-spacing:-.05em}
-.online{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;background:var(--surface);color:var(--ink);font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:999px;box-shadow:var(--shadow)}
-.online i{width:8px;height:8px;border-radius:50%;background:var(--success);animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.55)}70%{box-shadow:0 0 0 8px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
-.intro-card .greet{padding-inline:10px;display:grid;gap:8px}
-.intro-card h3{font-size:21px;letter-spacing:-.015em;line-height:1.25}
-.intro-card p{font-size:16px;color:var(--ink-2)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;padding-inline:10px}
-.chips span{font-size:12.5px;font-weight:600;background:var(--tint);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+/* ===== Hero ===== */
+.hero{position:relative;overflow:hidden;padding-block:clamp(48px,7vw,104px) clamp(64px,8vw,112px);isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
+  radial-gradient(900px 520px at 85% 10%,rgba(76,195,247,.16),transparent 60%),
+  radial-gradient(700px 480px at 70% 100%,rgba(169,156,250,.14),transparent 65%)}
+.ridges{position:absolute;inset:auto 0 0 0;height:100%;z-index:-1;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.35) 30%,#000 60%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.35) 30%,#000 60%)}
+.ridges svg{width:100%;height:100%;display:block}
+.ridges path{fill:none;stroke-linecap:round}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(36px,5vw,72px);align-items:center}
+.hero-copy{display:grid;gap:28px;justify-items:start}
 
-/* Trust bar */
-.trust{background:var(--surface);border-block:1px solid var(--line)}
-.trust-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;padding-block:28px}
-.trust-item{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:center}
-.tile{width:44px;height:44px;border-radius:12px;background:var(--teal-soft);color:var(--teal);display:grid;place-items:center}
-.tile svg{width:21px;height:21px}
-.trust-item b{display:block;font-size:15.5px;font-weight:700;line-height:1.3}
-.trust-item span{display:block;font-size:14.5px;color:var(--ink-2);line-height:1.4}
+/* The sentence */
+.sentence{font-family:var(--head);font-weight:300;font-size:clamp(38px,5.2vw,72px);line-height:1.1;letter-spacing:-.04em;color:var(--ink);text-wrap:pretty}
+.tok{font:inherit;font-weight:650;letter-spacing:inherit;color:var(--teal);background:none;border:0;padding:0 0 0 .06em;border-radius:10px;cursor:pointer;position:relative;
+  text-decoration:underline;text-decoration-style:dashed;text-decoration-thickness:.055em;text-underline-offset:.16em;text-decoration-color:color-mix(in srgb,var(--teal) 55%,transparent);
+  transition:background .2s,text-decoration-color .2s;white-space:nowrap}
+.tok:hover,.tok[aria-expanded="true"]{background:var(--teal-soft);text-decoration-color:var(--teal)}
+.tok svg{width:.3em;height:.3em;margin-left:.04em;vertical-align:.14em;opacity:.75}
+.hint-line{font-size:14.5px;color:var(--ink-2);display:flex;align-items:center;gap:8px;margin-top:-14px}
+.hint-line svg{width:16px;height:16px;color:var(--teal);flex:none}
+.hero .lede{font-size:clamp(17px,1.5vw,19px)}
+.cta-row{display:flex;align-items:center;flex-wrap:wrap;gap:14px 22px}
+.cta-row .call{font-size:15.5px;color:var(--ink-2)}
+.proof{list-style:none;display:flex;flex-wrap:wrap;gap:10px 28px;padding-top:24px;border-top:1px solid var(--line);width:100%}
+.proof li{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--ink-2)}
+.proof b{color:var(--ink);font-weight:650}
+.proof svg{width:20px;height:20px;color:var(--teal);flex:none}
 
-/* Cards */
-.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 28px;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s;display:flex;flex-direction:column;gap:12px}
-.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:transparent}
-.card h3{font-size:21px;letter-spacing:-.015em;line-height:1.25}
-.card p{color:var(--ink-2);font-size:16px}
-.asset-tile{width:52px;height:52px;border-radius:16px;background:var(--gold-soft);color:var(--gold-ink);display:grid;place-items:center;margin-bottom:4px}
-.asset-tile svg{width:27px;height:27px}
-.card-foot{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);font-size:14.5px;color:var(--ink-2)}
-.card-foot b{color:var(--ink);font-weight:700}
+/* Popovers for the sentence */
+.pop{position:absolute;z-index:70;min-width:240px;max-width:min(340px,calc(100vw - 32px));background:#111E34;color:#F2F6FB;border:1px solid rgba(255,255,255,.12);border-radius:16px;box-shadow:0 24px 60px -16px rgba(0,0,0,.7);padding:8px;font-family:var(--body);letter-spacing:0}
+.pop[hidden]{display:none}
+.pop-opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:0;color:#F2F6FB;padding:12px 12px;border-radius:10px;font-size:16px;font-weight:500}
+.pop-opt:hover,.pop-opt:focus-visible{background:rgba(255,255,255,.07)}
+.pop-opt[aria-selected="true"]{background:rgba(76,195,247,.14)}
+.pop-opt[aria-selected="true"]::after{content:"";width:10px;height:6px;border-left:2px solid #4CC3F7;border-bottom:2px solid #4CC3F7;transform:rotate(-45deg) translateY(-2px)}
+.pop-amt{padding:12px 10px 8px;display:grid;gap:14px}
+.pop-amt output{font-family:var(--head);font-size:34px;font-weight:650;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.pop-amt .presets{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.pop-amt .presets button{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#F2F6FB;border-radius:9px;padding:9px 4px;font-size:14px;font-weight:600}
+.pop-amt .presets button:hover{border-color:#4CC3F7}
+.pop-done{background:#38BDF8;color:#05101E;border:0;border-radius:10px;padding:12px;font-weight:650;font-size:15px}
 
-/* Deep promise panel */
-.deep{background:var(--deep);color:var(--deep-ink);border-radius:32px;padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,80px)}
-.deep .eyebrow{background:rgba(255,255,255,.1);color:#C4B5FD;border-color:transparent}
-.deep-copy{display:grid;align-content:start;justify-items:start;gap:16px}
-.deep-copy p{color:var(--deep-muted);font-size:17px}
-.checks{list-style:none;display:grid}
-.checks li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding-block:20px;border-top:1px solid rgba(255,255,255,.1)}
-.checks li:first-child{border-top:0;padding-top:0}
-.check{width:36px;height:36px;border-radius:50%;background:rgba(167,139,250,.16);color:#C4B5FD;display:grid;place-items:center}
-.check svg{width:18px;height:18px}
-.checks h3{font-size:19px;letter-spacing:-.015em;line-height:1.25;margin-bottom:4px}
-.checks p{color:var(--deep-muted);font-size:15.5px}
+/* Deal sheet */
+.sheet{position:relative;background:linear-gradient(180deg,rgba(17,30,52,.92),rgba(14,26,46,.92));border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:26px;
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;gap:18px}
+.sheet::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(140deg,rgba(76,195,247,.6),transparent 35%,transparent 70%,rgba(169,156,250,.5));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.sheet-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.sheet-top h2{font-size:17px;letter-spacing:-.01em;font-weight:650}
+.sheet-top span{font-size:13px;color:var(--ink-2)}
+.sheet-fig{display:flex;align-items:baseline;gap:8px;font-family:var(--head)}
+.sheet-fig b{font-size:clamp(46px,4.6vw,60px);font-weight:650;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+.sheet-fig small{font-size:17px;color:var(--ink-2);font-family:var(--body)}
+.sheet-sub{font-size:14px;color:var(--ink-2);margin-top:-8px}
+.sheet dl{display:grid;border-top:1px solid var(--line)}
+.sheet dl div{display:flex;justify-content:space-between;gap:12px;padding-block:11px;border-bottom:1px solid var(--line);font-size:15px}
+.sheet dt{color:var(--ink-2)}
+.sheet dd{font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.track{list-style:none;display:grid;gap:12px}
+.track li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:12px;align-items:center;font-size:14.5px;position:relative}
+.track li::before{content:"";grid-column:1;width:12px;height:12px;border-radius:50%;border:2px solid rgba(255,255,255,.25);justify-self:center}
+.track li.done::before{background:#34D399;border-color:#34D399;box-shadow:0 0 0 4px rgba(52,211,153,.15)}
+.track li.next::before{border-color:#4CC3F7}
+.track li:not(:last-child)::after{content:"";position:absolute;left:10px;top:18px;width:2px;height:calc(100% - 4px);background:rgba(255,255,255,.1)}
+.track span{color:var(--ink)}
+.track em{font-style:normal;color:var(--ink-2);font-size:13.5px;white-space:nowrap}
+.sheet .btn{width:100%}
+.sheet-fine{font-size:12px;color:var(--ink-2);line-height:1.45}
 
-/* Steps */
-.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
-.step .n{width:40px;height:40px;border-radius:50%;background:var(--teal);color:var(--on-accent);display:grid;place-items:center;font-weight:800;font-size:16px}
-.from{background:var(--tint);border-radius:12px;padding:10px 12px;font-size:14px;color:var(--ink-2);line-height:1.5}
-.tint .from{background:var(--ground)}
-.from b{display:block;font-size:13px;color:var(--ink);font-weight:700}
-.time{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--teal);margin-top:auto}
-.time svg{width:16px;height:16px}
+/* ===== What we finance (index list) ===== */
+.assets{list-style:none;border-top:1px solid var(--line)}
+.asset-row{width:100%;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.3fr) 120px 52px;gap:24px;align-items:center;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);
+  padding:26px 8px;color:var(--ink);transition:background .25s var(--ease),padding .25s var(--ease)}
+.asset-row:hover{background:var(--surface);padding-inline:20px}
+.ar-name{font-family:var(--head);font-size:clamp(24px,2.6vw,34px);font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.ar-desc{font-size:16px;color:var(--ink-2)}
+.ar-for{font-size:14px;font-weight:600;color:var(--ink-2)}
+.ar-go{width:52px;height:52px;border-radius:14px;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink);transition:background .25s,border-color .25s,color .25s}
+.ar-go svg{width:20px;height:20px}
+.asset-row:hover .ar-go{background:var(--cta);border-color:var(--cta);color:var(--on-accent)}
 
-/* Calculator */
+/* ===== Timeline ===== */
+.tint{background:var(--tint)}
+.timeline{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);position:relative;padding-top:42px}
+.timeline::before{content:"";position:absolute;top:9px;left:9px;right:0;height:2px;background:linear-gradient(90deg,var(--teal) 0%,var(--gold) 55%,var(--line) 100%)}
+.timeline li{position:relative;display:grid;gap:12px;align-content:start}
+.timeline li::before{content:"";position:absolute;top:-42px;left:0;width:20px;height:20px;border-radius:50%;background:var(--ground);border:3px solid var(--teal)}
+.timeline li:nth-child(2)::before{border-color:#6366F1}
+.timeline li:nth-child(3)::before{border-color:var(--gold)}
+.when{font-family:var(--head);font-size:clamp(22px,2.2vw,28px);font-weight:600;letter-spacing:-.025em;color:var(--teal)}
+.timeline li:nth-child(2) .when{color:#4F46E5}
+.timeline li:nth-child(3) .when{color:var(--gold-ink)}
+.timeline h3{font-size:21px;letter-spacing:-.02em;font-weight:650}
+.timeline p{color:var(--ink-2);font-size:16px}
+.you{font-size:14.5px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:12px;margin-top:4px}
+.you b{color:var(--ink);font-weight:650}
+
+/* ===== Founder ===== */
+.founder{position:relative;overflow:hidden;isolation:isolate}
+.founder::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(700px 500px at 0% 100%,rgba(169,156,250,.14),transparent 60%)}
+.founder-grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(36px,6vw,96px);align-items:center}
+.portrait{position:relative;aspect-ratio:4/5;max-width:100%;border-radius:24px;overflow:hidden;background:linear-gradient(165deg,#16304F,#1B1F4A 70%,#0E1A2E);display:grid;place-items:center}
+.portrait svg.ridge{position:absolute;inset:auto 0 0 0;width:100%;height:55%;opacity:.5}
+.portrait .mono{font-family:var(--head);font-size:clamp(72px,9vw,128px);font-weight:700;letter-spacing:-.06em;background:linear-gradient(135deg,#7DD3FC,#A99CFA);-webkit-background-clip:text;background-clip:text;color:transparent;position:relative}
+.quote{font-family:var(--head);font-weight:300;font-size:clamp(26px,3.2vw,42px);line-height:1.22;letter-spacing:-.03em;text-wrap:pretty}
+.sig{margin-top:28px;display:flex;align-items:center;gap:14px}
+.sig b{font-family:var(--head);font-size:20px;font-weight:650;letter-spacing:-.02em;display:block}
+.sig span{color:var(--ink-2);font-size:15px}
+.creds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:36px;padding-top:28px;border-top:1px solid var(--line)}
+.creds dt{font-size:13.5px;color:var(--ink-2);margin-bottom:4px}
+.creds dd{font-size:16.5px;font-weight:600;line-height:1.35}
+.founder .textlink{display:inline-block;margin-top:28px}
+
+/* ===== Calculator ===== */
 .tool{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
-.inputs{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:clamp(22px,3vw,32px);display:grid;gap:26px;align-content:start}
+.inputs{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(22px,3vw,34px);display:grid;gap:28px;align-content:start}
 .field-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
-.field-row label,.field-row span.lbl{font-size:15px;font-weight:600}
-.field-row output{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+.field-row label,.field-row .lbl{font-size:15px;font-weight:600}
+.field-row output{font-family:var(--head);font-size:22px;font-weight:650;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .hint{font-size:13.5px;color:var(--ink-2);margin-top:8px}
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:999px;background:linear-gradient(90deg,var(--teal) var(--pct,50%),var(--line) var(--pct,50%));outline:none}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--surface);border:3px solid var(--teal);cursor:pointer;box-shadow:var(--shadow)}
 input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--surface);border:3px solid var(--teal);cursor:pointer}
 input[type=range]:focus-visible{outline:2.5px solid var(--gold);outline-offset:6px}
 .seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.seg button{border:1.5px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:12px;padding:11px 6px;font-size:15px;font-weight:600;min-height:44px;transition:border-color .2s,background .2s}
+.seg button{border:1.5px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:10px;padding:11px 6px;font-size:15px;font-weight:600;min-height:44px;transition:border-color .2s,background .2s}
 .seg button[aria-pressed="true"]{border-color:var(--teal);background:var(--teal-soft);color:var(--ink)}
-.result{background:var(--deep);color:var(--deep-ink);border-radius:26px;padding:clamp(22px,3vw,32px);display:grid;gap:18px;align-content:start}
-.result .lbl{font-size:15px;color:var(--deep-muted)}
-.big{font-size:clamp(52px,6vw,76px);font-weight:800;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
-.big small{font-size:18px;font-weight:600;letter-spacing:0;color:var(--deep-muted);margin-left:4px}
+.result{border-radius:22px;padding:clamp(22px,3vw,34px);display:grid;gap:18px;align-content:start}
+.result .lbl{font-size:15px;color:var(--ink-2)}
+.big{font-family:var(--head);font-size:clamp(54px,6vw,80px);font-weight:650;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.big small{font-family:var(--body);font-size:18px;font-weight:500;letter-spacing:0;color:var(--ink-2);margin-left:6px}
 .result dl{display:grid}
-.result dl div{display:flex;justify-content:space-between;gap:12px;padding-block:11px;border-top:1px solid rgba(255,255,255,.12);font-size:15.5px}
-.result dt{color:var(--deep-muted)}
-.result dd{font-weight:700;font-variant-numeric:tabular-nums}
-.plain{background:rgba(255,255,255,.07);border-radius:16px;padding:14px 16px;font-size:15px;color:var(--deep-muted)}
-.plain b{color:var(--deep-ink)}
-.fine{font-size:12.5px;line-height:1.5;color:var(--deep-muted)}
+.result dl div{display:flex;justify-content:space-between;gap:12px;padding-block:12px;border-top:1px solid var(--line);font-size:15.5px}
+.result dt{color:var(--ink-2)}
+.result dd{font-weight:650;font-variant-numeric:tabular-nums}
+.plain{background:rgba(255,255,255,.06);border-radius:14px;padding:14px 16px;font-size:15px;color:var(--ink-2)}
+.plain b{color:var(--ink)}
+.fine{font-size:12.5px;line-height:1.5;color:var(--ink-2)}
 .result .btn{justify-self:start}
-.example{margin-top:20px;background:var(--gold-soft);border-radius:26px;padding:clamp(22px,3vw,32px);display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;align-items:start}
-.avatar{width:64px;height:64px;border-radius:50%;background:var(--surface);color:var(--gold-ink);display:grid;place-items:center}
-.avatar svg{width:30px;height:30px}
-.tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-ink)}
-.example h3{font-size:21px;letter-spacing:-.015em;line-height:1.25;margin:6px 0 8px}
-.example p{color:var(--ink-2);font-size:16px}
-.ex-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.ex-chips span{background:var(--surface);border-radius:12px;padding:8px 12px;font-size:14px;color:var(--ink-2)}
-.ex-chips b{color:var(--ink);font-variant-numeric:tabular-nums}
 
-/* Glossary */
-.short{background:var(--teal-soft);border-radius:12px;padding:10px 12px;font-size:14.5px;margin-top:auto}
-.short b{color:var(--teal)}
+/* ===== Expectations ===== */
+.expect{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,36px)}
+.expect div{border-top:2px solid var(--ink);padding-top:20px;display:grid;gap:10px;align-content:start}
+.expect h3{font-size:20px;letter-spacing:-.02em;font-weight:650}
+.expect p{color:var(--ink-2);font-size:16px}
 
-
-/* FAQ */
-.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,80px);align-items:start}
-.faq{display:grid;gap:12px}
-.faq details{background:var(--surface);border:1px solid var(--line);border-radius:18px;transition:border-color .2s}
-.faq details[open]{border-color:var(--teal)}
-.faq summary{list-style:none;cursor:pointer;padding:20px 22px;font-size:17px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:16px}
+/* ===== FAQ ===== */
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px);align-items:start}
+.faq-grid .lede{margin-top:18px}
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:24px 0;font-family:var(--head);font-size:clamp(19px,1.8vw,22px);font-weight:600;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:center;gap:20px}
 .faq summary::-webkit-details-marker{display:none}
-.pm{position:relative;width:30px;height:30px;border-radius:50%;background:var(--tint);flex:none;transition:background .2s,transform .3s var(--ease)}
-.pm::before,.pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;border-radius:2px;background:var(--ink);transform:translate(-50%,-50%)}
+.pm{position:relative;width:28px;height:28px;flex:none}
+.pm::before,.pm::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:2px;border-radius:2px;background:var(--ink);transform:translate(-50%,-50%)}
 .pm::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s var(--ease)}
-.faq details[open] .pm{background:var(--teal-soft)}
 .faq details[open] .pm::after{transform:translate(-50%,-50%) rotate(0)}
-.faq details p{padding:0 22px 20px;color:var(--ink-2);font-size:16px}
+.faq details p{padding:0 48px 24px 0;color:var(--ink-2);font-size:16.5px}
 
-/* Contact */
-.contact-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:20px;align-items:stretch}
-.start-card{background:var(--surface);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:clamp(24px,4vw,40px);display:grid;gap:18px;align-content:start;justify-items:start}
-.start-card h3{font-size:clamp(24px,2.6vw,30px)}
-.start-card p{color:var(--ink-2)}
-.reassure{font-size:14px;color:var(--ink-2)}
-.rows{display:grid;gap:12px;align-content:start}
-.row{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 18px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:center}
-.row small{display:block;font-size:13.5px;color:var(--ink-2)}
-.row b{display:block;font-size:17px;font-weight:700;overflow-wrap:anywhere}
+/* ===== Final ask ===== */
+.final{position:relative;overflow:hidden;isolation:isolate;text-align:left}
+.final .ridges{-webkit-mask-image:linear-gradient(180deg,transparent,#000 70%);mask-image:linear-gradient(180deg,transparent,#000 70%)}
+.final-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(36px,6vw,96px);align-items:end}
+.final h2{font-size:clamp(44px,6.4vw,92px);font-weight:300;letter-spacing:-.05em;line-height:1}
+.final h2 b{font-weight:650}
+.final .lede{margin-block:22px 32px}
+.contact{display:grid;gap:0;border-top:1px solid var(--line)}
+.contact div{display:flex;justify-content:space-between;gap:16px;padding-block:16px;border-bottom:1px solid var(--line);font-size:16px}
+.contact dt{color:var(--ink-2)}
+.contact dd{font-weight:600;text-align:right;overflow-wrap:anywhere}
 
 /* Footer */
+.footer{background:#060D19}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
 .foot-grid ul{list-style:none;display:grid;gap:10px}
-.foot-brand p{margin-top:14px;max-width:34ch}
+.foot-brand p{margin-top:16px;max-width:34ch}
 
-/* ===== Floating application: launcher pill that morphs into a picture-in-picture panel ===== */
+/* ===== Floating application: launcher that morphs into a picture-in-picture panel ===== */
 .launcher{position:fixed;z-index:80;right:max(24px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));
-  display:flex;align-items:center;gap:12px;padding:8px 20px 8px 8px;border-radius:999px;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow-lg);
+  display:flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;border-radius:18px;background:#0A1424;color:#F2F6FB;border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow-lg);
   text-align:left;transition:transform .45s var(--ease),opacity .25s,border-color .2s}
-.launcher:hover{border-color:var(--teal)}
+.launcher:hover{border-color:#4CC3F7}
 .launcher[data-hidden="true"]{transform:translateY(calc(100% + 40px));opacity:0;pointer-events:none}
 .launcher[data-open="true"]{opacity:0;transform:scale(.96);pointer-events:none;transition:opacity .15s,transform .3s var(--ease)}
 .l-icon{position:relative;width:48px;height:48px;flex:none;display:grid;place-items:center}
 .l-icon .mark{width:38px;height:38px}
 .l-ring{position:absolute;inset:0;transform:rotate(-90deg)}
 .l-ring circle{fill:none;stroke-width:3}
-.l-ring .track{stroke:var(--line)}
-.l-ring .fill{stroke:var(--teal);stroke-linecap:round;stroke-dasharray:138.2;stroke-dashoffset:138.2;transition:stroke-dashoffset .6s var(--ease)}
+.l-ring .track-c{stroke:rgba(255,255,255,.14)}
+.l-ring .fill{stroke:#4CC3F7;stroke-linecap:round;stroke-dasharray:138.2;stroke-dashoffset:138.2;transition:stroke-dashoffset .6s var(--ease)}
 .launcher[data-state="new"] .l-ring{display:none}
-.l-text b{display:block;font-size:15.5px;font-weight:700;line-height:1.25;letter-spacing:-.01em}
-.l-text small{display:block;font-size:13px;color:var(--ink-2);line-height:1.3;font-variant-numeric:tabular-nums}
-.l-badge{position:absolute;top:-2px;right:-2px;width:14px;height:14px;border-radius:50%;background:var(--success);border:2px solid var(--surface);display:none}
+.l-text b{display:block;font-size:15.5px;font-weight:650;line-height:1.25;letter-spacing:-.01em}
+.l-text small{display:block;font-size:13px;color:#9AA9C0;line-height:1.3;font-variant-numeric:tabular-nums}
+.l-badge{position:absolute;top:-2px;right:-2px;width:14px;height:14px;border-radius:50%;background:#34D399;border:2px solid #0A1424;display:none}
 .launcher[data-state="done"] .l-badge{display:block}
 
 .pip{position:fixed;z-index:90;right:max(24px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));
-  width:min(420px,calc(100vw - 48px));height:min(720px,calc(var(--app-h,100dvh) - 116px - env(safe-area-inset-top,0px)));min-height:min(440px,calc(var(--app-h,100dvh) - 32px));
-  display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow-lg);overflow:hidden;
-  clip-path:inset(0 0 0 0 round 26px);
-  transition:clip-path .5s var(--ease),opacity .2s,width .45s var(--ease),height .45s var(--ease),right .45s var(--ease),transform .45s var(--ease),border-radius .45s var(--ease)}
-.pip[data-state="closed"]{clip-path:inset(var(--ct,90%) var(--cr,0px) var(--cb,0px) var(--cl,40%) round 999px);opacity:0;visibility:hidden;pointer-events:none;
+  width:min(420px,calc(100vw - 48px));height:min(720px,calc(var(--app-h,100dvh) - 112px - env(safe-area-inset-top,0px)));min-height:min(440px,calc(var(--app-h,100dvh) - 32px));
+  display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden;
+  clip-path:inset(0 0 0 0 round 22px);
+  transition:clip-path .5s var(--ease),opacity .2s,width .45s var(--ease),height .45s var(--ease),right .45s var(--ease),transform .45s var(--ease)}
+.pip[data-state="closed"]{clip-path:inset(var(--ct,90%) var(--cr,0px) var(--cb,0px) var(--cl,40%) round 18px);opacity:0;visibility:hidden;pointer-events:none;
   transition:clip-path .45s var(--ease),opacity .2s .25s,visibility 0s .45s}
 .pip-inner{display:flex;flex-direction:column;height:100%;min-height:0;transition:opacity .25s .18s}
 .pip[data-state="closed"] .pip-inner{opacity:0;transition:opacity .12s}
-.pip-bar{flex:none;display:flex;align-items:center;gap:10px;padding:10px 10px 10px 16px;border-bottom:1px solid var(--line);background:var(--surface)}
+.pip-bar{flex:none;display:flex;align-items:center;gap:10px;padding:10px 10px 10px 16px;background:#0A1424;color:#F2F6FB}
 .pip-bar .mark{width:28px;height:28px;flex:none}
 .pip-bar .who{min-width:0;margin-right:auto;line-height:1.2}
-.pip-bar .who b{display:block;font-size:14.5px;font-weight:700;letter-spacing:-.01em}
-.pip-bar .who small{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2)}
-.pip-bar .who small i{width:7px;height:7px;border-radius:50%;background:var(--success)}
-.icon-btn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);display:grid;place-items:center;transition:border-color .2s,color .2s}
-.icon-btn:hover{border-color:var(--teal);color:var(--ink)}
+.pip-bar .who b{display:block;font-size:14.5px;font-weight:650;letter-spacing:-.01em}
+.pip-bar .who small{display:flex;align-items:center;gap:6px;font-size:12.5px;color:#9AA9C0}
+.pip-bar .who small i{width:7px;height:7px;border-radius:50%;background:#34D399}
+.icon-btn{width:40px;height:40px;border-radius:11px;border:1px solid rgba(255,255,255,.14);background:transparent;color:#C9D3E1;display:grid;place-items:center;transition:border-color .2s,color .2s}
+.icon-btn:hover{border-color:#4CC3F7;color:#fff}
 .icon-btn svg{width:18px;height:18px}
 .pip-body{flex:1;min-height:0}
 .pip .ei-head{padding-top:14px}
 .pip[data-state="max"]{width:min(920px,calc(100vw - 48px));height:calc(var(--app-h,100dvh) - 48px - env(safe-area-inset-top,0px));right:50%;transform:translateX(50%)}
 .pip[data-state="max"] .i-max{display:none}
 .pip:not([data-state="max"]) .i-min{display:none}
-.scrim{position:fixed;inset:0;z-index:85;background:rgba(5,8,16,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .35s}
+.scrim{position:fixed;inset:0;z-index:85;background:rgba(5,10,20,.6);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .35s}
 .scrim[data-on="true"]{opacity:1;pointer-events:auto}
 html.lock,html.lock body{overflow:hidden}
 
+/* Load moment: ridges draw in once */
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.ridges path{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 2.4s var(--ease) both}
+
 /* ===== Responsive ===== */
+@media (max-width:1060px){ .nav-phone{display:none} }
 @media (max-width:980px){
   .nav-links{display:none}
   .menu-btn{display:grid}
-  .nav-menu{position:absolute;left:var(--gutter-l);right:var(--gutter-r);top:calc(100% + 8px);background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:10px;display:grid;gap:2px}
+  .nav-menu{position:absolute;left:var(--gutter-l);right:var(--gutter-r);top:calc(100% + 8px);background:#111E34;border:1px solid rgba(255,255,255,.1);border-radius:16px;box-shadow:0 24px 60px -16px rgba(0,0,0,.6);padding:10px;display:grid;gap:2px}
   .nav-menu[hidden]{display:none}
-  .nav-menu a{padding:12px 14px;border-radius:12px;color:var(--ink);text-decoration:none;font-weight:500}
-  .nav-menu a:hover{background:var(--tint)}
+  .nav-menu a{padding:12px 14px;border-radius:10px;color:#F2F6FB;text-decoration:none;font-weight:500}
+  .nav-menu a:hover{background:rgba(255,255,255,.06)}
   .nav .container{position:relative}
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .sheet{max-width:520px}
+  .asset-row{grid-template-columns:minmax(0,1fr) 52px;gap:6px 18px;padding-block:22px}
+  .ar-name{grid-column:1}
+  .ar-desc{grid-column:1;grid-row:2}
+  .ar-for{display:none}
+  .ar-go{grid-column:2;grid-row:1 / span 2}
 }
 @media (max-width:900px){
-  .hero-grid,.deep,.tool,.faq-grid,.contact-grid{grid-template-columns:minmax(0,1fr)}
-  .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .grid-4,.trust-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .intro-card{max-width:520px}
+  .split-head,.founder-grid,.tool,.faq-grid,.final-grid{grid-template-columns:minmax(0,1fr)}
+  .split-head .lede{justify-self:start}
+  .timeline{grid-template-columns:minmax(0,1fr);padding-top:0;padding-left:40px;gap:36px}
+  .timeline::before{top:9px;bottom:0;left:9px;right:auto;width:2px;height:auto;background:linear-gradient(180deg,var(--teal),var(--gold) 60%,var(--line))}
+  .timeline li::before{top:4px;left:-40px}
+  .expect{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .portrait{max-width:360px;aspect-ratio:1/1}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:600px){
-  .grid-3,.grid-4{grid-template-columns:minmax(0,1fr)}
-  .trust-grid{grid-template-columns:minmax(0,1fr);gap:16px}
-  .cta-row .btn{flex:1 1 100%}
-  .nav-right .btn-primary{display:none}
-  .example{grid-template-columns:minmax(0,1fr)}
-  .foot-grid{grid-template-columns:minmax(0,1fr)}
   .nav{height:64px}
   section{scroll-margin-top:64px}
+  .nav-right .btn{display:none}
+  .sentence{font-size:clamp(34px,10vw,46px)}
+  .cta-row .btn{width:100%}
+  .proof{flex-direction:column;gap:10px}
+  .creds{grid-template-columns:minmax(0,1fr);gap:14px}
+  .expect{grid-template-columns:minmax(0,1fr)}
+  .foot-grid{grid-template-columns:minmax(0,1fr)}
+  .faq details p{padding-right:0}
+  .sheet{padding:20px}
 
-  /* Launcher becomes a compact pill; the panel becomes a full-screen sheet */
   .launcher{right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));padding:6px 16px 6px 6px;gap:10px}
   .l-icon{width:42px;height:42px}
   .l-icon .mark{width:32px;height:32px}
   .l-text small{display:none}
   .l-text b{font-size:15px}
-  .pip{right:0;bottom:0;width:100%;height:calc(var(--app-h,100dvh) - 8px - env(safe-area-inset-top,0px));border-radius:22px 22px 0 0;border-bottom:0;box-shadow:var(--shadow-lg);
-    clip-path:inset(0 0 0 0 round 22px 22px 0 0)}
+  .pip{right:0;bottom:0;width:100%;height:calc(var(--app-h,100dvh) - 8px - env(safe-area-inset-top,0px));min-height:0;border-radius:20px 20px 0 0;border-bottom:0;clip-path:inset(0 0 0 0 round 20px 20px 0 0)}
   .pip .i-max,.pip .i-min{display:none}
-  .pip-bar{padding-top:8px}
 }
-@media (max-width:480px){ .seg button{font-size:14px;padding-inline:4px} }
+@media (max-width:480px){ .seg button{font-size:14px;padding-inline:4px} .pop-amt .presets{grid-template-columns:repeat(4,1fr)} }
 @media (max-height:520px){ .pip{height:calc(var(--app-h,100dvh) - 16px)} .pip-bar{padding-block:6px} .pip-bar .who small{display:none} }
 </style>
 </head>
@@ -272,128 +350,135 @@ html.lock,html.lock body{overflow:hidden}
       <path d="M11.5 29.5 20 21l8.5 8.5" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M11.5 20.5 20 12l8.5 8.5" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
 
-<header class="nav" id="nav">
+<header class="nav night" id="nav">
   <div class="container">
     <a href="#top" class="logo" aria-label="Elevate Asset Finance home">
       <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#elevate-mark"/></svg>
       <span class="wordmark"><b>elevate</b><small>Asset Finance</small></span>
     </a>
     <ul class="nav-links">
-      <li><a href="#fund">What we fund</a></li>
+      <li><a href="#finance">What we finance</a></li>
       <li><a href="#how">How it works</a></li>
+      <li><a href="#mitch">About</a></li>
       <li><a href="#calculator">Calculator</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-right">
-      <button class="btn btn-primary btn-sm" type="button" data-open-app>Start online</button>
+      <a class="nav-phone" href="#contact">04XX XXX XXX</a>
+      <button class="btn btn-primary btn-sm" type="button" data-open-app>Start application</button>
       <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu" id="menuBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
     <nav class="nav-menu" id="menu" hidden aria-label="Menu">
-      <a href="#fund">What we fund</a><a href="#how">How it works</a><a href="#calculator">Calculator</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+      <a href="#finance">What we finance</a><a href="#how">How it works</a><a href="#mitch">About</a><a href="#calculator">Calculator</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
-  <!-- Hero -->
-  <section class="hero">
-    <div class="glows" aria-hidden="true"><i></i><i></i><i></i></div>
+  <!-- Hero: the headline is a sentence the visitor completes -->
+  <section class="hero night">
+    <div class="ridges" aria-hidden="true"><svg id="ridgesHero" preserveAspectRatio="none"></svg></div>
     <div class="container hero-grid">
       <div class="hero-copy">
-        <h1>Asset finance, <span class="gradtext">minus the runaround.</span></h1>
-        <p class="lede">Cars, utes, equipment and everything in between. We compare 30+ lenders to find the right fit, and explain it all in plain English.</p>
-        <div class="cta-row" id="heroCta">
-          <button class="btn btn-primary" type="button" data-open-app>Start online in 5 minutes
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          <a class="btn btn-outline" href="#contact">Book a free call</a>
+        <h1 class="sentence" id="sentence">I'm after <button class="tok" type="button" data-tok="asset" aria-haspopup="listbox" aria-expanded="false"><span>a work ute</span><svg aria-hidden="true"><use href="#i-down"/></svg></button> for <button class="tok" type="button" data-tok="path" aria-haspopup="listbox" aria-expanded="false"><span>my business</span><svg aria-hidden="true"><use href="#i-down"/></svg></button>, around <button class="tok" type="button" data-tok="amount" aria-haspopup="dialog" aria-expanded="false"><span>$55,000</span><svg aria-hidden="true"><use href="#i-down"/></svg></button>.</h1>
+        <p class="hint-line"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5a2 2 0 0 1 4 0v5m0 0V4a2 2 0 0 1 4 0v7m0-3a2 2 0 0 1 4 0v5a8 8 0 0 1-8 8h-1a7 7 0 0 1-6-3l-3-5a2 2 0 0 1 3-2l2 2"/></svg>Tap the blue words to make it yours.</p>
+        <p class="lede">Car, ute and equipment finance from a Brisbane broker who compares 30+ lenders, explains everything in plain English, and gets you moving fast.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary btn-lg" type="button" data-start-sentence>Start my application</button>
+          <span class="call">Prefer to talk? <a class="textlink" href="#contact">Call Mitch</a></span>
         </div>
-        <ul class="ticks">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No credit impact to start</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A real broker, start to finish</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Personal and business</li>
+        <ul class="proof">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>30+ lenders</b> compared for you</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>No credit check</b> to get started</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>A real broker</b>, start to finish</span></li>
         </ul>
       </div>
-      <aside class="intro-card" aria-label="About your broker">
-        <div class="photo">
-          <div class="monogram" aria-hidden="true"><span class="gradtext">MJ</span></div>
-          <span class="online"><i></i>Applications open 24/7</span>
-        </div>
-        <div class="greet">
-          <h3>Hi, I'm Mitch.</h3>
-          <p>I've spent almost 15 years working inside finance. Now I'm on your side of the desk, making sure you see the full picture before you sign.</p>
-        </div>
-        <div class="chips"><span>15 years in finance</span><span>Cert IV Finance and Mortgage Broking</span><span>Brisbane based</span></div>
+
+      <aside class="sheet" aria-labelledby="sheetH" aria-live="polite">
+        <div class="sheet-top"><h2 id="sheetH">Your deal sheet</h2><span>Example estimate</span></div>
+        <div class="sheet-fig"><b id="dsMonthly">$1,142</b><small>a month</small></div>
+        <p class="sheet-sub">Estimated over 5 years. Your broker confirms the real number.</p>
+        <dl>
+          <div><dt>Financing</dt><dd id="dsAsset">Work ute</dd></div>
+          <div><dt>For</dt><dd id="dsPath">Business</dd></div>
+          <div><dt>Amount</dt><dd id="dsAmount">$55,000</dd></div>
+          <div><dt>Lenders compared</dt><dd>30+</dd></div>
+        </dl>
+        <ol class="track">
+          <li class="next"><span>Your details</span><em>about 5 minutes</em></li>
+          <li><span>Broker review</span><em>within 1 business day</em></li>
+          <li><span>Approval</span><em>often 24 to 48 hours</em></li>
+        </ol>
+        <button class="btn btn-primary" type="button" data-start-sentence>Start with these details</button>
+        <p class="sheet-fine">Estimate uses an example rate of 9% p.a. with no balloon or fees. It isn't a quote or credit advice.</p>
       </aside>
     </div>
+
+    <div class="pop" id="pop" hidden role="listbox"></div>
   </section>
 
-  <!-- Trust bar -->
-  <div class="trust">
-    <div class="container trust-grid">
-      <div class="trust-item"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><div><b>Clear and upfront</b><span>Plain English, no surprises</span></div></div>
-      <div class="trust-item"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><div><b>30+ lenders</b><span>Banks and specialist lenders</span></div></div>
-      <div class="trust-item"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Call back in 1 business day</b><span>Or start online any time</span></div></div>
-      <div class="trust-item"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><b>Brisbane based</b><span>Helping clients Australia wide</span></div></div>
-    </div>
-  </div>
-
-  <!-- What we fund -->
-  <section class="section" id="fund">
+  <!-- What we finance -->
+  <section class="section" id="finance">
     <div class="container">
-      <div class="sec-head">
-        <span class="eyebrow">What we fund</span>
-        <h2>If it keeps you moving, we can fund it.</h2>
-        <p class="lede">From a single work ute to a full equipment fleet, or the family car. We match the loan to your cash flow and your plans.</p>
+      <div class="split-head">
+        <h2>What we finance</h2>
+        <p class="lede">From a single work ute to a full equipment fleet, or the family car. Pick one to start an application with it already filled in.</p>
       </div>
-      <div class="grid-3">
-        <article class="card"><span class="asset-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16V8h11v8M14 11h4l3 3v2h-7"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></span><h3>Business vehicles</h3><p>Utes, vans, trucks and fleets for sole traders and growing businesses.</p><div class="card-foot"><b>Common for:</b> tradies, couriers, contractors</div></article>
-        <article class="card"><span class="asset-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h12M5 18v-5h8v5M13 13l3-6 5 3M16 7l-2 6"/><circle cx="6" cy="20" r="1"/><circle cx="12" cy="20" r="1"/></svg></span><h3>Plant and equipment</h3><p>Earthmoving, construction, manufacturing and farm gear, structured around your cash flow.</p><div class="card-foot"><b>Common for:</b> civil, farming, workshops</div></article>
-        <article class="card"><span class="asset-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5c-2-2-6-2-7 1-1 4 1 7 2 11 .5 2 2 2 2.5 0L11 13h2l1.5 4c.5 2 2 2 2.5 0 1-4 3-7 2-11-1-3-5-3-7-1z"/></svg></span><h3>Medical and dental</h3><p>Chairs, imaging and practice fit-outs, with lenders who understand healthcare.</p><div class="card-foot"><b>Common for:</b> dentists, GPs, allied health</div></article>
-        <article class="card"><span class="asset-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16v-4l2-5h10l2 5v4"/><path d="M3 16h18v2H3zM5 12h14"/><circle cx="7.5" cy="14" r=".5"/><circle cx="16.5" cy="14" r=".5"/></svg></span><h3>Car loans</h3><p>New or used, dealer or private sale. Know your budget before you start shopping.</p><div class="card-foot"><b>Common for:</b> families, first cars, upgrades</div></article>
-        <article class="card"><span class="asset-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15V8a2 2 0 0 1 2-2h11l4 5v4z"/><path d="M3 15h18M8 10h4"/><circle cx="8" cy="17" r="2"/></svg></span><h3>Caravans, boats and bikes</h3><p>Big trips and weekend escapes, with repayments that fit around the rest of life.</p><div class="card-foot"><b>Common for:</b> touring, weekends away</div></article>
-        <article class="card"><span class="asset-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></span><h3>Novated leasing</h3><p>Salary packaging a car through your employer, with the full cost shown, not just the tax saving.</p><div class="card-foot"><b>Common for:</b> employees with packaging</div></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Promise -->
-  <section class="section" style="padding-top:0" aria-labelledby="promise-h">
-    <div class="container">
-      <div class="deep">
-        <div class="deep-copy">
-          <span class="eyebrow">Our promise</span>
-          <h2 id="promise-h">Trust comes first.</h2>
-          <p>Finance should feel straightforward. We keep things clear and honest, from the first chat right through to settlement.</p>
-          <button class="btn btn-primary" type="button" data-open-app>Start online</button>
-        </div>
-        <ul class="checks">
-          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><h3>Clear from the start</h3><p>You'll understand your options and what they cost before you sign anything.</p></div></li>
-          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><h3>Options that fit you</h3><p>We compare lenders to find what suits your situation, not just the first yes.</p></div></li>
-          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><h3>Plain English, always</h3><p>If a term or a clause doesn't make sense, we'll explain it properly.</p></div></li>
-          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><h3>Straight answers</h3><p>If a deal isn't right for you, we'll tell you, even if it means no deal.</p></div></li>
-        </ul>
-      </div>
+      <ul class="assets">
+        <li><button class="asset-row" type="button" data-path="Business use" data-asset="Car or ute" data-label="a work ute"><span class="ar-name">Work utes and vans</span><span class="ar-desc">For tradies, couriers and growing fleets.</span><span class="ar-for">Business</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
+        <li><button class="asset-row" type="button" data-path="Business use" data-asset="Truck or trailer" data-label="a truck"><span class="ar-name">Trucks and trailers</span><span class="ar-desc">Light trucks to prime movers, new or used.</span><span class="ar-for">Business</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
+        <li><button class="asset-row" type="button" data-path="Business use" data-asset="Equipment or machinery" data-label="some equipment"><span class="ar-name">Plant and equipment</span><span class="ar-desc">Earthmoving, construction, workshop and farm gear.</span><span class="ar-for">Business</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
+        <li><button class="asset-row" type="button" data-path="Business use" data-asset="Medical or dental equipment" data-label="medical equipment"><span class="ar-name">Medical and dental</span><span class="ar-desc">Chairs, imaging and fit-outs, with lenders who know healthcare.</span><span class="ar-for">Business</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
+        <li><button class="asset-row" type="button" data-path="Personal use" data-asset="Car" data-label="a car"><span class="ar-name">Cars</span><span class="ar-desc">New or used, from a dealer or a private sale.</span><span class="ar-for">Personal</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
+        <li><button class="asset-row" type="button" data-path="Personal use" data-asset="Caravan or camper" data-label="a caravan"><span class="ar-name">Caravans and campers</span><span class="ar-desc">For the big lap or long weekends away.</span><span class="ar-for">Personal</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
+        <li><button class="asset-row" type="button" data-path="Personal use" data-asset="Boat" data-label="a boat"><span class="ar-name">Boats and bikes</span><span class="ar-desc">Tinnies, ski boats and motorbikes.</span><span class="ar-for">Personal</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
+        <li><button class="asset-row" type="button" data-path="Personal use"><span class="ar-name">Novated leasing</span><span class="ar-desc">Salary packaging a car through your employer, with the full cost explained.</span><span class="ar-for">Personal</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
+      </ul>
     </div>
   </section>
 
   <!-- How it works -->
   <section class="section tint" id="how">
     <div class="container">
-      <div class="sec-head">
-        <span class="eyebrow">How it works</span>
-        <h2>Four simple steps.</h2>
-        <p class="lede">Start online at 2am or give us a call on your lunch break. Either way, a real broker looks after you from there.</p>
+      <div class="split-head">
+        <h2>From first question to keys in hand.</h2>
+        <p class="lede">Start online at 2am or call on your lunch break. Either way, a real broker looks after you from there.</p>
       </div>
-      <div class="grid-4">
-        <article class="card step"><span class="n">1</span><h3>Start online or call</h3><p>Answer a few questions in the online assistant, or talk to us. Rough figures are fine.</p><div class="from"><b>From you</b>What you're financing and roughly how much</div><div class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>About 5 minutes</div></article>
-        <article class="card step"><span class="n">2</span><h3>We review and call</h3><p>A broker checks your details, confirms your ID and talks through what matters to you.</p><div class="from"><b>From you</b>Driver licence and consent for a credit check</div><div class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Within 1 business day</div></article>
-        <article class="card step"><span class="n">3</span><h3>We compare lenders</h3><p>We shop our panel and lay out your options side by side, with the full cost of each.</p><div class="from"><b>From you</b>Payslips or BAS, depending on the lender</div><div class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Usually 1 to 2 days</div></article>
-        <article class="card step"><span class="n">4</span><h3>Approved and funded</h3><p>Once you're happy, we handle the paperwork and settle with the seller.</p><div class="from"><b>From you</b>Sign the contract</div><div class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>24 to 48 hours after approval</div></article>
+      <ol class="timeline">
+        <li><span class="when">Today</span><h3>Tell us what you need</h3><p>Answer a few quick questions online, or give us a call. Rough figures are fine.</p><p class="you"><b>From you:</b> what you're financing and roughly how much.</p></li>
+        <li><span class="when">Within 1 business day</span><h3>Your broker takes over</h3><p>We confirm your details, compare lenders and lay out your options side by side.</p><p class="you"><b>From you:</b> your licence and consent for a credit check.</p></li>
+        <li><span class="when">Often 24 to 48 hours later</span><h3>Approved and settled</h3><p>Once you're happy, we handle the paperwork and pay the seller.</p><p class="you"><b>From you:</b> a signature.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section class="section founder night" id="mitch">
+    <div class="container founder-grid">
+      <div class="portrait" role="img" aria-label="Mitch, founder of Elevate Asset Finance">
+        <svg class="ridge" viewBox="0 0 400 220" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 160 C60 120 110 150 160 110 S260 60 300 95 S370 120 400 90 V220 H0Z" fill="rgba(76,195,247,.12)"/>
+          <path d="M0 190 C70 160 120 185 190 150 S290 120 330 140 S380 150 400 135 V220 H0Z" fill="rgba(169,156,250,.14)"/>
+        </svg>
+        <span class="mono" aria-hidden="true">MJ</span>
+      </div>
+      <div>
+        <p class="quote">I spent almost 15 years working inside finance. I started Elevate so people get the straight answers I'd want for my own family, without the runaround.</p>
+        <div class="sig"><svg width="44" height="44" aria-hidden="true"><use href="#elevate-mark"/></svg><div><b>Mitch</b><span>Founder and broker</span></div></div>
+        <dl class="creds">
+          <div><dt>Experience</dt><dd>Almost 15 years in finance</dd></div>
+          <div><dt>Qualified</dt><dd>Cert IV Finance and Mortgage Broking</dd></div>
+          <div><dt>Based</dt><dd>Brisbane, helping Australia wide</dd></div>
+        </dl>
+        <a class="textlink" href="https://www.youtube.com/@mjwilliams086" target="_blank" rel="noopener">Watch Mitch explain finance on YouTube</a>
       </div>
     </div>
   </section>
@@ -401,10 +486,9 @@ html.lock,html.lock body{overflow:hidden}
   <!-- Calculator -->
   <section class="section" id="calculator">
     <div class="container">
-      <div class="sec-head">
-        <span class="eyebrow">Repayment calculator</span>
-        <h2>See the numbers first.</h2>
-        <p class="lede">Move the sliders to get a feel for repayments. Your actual rate depends on you, the asset and the lender.</p>
+      <div class="split-head">
+        <h2>Run the numbers.</h2>
+        <p class="lede">Move the sliders to get a feel for repayments. Your real rate depends on you, the asset and the lender.</p>
       </div>
       <div class="tool">
         <div class="inputs">
@@ -418,89 +502,74 @@ html.lock,html.lock body{overflow:hidden}
             <div class="seg" role="group" aria-labelledby="balL" data-seg="bal"><button type="button" data-v="0" aria-pressed="true">None</button><button type="button" data-v="10" aria-pressed="false">10%</button><button type="button" data-v="20" aria-pressed="false">20%</button><button type="button" data-v="30" aria-pressed="false">30%</button></div>
             <p class="hint">A balloon lowers your repayments but leaves a lump sum to pay at the end.</p></div>
         </div>
-        <div class="result" aria-live="polite">
+        <div class="result night" aria-live="polite">
           <span class="lbl">Estimated repayment</span>
-          <div class="big"><span id="mOut">$923</span><small>/month</small></div>
+          <div class="big"><span id="mOut">$923</span><small>a month</small></div>
           <dl>
             <div><dt>Total interest</dt><dd id="intOut">$10,396</dd></div>
             <div><dt>Balloon payment</dt><dd id="balAmtOut">$0</dd></div>
             <div><dt>Total repaid</dt><dd id="totOut">$55,396</dd></div>
           </dl>
-          <p class="plain" id="plain"><b>In plain English:</b> about $213 a week for 5 years, and the asset is yours at the end.</p>
+          <p class="plain" id="plain"><b>In plain English:</b> about $213 a week for 5 years, and it's yours at the end.</p>
           <button class="btn btn-primary" type="button" data-open-app>Get your real rate</button>
           <p class="fine">Illustrative only. Excludes fees and charges and isn't a quote or credit advice. Repayments assume a fixed rate, paid monthly.</p>
         </div>
       </div>
-      <div class="example">
-        <span class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
-        <div>
-          <span class="tag">Example scenario (illustrative only)</span>
-          <h3>A Brisbane electrician upgrading the work ute</h3>
-          <p>Sam needs a $55,000 ute for the business. A chattel mortgage with a 20% balloon keeps repayments manageable while cash flow builds, and the GST can be claimed upfront.</p>
-          <div class="ex-chips" id="exChips"></div>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- Glossary -->
-  <section class="section tint" aria-labelledby="gloss-h">
+  <!-- What to expect -->
+  <section class="section tint" aria-labelledby="expectH">
     <div class="container">
-      <div class="sec-head">
-        <span class="eyebrow">Jargon, translated</span>
-        <h2 id="gloss-h">Words you'll hear, explained.</h2>
+      <div class="split-head">
+        <h2 id="expectH">What working with us feels like.</h2>
+        <p class="lede">Finance should feel straightforward. We keep it clear and honest from the first chat to settlement.</p>
       </div>
-      <div class="grid-3">
-        <article class="card"><h3>Chattel mortgage</h3><p>You own the asset from day one, and the lender holds it as security until it's paid off. The most common way businesses finance vehicles and equipment.</p><div class="short"><b>In short:</b> own it now, pay it off over time.</div></article>
-        <article class="card"><h3>Balloon payment</h3><p>A lump sum left owing at the end of the loan. It lowers your regular repayments, but you'll need to pay, refinance or sell to clear it.</p><div class="short"><b>In short:</b> smaller repayments now, bigger payment at the end.</div></article>
-        <article class="card"><h3>Comparison rate</h3><p>A rate that rolls interest and most fees into one number, so you can compare loans fairly. A low headline rate with high fees can cost more overall.</p><div class="short"><b>In short:</b> the truer cost of the loan.</div></article>
+      <div class="expect">
+        <div><h3>Clear from the start</h3><p>You'll understand your options and what they cost before you sign anything.</p></div>
+        <div><h3>Options that fit you</h3><p>We compare lenders to find what suits your situation, not just the first yes.</p></div>
+        <div><h3>Plain English, always</h3><p>If a term or a clause doesn't make sense, we'll explain it properly.</p></div>
+        <div><h3>Straight answers</h3><p>If a deal isn't right for you, we'll tell you, even if it means no deal.</p></div>
       </div>
     </div>
   </section>
-
 
   <!-- FAQ -->
-  <section class="section tint" id="faq">
+  <section class="section" id="faq">
     <div class="container faq-grid">
-      <div class="sec-head" style="margin:0">
-        <span class="eyebrow">Common questions</span>
-        <h2>Things people always ask.</h2>
-        <p class="lede">Can't see your question? Start online and ask your broker, or give us a call.</p>
+      <div>
+        <h2>Questions people ask first.</h2>
+        <p class="lede">Can't see yours? Start online and ask your broker, or give us a call.</p>
       </div>
       <div class="faq">
-        <details><summary>Will starting online affect my credit score?<span class="pm" aria-hidden="true"></span></summary><p>No. The online assistant doesn't run a credit check. We only do that later, after talking with you and getting your consent.</p></details>
+        <details><summary>Will starting online affect my credit score?<span class="pm" aria-hidden="true"></span></summary><p>No. The online application doesn't run a credit check. We only do that later, after talking with you and getting your consent.</p></details>
         <details><summary>Why use a broker instead of my bank?<span class="pm" aria-hidden="true"></span></summary><p>Your bank offers its own products at its own rates. We work across 30+ lenders and match you to the one that suits your situation. For vehicles and equipment, the difference between lenders can be significant.</p></details>
         <details><summary>Does it cost anything to get started?<span class="pm" aria-hidden="true"></span></summary><p>No. Starting online or having a chat with us is free and there's no obligation. We'll walk you through all the costs of your loan before you decide.</p></details>
         <details><summary>What do I need to apply?<span class="pm" aria-hidden="true"></span></summary><p>To start, just the basics: what you're financing, your work and income, and any current loans. Your broker will then ask for ID and documents like payslips or BAS, depending on the lender.</p></details>
         <details><summary>How long does approval take?<span class="pm" aria-hidden="true"></span></summary><p>Straightforward deals are often approved within 24 to 48 hours of a complete application. Complex commercial deals or unusual assets can take longer. We'll keep you updated the whole way.</p></details>
-        <details><summary>Can you help if my credit isn't perfect?<span class="pm" aria-hidden="true"></span></summary><p>Often, yes. Some lenders on our panel specialise in non-standard applications. We'll be honest about what's realistic rather than waste your time.</p></details>
+        <details><summary>Can you help if my credit isn't perfect?<span class="pm" aria-hidden="true"></span></summary><p>Often, yes. Some lenders specialise in non-standard applications. We'll be honest about what's realistic rather than waste your time.</p></details>
+        <details><summary>What's a balloon payment?<span class="pm" aria-hidden="true"></span></summary><p>A lump sum left owing at the end of the loan. It lowers your regular repayments, but you'll need to pay it, refinance it or sell the asset to clear it.</p></details>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="sec-head">
-        <span class="eyebrow">Get started</span>
-        <h2>Two ways to start.</h2>
-      </div>
-      <div class="contact-grid">
-        <div class="start-card">
-          <span class="asset-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg></span>
-          <h3>Start online, any time</h3>
-          <p>Answer a few questions in the online assistant. It takes about 5 minutes, saves as you go, and you can pick up where you left off. A broker calls you within 1 business day.</p>
-          <button class="btn btn-primary" type="button" data-open-app>Start online
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          <span class="reassure">Free, no obligation, and no credit check to start.</span>
-        </div>
-        <div class="rows">
-          <div class="row"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><div><small>Call</small><b>+61 4XX XXX XXX</b></div></div>
-          <div class="row"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><small>Email</small><b>hello@elevateassetfinance.com.au</b></div></div>
-          <div class="row"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><small>Hours</small><b>Online 24/7. Calls on business days.</b></div></div>
-          <div class="row"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><small>Based in</small><b>Brisbane, Queensland</b></div></div>
+  <!-- Final ask -->
+  <section class="section final night" id="contact">
+    <div class="ridges" aria-hidden="true"><svg id="ridgesFinal" preserveAspectRatio="none"></svg></div>
+    <div class="container final-grid">
+      <div>
+        <h2>Ready when <b>you are.</b></h2>
+        <p class="lede">Start online in about 5 minutes, any time of day. Your answers save as you go, and a broker calls you within 1 business day.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary btn-lg" type="button" data-open-app>Start my application</button>
         </div>
       </div>
+      <dl class="contact">
+        <div><dt>Call</dt><dd>04XX XXX XXX</dd></div>
+        <div><dt>Email</dt><dd>hello@elevateassetfinance.com.au</dd></div>
+        <div><dt>Hours</dt><dd>Online any time. Calls on business days.</dd></div>
+        <div><dt>Based in</dt><dd>Brisbane, Queensland</dd></div>
+      </dl>
     </div>
   </section>
 </main>
@@ -513,10 +582,10 @@ html.lock,html.lock body{overflow:hidden}
           <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#elevate-mark"/></svg>
           <span class="wordmark"><b>elevate</b><small>Asset Finance</small></span>
         </a>
-        <p>Asset finance for people and businesses who want the full picture. Brisbane based, helping clients Australia wide.</p>
+        <p>Car, ute and equipment finance for people and businesses who want straight answers. Brisbane based, helping clients Australia wide.</p>
       </div>
-      <div><h4>Finance</h4><ul><li><a href="#fund">Business vehicles</a></li><li><a href="#fund">Plant and equipment</a></li><li><a href="#fund">Car loans</a></li><li><a href="#fund">Novated leasing</a></li></ul></div>
-      <div><h4>Elevate</h4><ul><li><a href="#how">How it works</a></li><li><a href="#faq">FAQ</a></li><li><a href="apply.html">Apply online</a></li></ul></div>
+      <div><h4>Finance</h4><ul><li><a href="#finance">Work utes and vans</a></li><li><a href="#finance">Plant and equipment</a></li><li><a href="#finance">Cars</a></li><li><a href="#finance">Novated leasing</a></li></ul></div>
+      <div><h4>Elevate</h4><ul><li><a href="#how">How it works</a></li><li><a href="#mitch">About Mitch</a></li><li><a href="#faq">FAQ</a></li><li><a href="apply.html">Apply online</a></li></ul></div>
       <div><h4>Legal and learning</h4><ul><li><a href="/privacy">Privacy policy</a></li><li><a href="/credit-guide.pdf">Credit guide</a></li><li><a href="https://www.youtube.com/@mjwilliams086" target="_blank" rel="noopener">Mitch James on YouTube</a></li></ul></div>
     </div>
     <p class="footer-legal">Elevate Asset Finance is a credit representative of [Aggregator Name] ACL XXXXXXX. General information only, not financial advice. Consider your own circumstances before acting. Credit products are subject to eligibility and lender approval. &copy; <span id="yr">2026</span> Elevate Asset Finance.</p>
@@ -526,7 +595,7 @@ html.lock,html.lock body{overflow:hidden}
 <!-- Floating application -->
 <button class="launcher" id="launcher" type="button" data-state="new" data-hidden="true" aria-controls="pip" aria-expanded="false">
   <span class="l-icon">
-    <svg class="l-ring" viewBox="0 0 48 48" aria-hidden="true"><circle class="track" cx="24" cy="24" r="22"/><circle class="fill" cx="24" cy="24" r="22"/></svg>
+    <svg class="l-ring" viewBox="0 0 48 48" aria-hidden="true"><circle class="track-c" cx="24" cy="24" r="22"/><circle class="fill" cx="24" cy="24" r="22"/></svg>
     <svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><use href="#elevate-mark"/></svg>
     <span class="l-badge"></span>
   </span>
@@ -550,22 +619,46 @@ html.lock,html.lock body{overflow:hidden}
 <script>
 (() => {
   const $ = id => document.getElementById(id);
-  const pip = $('pip'), launcher = $('launcher'), scrim = $('scrim'), heroCta = $('heroCta');
-  const small = () => matchMedia('(max-width: 600px)').matches;
-  let state = 'closed', appState = { started: false, finished: false, percent: 0 }, heroVisible = true;
+  const money = n => Number(n).toLocaleString('en-AU', { style: 'currency', currency: 'AUD', maximumFractionDigits: 0 });
+  const pmt = (P, ratePct, years, balPct = 0) => { const n = years * 12, r = ratePct / 100 / 12, B = P * balPct / 100;
+    const m = r === 0 ? (P - B) / n : (P - B / Math.pow(1 + r, n)) * r / (1 - Math.pow(1 + r, -n)); return { m, B, total: m * n + B }; };
   $('yr').textContent = new Date().getFullYear();
 
-  /* Nav */
+  /* ---------- Ridgelines (the Elevate motif) ---------- */
+  function ridges(svg, { lines = 16, seed = 1 } = {}) {
+    const W = 1440, H = 720; svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    let s = seed; const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+    const peaks = Array.from({ length: 4 }, () => ({ x: 500 + rnd() * 1000, w: 160 + rnd() * 260, h: 120 + rnd() * 160 }));
+    let out = '';
+    for (let i = 0; i < lines; i++) {
+      const base = H * 0.36 + i * (H * 0.62 / lines), k = 1 - i / lines;
+      let d = '';
+      for (let x = -20; x <= W + 20; x += 16) {
+        let y = base;
+        for (const p of peaks) y -= p.h * k * Math.exp(-Math.pow((x - p.x) / (p.w * (1 + i * .04)), 2));
+        y -= Math.sin(x / 140 + i * .7) * 8 * k + Math.sin(x / 57 + i) * 3;
+        d += (d ? 'L' : 'M') + x.toFixed(0) + ' ' + y.toFixed(1);
+      }
+      const op = (0.08 + 0.5 * Math.pow(1 - i / lines, 1.6)).toFixed(3);
+      const col = i % 3 === 0 ? '169,156,250' : '76,195,247';
+      out += `<path d="${d}" pathLength="1" stroke="rgba(${col},${op})" stroke-width="${i === 0 ? 1.8 : 1.1}" style="animation-delay:${(i * 60)}ms"/>`;
+    }
+    svg.innerHTML = out;
+  }
+  ridges($('ridgesHero'), { lines: 18, seed: 7 });
+  ridges($('ridgesFinal'), { lines: 12, seed: 3 });
+
+  /* ---------- Nav ---------- */
   const nav = $('nav'), menuBtn = $('menuBtn'), menu = $('menu');
   addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), { passive: true });
   menuBtn.onclick = () => { const open = menu.hidden; menu.hidden = !open; menuBtn.setAttribute('aria-expanded', open); };
   menu.addEventListener('click', e => { if (e.target.closest('a')) { menu.hidden = true; menuBtn.setAttribute('aria-expanded', 'false'); } });
 
-  /* Application */
-  const app = ElevateIntake.mount($('app'), {
-    canFocus: () => state !== 'closed',
-    onState: s => { appState = s; updateLauncher(); },
-  });
+  /* ---------- Floating application ---------- */
+  const pip = $('pip'), launcher = $('launcher'), scrim = $('scrim'), heroCta = document.querySelector('.hero .cta-row');
+  const small = () => matchMedia('(max-width: 600px)').matches;
+  let state = 'closed', appState = { started: false, finished: false, percent: 0 }, heroVisible = true;
+  const app = ElevateIntake.mount($('app'), { canFocus: () => state !== 'closed', onState: s => { appState = s; updateLauncher(); } });
 
   function updateLauncher() {
     const s = appState;
@@ -576,24 +669,18 @@ html.lock,html.lock body{overflow:hidden}
     launcher.dataset.hidden = String(state !== 'closed' ? false : (heroVisible && !s.started));
     launcher.dataset.open = String(state !== 'closed');
   }
-
-  // Where the launcher sits inside the panel, so the panel can grow out of it and shrink back into it
   function measure() {
     const p = pip.getBoundingClientRect();
     const l = { left: launcher.offsetLeft, top: launcher.offsetTop, w: launcher.offsetWidth, h: launcher.offsetHeight };
-    const clamp = v => Math.max(0, Math.round(v)) + 'px';
-    pip.style.setProperty('--ct', clamp(l.top - p.top));
-    pip.style.setProperty('--cl', clamp(l.left - p.left));
-    pip.style.setProperty('--cr', clamp(p.right - (l.left + l.w)));
-    pip.style.setProperty('--cb', clamp(p.bottom - (l.top + l.h)));
+    const px = v => Math.max(0, Math.round(v)) + 'px';
+    pip.style.setProperty('--ct', px(l.top - p.top)); pip.style.setProperty('--cl', px(l.left - p.left));
+    pip.style.setProperty('--cr', px(p.right - (l.left + l.w))); pip.style.setProperty('--cb', px(p.bottom - (l.top + l.h)));
   }
-
   function setState(next) {
     if (next === 'max' && small()) next = 'open';
     const was = state; state = next;
     if (next === 'closed') measure();
-    pip.dataset.state = next;
-    pip.setAttribute('aria-hidden', String(next === 'closed'));
+    pip.dataset.state = next; pip.setAttribute('aria-hidden', String(next === 'closed'));
     launcher.setAttribute('aria-expanded', String(next !== 'closed'));
     scrim.dataset.on = String(next === 'max');
     document.documentElement.classList.toggle('lock', next === 'max' || (next !== 'closed' && small()));
@@ -602,23 +689,20 @@ html.lock,html.lock body{overflow:hidden}
     if (next === 'closed' && pip.contains(document.activeElement)) launcher.focus({ preventScroll: true });
     if (next !== 'closed') app.scrollToEnd();
   }
-  const open = () => { if (state === 'closed') { measure(); requestAnimationFrame(() => setState('open')); } else app.focus(); };
-
-  launcher.onclick = open;
+  const open = prefill => {
+    if (prefill) app.prefill(prefill);
+    if (state === 'closed') { measure(); requestAnimationFrame(() => setState('open')); } else app.focus();
+  };
+  launcher.onclick = () => open();
   document.querySelectorAll('[data-open-app]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); open(); }));
-  pip.addEventListener('click', e => { const a = e.target.closest('[data-pip]')?.dataset.pip; if (!a) return;
-    setState(a === 'max' ? 'max' : a === 'restore' ? 'open' : 'closed'); });
+  document.querySelectorAll('.asset-row').forEach(b => b.addEventListener('click', () =>
+    open({ path: b.dataset.path, asset: b.dataset.asset, label: b.dataset.label })));
+  pip.addEventListener('click', e => { const a = e.target.closest('[data-pip]')?.dataset.pip; if (a) setState(a === 'max' ? 'max' : a === 'restore' ? 'open' : 'closed'); });
   scrim.onclick = () => setState('open');
-  addEventListener('keydown', e => { if (e.key === 'Escape' && state !== 'closed') setState(state === 'max' ? 'open' : 'closed'); });
-
-  // Launcher stays out of the way while the hero buttons are on screen, unless an application is in progress
   if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; updateLauncher(); }, { rootMargin: '-60px 0px 0px 0px' }).observe(heroCta);
   else { heroVisible = false; updateLauncher(); }
+  if (location.hash === '#apply') setTimeout(() => open(), 300);
 
-  // Open straight away from links like elevateassetfinance.com.au/#apply
-  if (location.hash === '#apply') setTimeout(open, 300);
-
-  /* Fit the panel to the visible screen (mobile keyboards and browser bars) */
   const fit = () => {
     const vv = window.visualViewport, cs = getComputedStyle(document.documentElement);
     const h = (vv ? vv.height : innerHeight) - parseFloat(cs.paddingTop || 0) - parseFloat(cs.paddingBottom || 0);
@@ -629,21 +713,88 @@ html.lock,html.lock body{overflow:hidden}
   addEventListener('resize', fit); addEventListener('orientationchange', fit);
   fit(); updateLauncher();
 
-  /* Calculator */
-  const money = n => n.toLocaleString('en-AU', { style: 'currency', currency: 'AUD', maximumFractionDigits: 0 });
-  const calc = (P, rate, years, balPct) => {
-    const n = years * 12, r = rate / 100 / 12, B = P * balPct / 100;
-    const m = r === 0 ? (P - B) / n : (P - B / Math.pow(1 + r, n)) * r / (1 - Math.pow(1 + r, -n));
-    const total = m * n + B; return { m, B, total, interest: total - P };
+  /* ---------- The sentence and deal sheet ---------- */
+  const PATHS = {
+    business: { key: 'Business use', word: 'my business', short: 'Business',
+      assets: [['Car or ute', 'a work ute', 'Work ute'], ['Truck or trailer', 'a truck', 'Truck or trailer'], ['Equipment or machinery', 'some equipment', 'Equipment'], ['Medical or dental equipment', 'medical equipment', 'Medical equipment']] },
+    personal: { key: 'Personal use', word: 'personal use', short: 'Personal',
+      assets: [['Car', 'a car', 'Car'], ['Motorbike', 'a motorbike', 'Motorbike'], ['Boat', 'a boat', 'Boat'], ['Caravan or camper', 'a caravan', 'Caravan or camper']] },
   };
+  const PRESETS = [15000, 25000, 40000, 55000, 80000, 120000, 200000, 300000];
+  const sel = { path: 'business', asset: 0, amount: 55000 };
+  const tok = name => document.querySelector(`[data-tok="${name}"]`);
+  function paint() {
+    const P = PATHS[sel.path], A = P.assets[sel.asset];
+    tok('asset').firstElementChild.textContent = A[1];
+    tok('path').firstElementChild.textContent = P.word;
+    tok('amount').firstElementChild.textContent = money(sel.amount);
+    $('dsAsset').textContent = A[2]; $('dsPath').textContent = P.short; $('dsAmount').textContent = money(sel.amount);
+    $('dsMonthly').textContent = money(Math.round(pmt(sel.amount, 9, 5).m));
+  }
+  const pop = $('pop'); let openTok = null;
+  function closePop() { if (!openTok) return; openTok.setAttribute('aria-expanded', 'false'); pop.hidden = true; const t = openTok; openTok = null; return t; }
+  function place(t) {
+    const host = t.closest('.hero').getBoundingClientRect(), r = t.getBoundingClientRect();
+    pop.style.left = '0px'; pop.style.top = '0px'; pop.hidden = false;
+    const w = pop.offsetWidth, vw = document.documentElement.clientWidth;
+    const left = Math.min(Math.max(16, r.left), vw - w - 16) - host.left;
+    pop.style.left = left + 'px'; pop.style.top = (r.bottom - host.top + 10) + 'px';
+  }
+  function openPop(t) {
+    if (openTok === t) { closePop(); return; }
+    closePop(); openTok = t; t.setAttribute('aria-expanded', 'true');
+    const kind = t.dataset.tok; pop.innerHTML = '';
+    if (kind === 'amount') {
+      pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-label', 'Choose an amount');
+      pop.innerHTML = `<div class="pop-amt"><output id="popOut">${money(sel.amount)}</output>
+        <input type="range" id="popRange" min="5000" max="300000" step="1000" value="${sel.amount}" aria-label="Amount">
+        <div class="presets">${PRESETS.map(v => `<button type="button" data-v="${v}">${v >= 1000 ? '$' + v / 1000 + 'k' : money(v)}</button>`).join('')}</div>
+        <button type="button" class="pop-done">Done</button></div>`;
+      const rg = pop.querySelector('#popRange');
+      const setAmt = v => { sel.amount = +v; rg.value = v; pop.querySelector('#popOut').textContent = money(v); rg.style.setProperty('--pct', ((v - 5000) / 295000 * 100) + '%'); paint(); };
+      setAmt(sel.amount);
+      rg.oninput = () => setAmt(rg.value);
+      pop.querySelectorAll('[data-v]').forEach(b => b.onclick = () => setAmt(b.dataset.v));
+      pop.querySelector('.pop-done').onclick = () => closePop()?.focus();
+      place(t); rg.focus(); return;
+    }
+    pop.setAttribute('role', 'listbox'); pop.removeAttribute('aria-label');
+    const items = kind === 'path'
+      ? Object.entries(PATHS).map(([k, p]) => ({ text: p.word, on: sel.path === k, pick: () => { if (sel.path !== k) { sel.path = k; sel.asset = 0; } } }))
+      : PATHS[sel.path].assets.map((a, i) => ({ text: a[1], on: sel.asset === i, pick: () => { sel.asset = i; } }));
+    items.forEach(it => { const b = document.createElement('button'); b.type = 'button'; b.className = 'pop-opt'; b.setAttribute('role', 'option');
+      b.setAttribute('aria-selected', String(it.on)); b.textContent = it.text; b.onclick = () => { it.pick(); paint(); closePop()?.focus(); }; pop.appendChild(b); });
+    place(t); (pop.querySelector('[aria-selected="true"]') || pop.firstElementChild).focus();
+  }
+  document.querySelectorAll('.tok').forEach(t => t.addEventListener('click', e => { e.stopPropagation(); openPop(t); }));
+  pop.addEventListener('click', e => e.stopPropagation());
+  pop.addEventListener('keydown', e => {
+    const opts = [...pop.querySelectorAll('.pop-opt')]; const i = opts.indexOf(document.activeElement);
+    if (e.key === 'ArrowDown' && opts.length) { e.preventDefault(); opts[(i + 1) % opts.length].focus(); }
+    if (e.key === 'ArrowUp' && opts.length) { e.preventDefault(); opts[(i - 1 + opts.length) % opts.length].focus(); }
+  });
+  document.addEventListener('click', () => closePop());
+  addEventListener('resize', () => { if (openTok) place(openTok); });
+  addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (openTok) { closePop()?.focus(); return; }
+    if (state !== 'closed') setState(state === 'max' ? 'open' : 'closed');
+  });
+  document.querySelectorAll('[data-start-sentence]').forEach(b => b.addEventListener('click', () => {
+    const P = PATHS[sel.path], A = P.assets[sel.asset];
+    open({ path: P.key, asset: A[0], label: A[1], amount: sel.amount });
+  }));
+  paint();
+
+  /* ---------- Calculator ---------- */
   const amt = $('amt'), rate = $('rate'); let term = 5, bal = 0;
   const pct = el => el.style.setProperty('--pct', ((el.value - el.min) / (el.max - el.min) * 100) + '%');
   function update() {
-    const P = +amt.value, R = +rate.value, c = calc(P, R, term, bal);
+    const P = +amt.value, R = +rate.value, c = pmt(P, R, term, bal);
     pct(amt); pct(rate);
     $('amtOut').textContent = money(P); $('rateOut').textContent = R.toFixed(2) + '%';
     $('termOut').textContent = term + ' years'; $('balOut').textContent = bal ? bal + '%' : 'None';
-    $('mOut').textContent = money(Math.round(c.m)); $('intOut').textContent = money(Math.round(c.interest));
+    $('mOut').textContent = money(Math.round(c.m)); $('intOut').textContent = money(Math.round(c.total - P));
     $('balAmtOut').textContent = money(Math.round(c.B)); $('totOut').textContent = money(Math.round(c.total));
     $('plain').innerHTML = `<b>In plain English:</b> about ${money(Math.round(c.m * 12 / 52))} a week for ${term} years` +
       (bal ? `, then a final payment of ${money(Math.round(c.B))} to own it outright.` : `, and it's yours at the end.`);
@@ -656,9 +807,6 @@ html.lock,html.lock body{overflow:hidden}
     update();
   }));
   update();
-  const ex = calc(55000, 8.5, 5, 20);
-  $('exChips').innerHTML = [['Ute', money(55000)], ['Term', '5 years'], ['Rate', '8.50%'], ['Balloon', money(ex.B)], ['Repayment', money(Math.round(ex.m)) + '/month']]
-    .map(([k, v]) => `<span>${k} <b>${v}</b></span>`).join('');
 })();
 </script>
 </body>

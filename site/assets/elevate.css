@@ -1,5 +1,5 @@
-/* Elevate Design System: shared tokens, base styles and components.
-   Tokens are copied verbatim from the design system (Section 2). Never hard-code colours in components. */
+/* Elevate brand: shared tokens, base styles and components.
+   Colours follow the Elevate design system; type is Funnel Display (headings) and Funnel Sans (body). */
 
 :root{
   color-scheme:dark;
@@ -21,8 +21,8 @@
   --on-accent:#08111F;
   --grad:linear-gradient(90deg,#38BDF8,#818CF8 55%,#A78BFA);
   --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -14px rgba(0,0,0,.6);
-  --head:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --head:"Funnel Display","Funnel Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Funnel Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --ease:cubic-bezier(.2,.7,.2,1);
   /* Additions */
   --success:#10B981;
@@ -58,7 +58,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--ground);-webkit-text-size-adjust:100%}
 body{font-family:var(--body);font-size:17.5px;line-height:1.6;background:var(--ground);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3,h4{font-family:var(--head);font-weight:800;letter-spacing:-.035em;line-height:1.08;text-wrap:balance}
+h1,h2,h3,h4{font-family:var(--head);font-weight:700;letter-spacing:-.03em;line-height:1.06;text-wrap:balance}
 img,svg{max-width:100%}
 button{font:inherit;color:inherit;cursor:pointer}
 a{color:var(--teal)}
@@ -68,26 +68,21 @@ a{color:var(--teal)}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 16.5px/1 var(--body);padding:16px 26px;border-radius:999px;
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 16.5px/1 var(--body);padding:16px 24px;border-radius:12px;
   border:2px solid transparent;text-decoration:none;cursor:pointer;transition:background .2s,transform .2s var(--ease),border-color .2s;min-height:44px;white-space:nowrap}
 .btn:active{transform:scale(.98)}
 .btn-primary{background:var(--teal);color:var(--on-accent)}
 .btn-primary:hover{background:var(--teal-hover)}
 .btn-outline{border-color:var(--line);color:var(--ink);background:var(--surface)}
 .btn-outline:hover{border-color:var(--teal)}
-.btn-sm{padding:12px 20px;font-size:15px}
+.btn-sm{padding:12px 18px;font-size:15px;border-radius:10px}
 .btn svg{width:18px;height:18px;flex:none}
-
-/* Eyebrow */
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--teal);background:var(--teal-soft);
-  border:1px solid color-mix(in srgb,var(--teal) 25%,transparent);padding:6px 14px;border-radius:999px;line-height:1.4}
-.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--success);flex:none}
 
 /* Logo: gradient tile with rising chevrons + lowercase wordmark */
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);min-width:0}
 .logo svg{width:40px;height:40px;flex:none;filter:drop-shadow(0 4px 10px rgba(99,102,241,.28))}
 .wordmark{display:flex;flex-direction:column;line-height:1}
-.wordmark b{font-size:23px;font-weight:800;letter-spacing:-.05em;line-height:.95}
+.wordmark b{font-family:var(--head);font-size:24px;font-weight:700;letter-spacing:-.045em;line-height:.95}
 .wordmark small{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);margin-top:5px;padding-left:1px}
 
 /* Sticky glass nav */
@@ -102,6 +97,7 @@ a{color:var(--teal)}
 .footer a:hover{color:#C4B5FD}
 .footer h4{font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--deep-ink);margin-bottom:14px}
 .footer .logo{color:var(--deep-ink)}
+.footer .wordmark small{color:var(--deep-muted)}
 .footer-legal{border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:24px;font-size:12.5px;line-height:1.5}
 
 @media (max-width:540px){
