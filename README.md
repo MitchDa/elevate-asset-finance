@@ -63,7 +63,7 @@ No licence numbers, dates of birth or ID documents are collected online.
 - [ ] Add the real Credit Guide at `site/credit-guide.pdf` and a privacy policy page at `site/privacy.html`.
 - [ ] Replace `[Aggregator Name] ACL XXXXXXX` in both page footers.
 - [ ] Replace the placeholder phone number in the homepage contact section.
-- [ ] Confirm the claims on the homepage (30+ lenders, call back in 1 business day, $0 broker fee on standard deals) match your aggregator arrangements.
+- [ ] Confirm the claims on the homepage (30+ lenders, call back in 1 business day) match your aggregator arrangements.
 - [ ] Have your compliance contact review the privacy wording in `site/assets/intake.js` (search for `consent`) and the retention period in `supabase/schema.sql`.
 - [ ] Set `ALLOWED_ORIGINS` once the domain is live.
 

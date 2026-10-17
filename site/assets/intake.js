@@ -48,7 +48,7 @@ function steps(a) {
         <a href="${DOCS.privacy}" target="_blank" rel="noopener">Privacy and Collection Notice <span>Open</span></a>
         ${isC(a) ? `<a href="${DOCS.creditGuide}" target="_blank" rel="noopener">Credit Guide <span>Open</span></a>` : ''}
       </div>
-      <small>${isC(a) ? 'The Credit Guide explains who we are, how we’re paid, and how to make a complaint. ' : ''}By continuing you agree to us collecting your details and contacting you about your enquiry.</small>` });
+      <small>${isC(a) ? 'The Credit Guide explains who we are, the services we provide, and how to make a complaint. ' : ''}By continuing you agree to us collecting your details and contacting you about your enquiry.</small>` });
 
   add({ id: 'name', sec: sAbout, type: 'text', ph: 'First name', ask: "Great. What's your first name?" });
   add({ id: 'mobile', sec: sAbout, type: 'tel', ph: '04xx xxx xxx', ask: a => `Nice to meet you, ${esc(a.name)}. What's the best mobile to reach you on?`,
@@ -353,7 +353,7 @@ function mount(root, opts = {}) {
       n.innerHTML = `<h3>What happens next</h3><ol>
         <li><span class="ei-check">${TICK}</span><span>A broker reviews your details and calls you${ans.call === 'Text me first' ? ' after a quick text' : ''}.</span></li>
         <li><span class="ei-check">${TICK}</span><span>They confirm your ID and run a credit check with your consent.</span></li>
-        <li><span class="ei-check">${TICK}</span><span>You get your options from our lender panel, with all costs and our commission shown.</span></li></ol>`;
+        <li><span class="ei-check">${TICK}</span><span>You get your options from our lender panel, with the costs explained clearly.</span></li></ol>`;
       log.appendChild(n);
       if (PREVIEW) {
         const p = document.createElement('div'); p.className = 'ei-handover';
