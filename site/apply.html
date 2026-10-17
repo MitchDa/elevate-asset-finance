@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Apply Online | Elevate Asset Finance</title>
+<meta name="description" content="Start your asset finance application online in about 5 minutes. No ID needed up front. A real broker reviews everything.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="assets/elevate.css">
+<link rel="stylesheet" href="assets/intake.css">
+<style>
+/* Full-page application (direct link for ads and texts). Nav + main fill one screen; only the chat scrolls. */
+html,body{height:100%}
+.shell{height:100vh;height:var(--app-h,100dvh);min-height:360px;display:flex;flex-direction:column}
+.shell .nav{position:relative;flex:none}
+.page{flex:1;min-height:0;width:100%;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,72px);padding-block:clamp(16px,3.5vh,44px)}
+.intro{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,2.2vh,20px);min-height:0;overflow-y:auto;scrollbar-width:none;padding-block:4px}
+.intro::-webkit-scrollbar{display:none}
+.intro>:first-child{margin-top:auto}
+.intro>:last-child{margin-bottom:auto}
+.intro h1{font-size:clamp(42px,5.2vw,64px);font-weight:900;letter-spacing:-.05em;line-height:1.02}
+.lede{font-size:clamp(18px,1.7vw,20px);color:var(--ink-2);max-width:58ch}
+.ticks{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:15px;color:var(--ink-2)}
+.ticks li{display:inline-flex;align-items:center;gap:8px}
+.ticks svg{width:18px;height:18px;color:var(--teal);flex:none}
+.steps-list{list-style:none;display:grid;gap:14px;margin-top:8px}
+.steps-list li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:start}
+.num{width:40px;height:40px;border-radius:50%;background:var(--teal);color:var(--on-accent);display:grid;place-items:center;font-weight:800;font-size:16px}
+.steps-list h3{font-size:18px;letter-spacing:-.015em;line-height:1.25;margin-bottom:2px;padding-top:8px}
+.steps-list p{font-size:15.5px;color:var(--ink-2);line-height:1.55}
+.card{border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);overflow:hidden;height:100%;max-height:900px;align-self:center;min-height:0;min-width:0}
+.footer{padding-block:28px calc(32px + env(safe-area-inset-bottom,0px))}
+
+@media (min-width:901px) and (max-height:860px){ .steps-list p{display:none} .steps-list h3{padding-top:9px} }
+@media (min-width:901px) and (max-height:720px){ .steps-list{display:none} .intro h1{font-size:clamp(36px,4.4vw,52px)} }
+@media (min-width:901px) and (max-height:600px){ .ticks{display:none} .lede{font-size:16px} }
+@media (max-width:900px){
+  .shell .nav{height:64px}
+  .page{display:flex;flex-direction:column;gap:14px;padding-block:14px}
+  .intro{flex:none;overflow:visible;gap:10px}
+  .intro>:first-child,.intro>:last-child{margin:0}
+  .intro .eyebrow,.steps-list{display:none}
+  .intro h1{font-size:clamp(30px,6.5vw,46px);letter-spacing:-.045em}
+  .lede{font-size:16.5px}
+  .ticks{font-size:14px;gap:4px 16px}
+  body.started .intro{display:none}
+  .card{flex:1;height:auto;max-height:none;align-self:stretch}
+}
+@media (max-width:600px){
+  .page{padding-left:0;padding-right:0;padding-bottom:0;gap:12px}
+  .intro{padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+  .card{border-radius:22px 22px 0 0;border-left:0;border-right:0;border-bottom:0;box-shadow:none}
+}
+@media (max-width:900px) and (max-height:700px){ .lede{display:none} }
+@media (max-height:520px){ .shell .nav{height:52px} .logo small{display:none} .intro{display:none} .page{padding-block:8px 0} }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="nav">
+    <div class="container">
+      <a href="/" class="logo" aria-label="Elevate Asset Finance home">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38BDF8"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs>
+          <rect width="40" height="40" rx="12" fill="url(#lg)"/><rect x="9" y="22" width="5.5" height="9" rx="1.5" fill="#fff" fill-opacity=".55"/><rect x="17.25" y="16" width="5.5" height="15" rx="1.5" fill="#fff" fill-opacity=".8"/><rect x="25.5" y="10" width="5.5" height="21" rx="1.5" fill="#fff"/></svg>
+        <span><b>Elevate</b><small>Asset Finance</small></span>
+      </a>
+      <a href="/" class="btn btn-outline btn-sm">Back to site</a>
+    </div>
+  </header>
+
+  <main class="container page">
+    <section class="intro">
+      <span class="eyebrow">Online application</span>
+      <h1>Start online. Done in <span class="gradtext">5 minutes.</span></h1>
+      <p class="lede">No forms and no hold music. Answer a few questions in your own time, day or night, and a broker picks it up from there.</p>
+      <ul class="ticks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No ID needed here</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Saved as you go</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No credit impact</li>
+      </ul>
+      <ol class="steps-list">
+        <li><span class="num">1</span><div><h3>Tell us the basics</h3><p>What you're financing, your work and income, and any current loans. Rough figures are fine.</p></div></li>
+        <li><span class="num">2</span><div><h3>A broker reviews it</h3><p>A real person checks your details, confirms your ID securely and talks through what matters to you.</p></div></li>
+        <li><span class="num">3</span><div><h3>We compare lenders</h3><p>You see your options, what each one costs and what we earn. Nothing goes to a lender without your OK.</p></div></li>
+      </ol>
+    </section>
+    <section class="card" id="app" aria-label="Application chat"></section>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer-legal" style="margin:0;border:0;padding:0">Elevate Asset Finance is a credit representative of [Aggregator Name] ACL XXXXXXX. General information only, not financial advice. Credit products are subject to eligibility and approval. Information you provide here is handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
+  </div>
+</footer>
+
+<script src="assets/intake.js"></script>
+<script>
+(() => {
+  ElevateIntake.mount(document.getElementById('app'), {
+    onState: s => document.body.classList.toggle('started', s.started),
+  });
+  // Fit the shell to the visible screen (mobile keyboards and browser bars)
+  const fit = () => {
+    const vv = window.visualViewport, cs = getComputedStyle(document.documentElement);
+    const h = (vv ? vv.height : innerHeight) - parseFloat(cs.paddingTop || 0) - parseFloat(cs.paddingBottom || 0);
+    document.documentElement.style.setProperty('--app-h', Math.round(h) + 'px');
+    if (document.activeElement?.closest?.('#app')) window.scrollTo(0, 0);
+  };
+  window.visualViewport?.addEventListener('resize', fit);
+  addEventListener('resize', fit); addEventListener('orientationchange', fit);
+  fit();
+})();
+</script>
+</body>
+</html>

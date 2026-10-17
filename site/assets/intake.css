@@ -1,0 +1,102 @@
+/* Elevate application assistant. Every class is prefixed ei- so it can sit inside any page.
+   Fills whatever box it is placed in (100% height). Adapts to its own width with container queries. */
+
+.ei{container:ei/inline-size;display:flex;flex-direction:column;height:100%;min-height:0;min-width:0;background:var(--surface);color:var(--ink);font-family:var(--body)}
+
+.ei-head{flex:none;padding:20px 24px 14px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.ei-title{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.ei-title h2{font-size:20px;letter-spacing:-.015em;line-height:1.25}
+.ei-saved{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink-2);background:var(--tint);border:1px solid var(--line);padding:5px 12px;border-radius:999px;white-space:nowrap}
+.ei-saved i{width:7px;height:7px;border-radius:50%;background:var(--ink-2);flex:none}
+.ei-saved.on{color:var(--ink)}
+.ei-saved.on i{background:var(--success);animation:ei-pulse 2s infinite}
+.ei-saved.err i{background:var(--error)}
+@keyframes ei-pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}70%{box-shadow:0 0 0 7px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+.ei-steps{display:flex;gap:6px}
+.ei-steps div{flex:1;min-width:0}
+.ei-steps b{display:block;height:6px;border-radius:999px;background:var(--line);overflow:hidden;position:relative}
+.ei-steps .done b{background:var(--teal)}
+.ei-steps .now b::after{content:"";position:absolute;inset:0 50% 0 0;background:var(--teal);border-radius:999px}
+.ei-steps small{display:block;margin-top:7px;font-size:12px;font-weight:600;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ei-steps .now small{color:var(--ink)}
+.ei-preview{font-size:12.5px;font-weight:600;color:var(--gold-ink);background:var(--gold-soft);border-radius:10px;padding:6px 10px;line-height:1.4}
+
+.ei-log{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.ei-msg{max-width:86%;padding:12px 16px;font-size:16px;line-height:1.55;overflow-wrap:anywhere;border-radius:18px;animation:ei-in .35s var(--ease) both}
+@keyframes ei-in{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
+.ei-bot{background:var(--tint);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:6px}
+.ei-user{background:var(--teal);color:var(--on-accent);align-self:flex-end;font-weight:600;border-bottom-right-radius:6px}
+.ei-note{background:var(--teal-soft);border-color:transparent;font-size:15px}
+.ei-note strong{font-weight:700}
+.ei-msg small{display:block;color:var(--ink-2);font-size:12.5px;line-height:1.5;margin-top:10px}
+.ei-msg ul{list-style:none;margin-top:10px;display:grid;gap:6px;font-size:15px;color:var(--ink-2)}
+.ei-msg ul li{display:grid;grid-template-columns:7px minmax(0,1fr);gap:10px}
+.ei-msg ul li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);margin-top:.6em}
+.ei-docs{display:grid;gap:8px;margin-top:12px}
+.ei-docs a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;background:var(--surface);border:1.5px solid var(--line);
+  text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;transition:border-color .2s}
+.ei-docs a:hover{border-color:var(--teal)}
+.ei-docs a span{color:var(--teal);font-size:14px}
+.ei-typing{align-self:flex-start;display:flex;gap:5px;padding:15px 16px;background:var(--tint);border:1px solid var(--line);border-radius:18px;border-bottom-left-radius:6px}
+.ei-typing i{width:7px;height:7px;border-radius:50%;background:var(--ink-2);animation:ei-dot 1s infinite}
+.ei-typing i:nth-child(2){animation-delay:.15s}.ei-typing i:nth-child(3){animation-delay:.3s}
+@keyframes ei-dot{0%,60%,100%{opacity:.25}30%{opacity:1}}
+
+.ei-next{align-self:stretch;background:var(--deep);color:var(--deep-ink);border-radius:22px;padding:22px 24px;display:grid;gap:12px;margin-top:4px}
+.ei-next h3{font-size:19px;letter-spacing:-.015em;line-height:1.25}
+.ei-next ol{list-style:none;display:grid}
+.ei-next li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;align-items:center;padding:12px 0;border-top:1px solid rgba(255,255,255,.1);font-size:15.5px;color:var(--deep-muted)}
+.ei-check{width:36px;height:36px;border-radius:50%;background:rgba(167,139,250,.16);color:#C4B5FD;display:grid;place-items:center}
+.ei-check svg{width:18px;height:18px}
+.ei-handover{align-self:stretch;border:1.5px dashed var(--line);border-radius:16px;padding:16px;display:grid;gap:10px}
+.ei-handover h4{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-ink)}
+.ei-handover pre{white-space:pre-wrap;font:12.5px/1.55 ui-monospace,Menlo,Consolas,monospace;color:var(--ink-2);max-height:340px;overflow:auto;font-variant-numeric:tabular-nums}
+
+.ei-composer{flex:none;border-top:1px solid var(--line);padding:14px 24px 16px;display:grid;grid-template-columns:minmax(0,1fr);gap:10px;background:var(--surface)}
+.ei-chips{display:flex;flex-wrap:wrap;gap:8px;max-height:min(40vh,240px);overflow-y:auto}
+.ei-chip{font-size:15px;font-weight:600;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);padding:10px 18px;border-radius:999px;min-height:44px;
+  transition:border-color .2s,background .2s,transform .2s var(--ease)}
+.ei-chip:hover{border-color:var(--teal);background:var(--teal-soft)}
+.ei-chip:active{transform:scale(.98)}
+.ei-chip.primary{background:var(--teal);border-color:var(--teal);color:var(--on-accent)}
+.ei-chip.primary:hover{background:var(--teal-hover);border-color:var(--teal-hover)}
+.ei-field{display:flex;gap:8px}
+.ei-field-wrap{flex:1;min-width:0;display:flex;align-items:center;background:var(--ground);border:1.5px solid var(--line);border-radius:14px;transition:border-color .2s,box-shadow .2s}
+.ei-field-wrap:focus-within{border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-soft)}
+.ei-field-wrap .ei-pre{padding-left:15px;color:var(--ink-2);font-weight:600}
+.ei-field-wrap input{flex:1;min-width:0;background:transparent;border:0;outline:none;color:var(--ink);font:500 16.5px var(--body);padding:12px 15px;font-variant-numeric:tabular-nums}
+.ei-field-wrap input::placeholder{color:var(--ink-2);opacity:.8}
+.ei-send{font:600 16px/1 var(--body);background:var(--teal);color:var(--on-accent);border:0;padding:0 24px;border-radius:999px;min-height:48px;transition:background .2s}
+.ei-send:hover{background:var(--teal-hover)}
+.ei-err{color:var(--error);font-size:14px;font-weight:500}
+.ei-err:empty{display:none}
+.ei-foot{display:flex;justify-content:space-between;gap:6px 16px;flex-wrap:wrap;font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+.ei-link{background:none;border:0;color:var(--ink-2);text-decoration:underline;font-size:12.5px;padding:0}
+.ei-link:hover{color:var(--ink)}
+.ei-links{display:flex;gap:14px;margin-left:auto}
+.ei-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* Narrow boxes: a phone, or the floating panel on desktop */
+@container ei (max-width:520px){
+  .ei-head{padding:16px 16px 12px;gap:12px}
+  .ei-title h2{font-size:18px}
+  .ei-steps small{display:none}
+  .ei-log{padding:16px}
+  .ei-msg{max-width:92%;font-size:15.5px}
+  .ei-note{font-size:14.5px}
+  .ei-composer{padding:12px 16px 14px}
+  .ei-chip{padding:10px 15px;font-size:14.5px}
+  .ei-send{padding:0 18px}
+  .ei-foot>span:first-child{display:none}
+  .ei-next{padding:20px}
+}
+/* Very short windows, e.g. a phone on its side */
+@media (max-height:520px){
+  .ei-head{padding-top:10px;padding-bottom:8px;gap:8px}
+  .ei-title h2{font-size:16px}
+  .ei-steps small{display:none}
+  .ei-log{padding-top:12px;padding-bottom:12px}
+  .ei-composer{padding-top:10px;padding-bottom:8px}
+  .ei-chips{max-height:34vh}
+  .ei-foot>span:first-child{display:none}
+}

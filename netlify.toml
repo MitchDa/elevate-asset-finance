@@ -1,24 +1,24 @@
 [build]
-  publish = "."
+  publish = "site"
   functions = "netlify/functions"
 
 [functions]
   node_bundler = "esbuild"
 
-# Homepage lives in elevate-asset-finance.html
-[[redirects]]
-  from = "/"
-  to = "/elevate-asset-finance.html"
-  status = 200
-
+# Short link for ads and texts: elevateassetfinance.com.au/apply
 [[redirects]]
   from = "/apply"
   to = "/apply.html"
   status = 200
 
 [[headers]]
-  for = "/apply.html"
+  for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
