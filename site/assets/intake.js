@@ -34,7 +34,7 @@ const TICK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-
    and "change last answer" is simply removing one answer. */
 function steps(a) {
   const S = []; const add = o => { S.push(o); return o.id in a; };
-  const sAbout = 'About you', sFin = 'The finance', sBiz = 'Business', sRes = 'Residency', sWork = 'Work', sInc = 'Income', sCom = 'Loans', sEnd = 'Wrap up';
+  const sAbout = 'About you', sFin = 'The finance', sBiz = 'Business', sRes = 'Residency', sWork = 'Work', sInc = 'Income', sCom = 'Loans', sCred = 'Credit', sEnd = 'Wrap up';
 
   if (!add({ id: 'path', sec: sAbout, type: 'choice', ask: "First up, is this finance for personal use or for a business?", opts: ['Personal use', 'Business use'] })) return S;
 
@@ -142,6 +142,15 @@ function steps(a) {
     if (!add({ id: id + '_amt', sec: sCom, type: 'money', ph: isLimit ? '5000' : '450', ask: isLimit ? `What's the limit on that ${t.toLowerCase()}?` : "Roughly what's the monthly repayment?" })) break;
   }
 
+  // Credit history: their own view, plus any past issues. No credit check happens here.
+  add({ id: 'creditSelf', sec: sCred, type: 'choice', opts: ['Excellent', 'Good', 'Average', 'Not great', 'Not sure'],
+    ask: (isB(a) ? "Now a quick one on your personal credit history." : "Now a quick one on your credit history.") + " How would you rate it yourself? Just your best guess, there's no credit check here." });
+  if (add({ id: 'creditIssues', sec: sCred, type: 'choice', opts: ['No, never', 'Yes, a default or late payments', 'Yes, bankruptcy or a debt agreement', 'Not sure'],
+    ask: "Have you ever had any issues with credit, like a default, late payments or bankruptcy? Plenty of people have, and it doesn't rule you out. It just helps us pick the right lender." })
+    && /^Yes/.test(a.creditIssues))
+    add({ id: 'creditDetail', sec: sCred, type: 'text', ph: 'e.g. $900 phone bill default in 2022, now paid',
+      ask: "Thanks for being upfront. Briefly, what happened, roughly when, and has it been paid or finished?" });
+
   if (add({ id: 'assets', sec: sEnd, type: 'choice', opts: ['Add a quick summary', 'Skip, I’ll cover it on the call'], ask: "Optional: would you like to list any assets, like savings, property or vehicles? Totally fine to skip." }) && a.assets === 'Add a quick summary')
     add({ id: 'assetsText', sec: sEnd, type: 'text', ph: 'e.g. $15k savings, 2018 Hilux', ask: "Go for it. A rough list is perfect." });
   add({ id: 'call', sec: sEnd, type: 'choice', opts: ['Morning', 'Lunchtime', 'Afternoon', 'After 5pm', 'Text me first'], ask: "Last one. When's best for a broker to get in touch?" });
@@ -149,8 +158,8 @@ function steps(a) {
 }
 const textOf = (s, a) => typeof s.ask === 'function' ? s.ask(a) : s.ask;
 const display = (s, v) => s.type === 'money' ? money(v) : s.type === 'month' ? monthFmt(v) : v;
-const sectionsFor = a => isB(a) ? ['About you', 'The finance', 'Business', 'Residency', 'Loans', 'Wrap up']
-                                : ['About you', 'The finance', 'Residency', 'Work', 'Income', 'Loans', 'Wrap up'];
+const sectionsFor = a => isB(a) ? ['About you', 'The finance', 'Business', 'Residency', 'Loans', 'Credit', 'Wrap up']
+                                : ['About you', 'The finance', 'Residency', 'Work', 'Income', 'Loans', 'Credit', 'Wrap up'];
 
 /* ---------- Broker summary (sent with each save, used for the handover email) ---------- */
 function summarise(a, meta, finished, leadId) {
@@ -176,6 +185,7 @@ function summarise(a, meta, finished, leadId) {
   for (let i = 0; i < 10; i++) { const t = a['liab' + i]; if (!t || t === DONE) break; if (t === 'None') { put('Commitments', 'Declared', 'None'); break; }
     const v = a['liab' + i + '_amt']; const isLimit = /card|Overdraft|Buy now/.test(t); if (v && isLimit) limits += +v;
     put('Commitments', t, v ? (isLimit ? money(v) + ' limit' : money(v) + '/mth') : 'pending'); }
+  put('Credit', 'Self-rated', a.creditSelf); put('Credit', 'Past issues', a.creditIssues); put('Credit', 'Details', a.creditDetail);
   if (a.assets) put('Other', 'Assets', a.assetsText || 'Skipped, confirm on call');
   if (meta.consentAt) put('Compliance', 'Privacy consent', new Date(meta.consentAt).toLocaleString('en-AU'));
   if (C && meta.consentAt) put('Compliance', 'Credit Guide', 'Provided in chat');
@@ -187,6 +197,9 @@ function summarise(a, meta, finished, leadId) {
   if (a.emp0_status === 'Casual' && a.emp0_tenure === 'Under 1 year') flags.push(['warn', 'Casual under 12 months in current role.']);
   else if (a.emp0_tenure === 'Under 1 year') flags.push(['warn', 'Under 12 months in current role. Check probation.']);
   if (a.trading === 'Under 1 year') flags.push(['warn', 'ABN under 12 months. Limited lender panel.']);
+  if (/^Yes/.test(a.creditIssues || '')) flags.push(['warn', `Credit issue declared: ${a.creditIssues.replace(/^Yes, /, '')}${a.creditDetail ? ` (${a.creditDetail})` : ''}. Check file before choosing lenders.`]);
+  else if (a.creditSelf === 'Not great') flags.push(['warn', 'Self-rated credit "Not great". Check file before choosing lenders.']);
+  if (a.creditIssues === 'Not sure' || a.creditSelf === 'Not sure') flags.push(['info', 'Unsure of own credit history. Confirm on credit check.']);
   if (a.cl === 'Yes') flags.push(['info', 'Centrelink income declared. Check lender policy on acceptance.']);
   if (a.partner === 'Yes, include it') flags.push(['info', 'Partner income included. Partner details and consent needed on call.']);
   if (limits) flags.push(['info', `Total card and revolving limits ${money(limits)}. Lenders assess around 3.8% of limit monthly.`]);
@@ -199,7 +212,7 @@ function summarise(a, meta, finished, leadId) {
   if (a.partner === 'Yes, include it') todo.push('Partner details if joint application');
 
   const all = steps(a); const done = all.filter(s => s.id in a).length;
-  const percent = finished ? 80 : Math.min(79, Math.round(done / Math.max(all.length, isC(a) ? 32 : 26) * 80));
+  const percent = finished ? 80 : Math.min(79, Math.round(done / Math.max(all.length, isC(a) ? 34 : 28) * 80));
 
   let notes = `ELEVATE ASSET FINANCE | ONLINE APPLICATION\nRef ${leadId ? leadId.slice(0, 8).toUpperCase() : 'n/a'} | ${finished ? 'Complete' : 'Partial'} (${percent}%)\n`;
   for (const [k, r] of Object.entries(rows)) notes += `\n${k.toUpperCase()}\n` + r.map(([x, y]) => `  ${x}: ${y}`).join('\n') + '\n';
