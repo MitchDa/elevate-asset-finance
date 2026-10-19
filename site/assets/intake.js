@@ -67,6 +67,8 @@ function steps(a) {
   const assetOpts = isB(a) ? ['Car or ute', 'Truck or trailer', 'Equipment or machinery', 'Medical or dental equipment', 'Other'] : ['Car', 'Motorbike', 'Boat', 'Caravan or camper', 'Other'];
   if (add({ id: 'asset', sec: sFin, type: 'choice', opts: assetOpts, ask: "What are you looking to finance?" }) && a.asset === 'Other')
     add({ id: 'assetOther', sec: sFin, type: 'text', ph: 'Describe it', ask: "No problem. What is it?" });
+  if (a.asset === 'Car' || a.asset === 'Car or ute')
+    add({ id: 'condition', sec: sFin, type: 'choice', opts: ['New', 'Pre-owned'], ask: "Is it new or pre-owned?" });
   if (add({ id: 'stage', sec: sFin, type: 'choice', opts: ["Yes, I've found it", 'Still shopping around', 'Just working out a budget'], ask: "Have you found the exact one yet?" }) && a.stage === "Yes, I've found it")
     add({ id: 'detail', sec: sFin, type: 'text', ph: 'e.g. 2023 Toyota RAV4 GXL, dealer sale', ask: "Tell me about it: year, make, model, and whether it's from a dealer or a private sale." });
   add({ id: 'amount', sec: sFin, type: 'money', ph: '45000',
@@ -159,7 +161,7 @@ function summarise(a, meta, finished, leadId) {
   put('Contact', 'Best time', a.call);
   put('Applicant', 'Path', a.path); put('Applicant', 'Relationship', a.rel); put('Applicant', 'Living', a.living);
   put('Applicant', 'Residency', a.res === 'On a visa' ? `Visa ${a.visa || ''}${a.visaExp ? ', expires ' + monthFmt(a.visaExp) : ''}` : a.res);
-  put('Finance', 'Asset', a.asset === 'Other' ? a.assetOther : a.asset); put('Finance', 'Stage', a.stage); put('Finance', 'Details', a.detail);
+  put('Finance', 'Asset', a.asset === 'Other' ? a.assetOther : a.asset); put('Finance', 'Condition', a.condition); put('Finance', 'Stage', a.stage); put('Finance', 'Details', a.detail);
   if (a.amount) put('Finance', 'Amount', money(a.amount));
   put('Business', 'Name', a.biz); put('Business', 'ABN', a.abn); put('Business', 'Structure', a.structure); put('Business', 'ABN age', a.trading);
   put('Business', 'GST', a.gst); put('Business', 'Industry', a.industry); put('Business', 'Turnover', a.turnover);
@@ -369,7 +371,7 @@ function mount(root, opts = {}) {
   root.addEventListener('click', e => {
     const act = e.target.closest('[data-act]')?.dataset.act; if (!act || busy) return;
     if (act === 'undo') { if (!order.length) return; const id = order.pop(); delete ans[id]; if (id === 'consent') delete meta.consentAt;
-      if (id === 'path' && meta.prefill) { delete ans.asset; delete ans.amount; delete meta.prefill; } finished = false; delete meta.sentAt; persist(); rebuild(); queueSave(); }
+      if (id === 'path' && meta.prefill) { delete ans.asset; delete ans.amount; delete ans.condition; delete meta.prefill; } finished = false; delete meta.sentAt; persist(); rebuild(); queueSave(); }
     if (act === 'restart') { ans = {}; order = []; meta = {}; leadId = null; finished = false; clearStore(); setSaved('', 'Not started'); rebuild(); }
   });
 
@@ -398,6 +400,7 @@ function mount(root, opts = {}) {
       ans.path = p.path; order.push('path');
       if (p.asset) ans.asset = p.asset;
       if (p.amount) ans.amount = String(Math.round(p.amount));
+      if (p.condition) ans.condition = p.condition;
       if (p.asset) meta.prefill = { label: p.label || p.asset, amount: p.amount || null };
       if (!leadId) leadId = uuid();
       persist(); rebuild(); return true;

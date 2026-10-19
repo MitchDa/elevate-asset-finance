@@ -437,7 +437,7 @@ html.lock,html.lock body{overflow:hidden}
         <li><button class="asset-row" type="button" data-path="Business use" data-asset="Truck or trailer" data-label="a truck"><span class="ar-name">Trucks and trailers</span><span class="ar-desc">Light trucks to prime movers, new or used.</span><span class="ar-for">Business</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
         <li><button class="asset-row" type="button" data-path="Business use" data-asset="Equipment or machinery" data-label="some equipment"><span class="ar-name">Plant and equipment</span><span class="ar-desc">Earthmoving, construction, workshop and farm gear.</span><span class="ar-for">Business</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
         <li><button class="asset-row" type="button" data-path="Business use" data-asset="Medical or dental equipment" data-label="medical equipment"><span class="ar-name">Medical and dental</span><span class="ar-desc">Chairs, imaging and fit-outs, with lenders who know healthcare.</span><span class="ar-for">Business</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
-        <li><button class="asset-row" type="button" data-path="Personal use" data-asset="Car" data-label="a car"><span class="ar-name">Cars</span><span class="ar-desc">New or used, from a dealer or a private sale.</span><span class="ar-for">Personal</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
+        <li><button class="asset-row" type="button" data-path="Personal use" data-asset="Car" data-label="a car"><span class="ar-name">New and pre-owned cars</span><span class="ar-desc">From a dealer or a private sale.</span><span class="ar-for">Personal</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
         <li><button class="asset-row" type="button" data-path="Personal use" data-asset="Caravan or camper" data-label="a caravan"><span class="ar-name">Caravans and campers</span><span class="ar-desc">For the big lap or long weekends away.</span><span class="ar-for">Personal</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
         <li><button class="asset-row" type="button" data-path="Personal use" data-asset="Boat" data-label="a boat"><span class="ar-name">Boats and bikes</span><span class="ar-desc">Tinnies, ski boats and motorbikes.</span><span class="ar-for">Personal</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
         <li><button class="asset-row" type="button" data-path="Personal use"><span class="ar-name">Novated leasing</span><span class="ar-desc">Salary packaging a car through your employer, with the full cost explained.</span><span class="ar-for">Personal</span><span class="ar-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></button></li>
@@ -716,9 +716,10 @@ html.lock,html.lock body{overflow:hidden}
   /* ---------- The sentence and deal sheet ---------- */
   const PATHS = {
     business: { key: 'Business use', word: 'my business', short: 'Business',
-      assets: [['Car or ute', 'a work ute', 'Work ute'], ['Truck or trailer', 'a truck', 'Truck or trailer'], ['Equipment or machinery', 'some equipment', 'Equipment'], ['Medical or dental equipment', 'medical equipment', 'Medical equipment']] },
+      assets: [['Car or ute', 'a work ute', 'Work ute'], ['Car or ute', 'a new car', 'New car', 'New'], ['Car or ute', 'a pre-owned car', 'Pre-owned car', 'Pre-owned'],
+        ['Truck or trailer', 'a truck', 'Truck or trailer'], ['Equipment or machinery', 'some equipment', 'Equipment'], ['Medical or dental equipment', 'medical equipment', 'Medical equipment']] },
     personal: { key: 'Personal use', word: 'personal use', short: 'Personal',
-      assets: [['Car', 'a car', 'Car'], ['Motorbike', 'a motorbike', 'Motorbike'], ['Boat', 'a boat', 'Boat'], ['Caravan or camper', 'a caravan', 'Caravan or camper']] },
+      assets: [['Car', 'a new car', 'New car', 'New'], ['Car', 'a pre-owned car', 'Pre-owned car', 'Pre-owned'], ['Motorbike', 'a motorbike', 'Motorbike'], ['Boat', 'a boat', 'Boat'], ['Caravan or camper', 'a caravan', 'Caravan or camper']] },
   };
   const PRESETS = [15000, 25000, 40000, 55000, 80000, 120000, 200000, 300000];
   const sel = { path: 'business', asset: 0, amount: 55000 };
@@ -782,7 +783,7 @@ html.lock,html.lock body{overflow:hidden}
   });
   document.querySelectorAll('[data-start-sentence]').forEach(b => b.addEventListener('click', () => {
     const P = PATHS[sel.path], A = P.assets[sel.asset];
-    open({ path: P.key, asset: A[0], label: A[1], amount: sel.amount });
+    open({ path: P.key, asset: A[0], label: A[1], amount: sel.amount, condition: A[3] });
   }));
   paint();
 
