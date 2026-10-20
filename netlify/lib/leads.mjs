@@ -56,13 +56,13 @@ export function leadEmailHtml(lead, { heading }) {
   return `<!doctype html><html><body style="margin:0;background:#f4f6fb;padding:24px 12px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:620px;margin:0 auto;background:#fff;border-top:4px solid #0ea5e9">
 <tr><td style="padding:24px 28px 8px;background:#0a0e1a">
-  <div style="font:800 13px/1 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#f1f5f9">Williams &amp; Co <span style="color:#0ea5e9">Asset Finance</span></div>
+  <div style="font:800 13px/1 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#f1f5f9">W&amp;Co <span style="color:#0ea5e9">Finance</span></div>
   <div style="font:800 24px/1.15 Arial,sans-serif;color:#fff;margin:14px 0 6px">${esc(heading)}</div>
   <div style="font:14px/1.5 Arial,sans-serif;color:#94a3b8;padding-bottom:18px">${esc(lead.first_name || 'Unnamed')} · ${esc(lead.path || '')} · ${esc(lead.asset || 'asset tbc')}${lead.amount ? ' · ' + esc(money(lead.amount)) : ''} · Ref ${esc(ref(lead.id))}</div>
 </td></tr>
 <tr><td style="padding:16px 28px 0">${tel ? `<a href="tel:${esc(tel)}" style="display:inline-block;background:#0ea5e9;color:#fff;text-decoration:none;font:700 14px/1 Arial,sans-serif;padding:12px 18px;margin-right:8px">Call ${esc(lead.mobile)}</a>` : ''}${lead.email ? `<a href="mailto:${esc(lead.email)}" style="display:inline-block;border:1px solid #cbd5e1;color:#0a0e1a;text-decoration:none;font:700 14px/1 Arial,sans-serif;padding:11px 18px">Email</a>` : ''}</td></tr>
 <tr><td style="padding:0 28px 28px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">${body}</table></td></tr>
 </table>
-<p style="max-width:620px;margin:12px auto 0;font:12px/1.5 Arial,sans-serif;color:#64748b">Captured by the online application at ${esc(new Date(lead.updated_at || Date.now()).toLocaleString('en-AU', { timeZone: 'Australia/Brisbane' }))} (Brisbane time). Contains personal information. Do not forward outside Williams &amp; Co.</p>
+<p style="max-width:620px;margin:12px auto 0;font:12px/1.5 Arial,sans-serif;color:#64748b">Captured by the online application at ${esc(new Date(lead.updated_at || Date.now()).toLocaleString('en-AU', { timeZone: 'Australia/Brisbane' }))} (Brisbane time). Contains personal information. Do not forward outside W&amp;Co Finance.</p>
 </body></html>`;
 }

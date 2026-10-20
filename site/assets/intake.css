@@ -1,4 +1,4 @@
-/* Williams & Co application assistant. Every class is prefixed ei- so it can sit inside any page.
+/* W&Co Finance application assistant. Every class is prefixed ei- so it can sit inside any page.
    Fills whatever box it is placed in (100% height). Adapts to its own width with container queries. */
 
 .ei{container:ei/inline-size;display:flex;flex-direction:column;height:100%;min-height:0;min-width:0;background:var(--surface);color:var(--ink);font-family:var(--body)}

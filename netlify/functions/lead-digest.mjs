@@ -33,11 +33,11 @@ export default async () => {
       <td style="padding:10px 8px;border-bottom:1px solid #e2e8f0;white-space:nowrap">${esc(l.percent ?? 0)}%<br><span style="color:#64748b">${esc(new Date(l.updated_at).toLocaleString('en-AU', { timeZone: 'Australia/Brisbane', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' }))}</span></td></tr>`).join('');
     const html = `<!doctype html><html><body style="margin:0;background:#f4f6fb;padding:24px 12px">
 <div style="max-width:720px;margin:0 auto;background:#fff;border-top:4px solid #0ea5e9;padding:24px 24px 28px;font:14px/1.5 Arial,sans-serif;color:#0a0e1a">
-<div style="font:800 13px/1 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase">Williams &amp; Co <span style="color:#0ea5e9">Asset Finance</span></div>
+<div style="font:800 13px/1 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase">W&amp;Co <span style="color:#0ea5e9">Finance</span></div>
 <h1 style="font:800 22px/1.2 Arial,sans-serif;margin:14px 0 4px">${partial.length} unfinished application${partial.length > 1 ? 's' : ''}</h1>
 <p style="margin:0 0 16px;color:#64748b">These people gave their contact details but stopped before the end. A quick call often gets them over the line.</p>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font:14px/1.45 Arial,sans-serif">${rows}</table>
-<p style="margin:16px 0 0;color:#64748b;font-size:12px">Full answers for each lead are in the Supabase leads table. Contains personal information. Do not forward outside Williams &amp; Co.</p>
+<p style="margin:16px 0 0;color:#64748b;font-size:12px">Full answers for each lead are in the Supabase leads table. Contains personal information. Do not forward outside W&amp;Co Finance.</p>
 </div></body></html>`;
     const text = partial.map(l => `${l.first_name} | ${l.mobile} | ${l.email} | ${l.asset || 'asset tbc'} ${money(l.amount)} | ${l.percent ?? 0}% | Ref ${ref(l.id)}`).join('\n');
     const sent = await sendEmail({ subject: `${partial.length} unfinished application${partial.length > 1 ? 's' : ''} to follow up`, html, text });

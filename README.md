@@ -1,6 +1,6 @@
-# Williams & Co Asset Finance
+# W&Co Finance
 
-Website for Williams & Co Asset Finance (W&Co), with a built-in online application assistant that saves leads and emails the handover to a broker.
+Website for W&Co Finance (legal name Williams & Co Asset Finance), with a built-in online application assistant that saves leads and emails the handover to a broker.
 
 ## What's where
 
@@ -10,7 +10,7 @@ site/                     Everything the public sees (Netlify publishes only thi
   apply.html              Full-page application, served at /apply (for ads, texts and QR codes)
   assets/
     brand.css             Brand design system: colours, type, buttons, logo, nav, footer
-    logo-mark.svg         The W&Co logo mark (also the browser tab icon and social avatar)
+    logo-mark.svg         The W&Co Finance logo mark (also the browser tab icon and social avatar)
     intake.css            Styles for the application assistant
     intake.js             The application assistant: questions, saving, broker summary
 netlify/
