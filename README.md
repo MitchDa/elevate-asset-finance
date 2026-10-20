@@ -1,6 +1,6 @@
-# Elevate Asset Finance
+# Williams & Co Asset Finance
 
-Website for Elevate Asset Finance, with a built-in online application assistant that saves leads and emails the handover to a broker.
+Website for Williams & Co Asset Finance (W&Co), with a built-in online application assistant that saves leads and emails the handover to a broker.
 
 ## What's where
 
@@ -9,8 +9,8 @@ site/                     Everything the public sees (Netlify publishes only thi
   index.html              Homepage. "Start online" opens the application as a floating panel
   apply.html              Full-page application, served at /apply (for ads, texts and QR codes)
   assets/
-    elevate.css           Elevate Design System: colours, type, buttons, nav, footer
-    logo-mark.svg         The Elevate logo mark (also the browser tab icon)
+    brand.css             Brand design system: colours, type, buttons, logo, nav, footer
+    logo-mark.svg         The W&Co logo mark (also the browser tab icon and social avatar)
     intake.css            Styles for the application assistant
     intake.js             The application assistant: questions, saving, broker summary
 netlify/
@@ -52,7 +52,7 @@ No licence numbers, dates of birth or ID documents are collected online.
 
 ### 2. Resend (email)
 1. Create a free account at resend.com.
-2. Domains: add `elevateassetfinance.com.au` and add the DNS records it gives you.
+2. Domains: add your domain and add the DNS records it gives you.
 3. API Keys: create one.
 
 ### 3. Netlify
@@ -67,7 +67,8 @@ No licence numbers, dates of birth or ID documents are collected online.
 - [ ] Swap the "MJ" placeholder in the About section for a photo of Mitch.
 - [ ] Confirm the claims on the homepage (30+ lenders, call back in 1 business day) match your aggregator arrangements.
 - [ ] Have your compliance contact review the privacy wording in `site/assets/intake.js` (search for `consent`) and the retention period in `supabase/schema.sql`.
-- [ ] Set `ALLOWED_ORIGINS` once the domain is live.
+- [ ] Once the domain is registered: set `SITE_DOMAIN` at the top of `site/assets/intake.js`, `ALLOWED_ORIGINS` and `LEAD_EMAIL_FROM` in Netlify, and replace `hello@[your-domain].com.au` in the homepage contact section.
+- [ ] Fill in the ABN and Credit Representative Number placeholders in both page footers.
 
 ## Viewing leads
 Supabase > Table Editor > `leads`, sorted by `updated_at`. Use `status` (`in_progress`, `complete`, `contacted`, `closed`) and `broker_notes` to track follow-up.

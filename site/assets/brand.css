@@ -1,5 +1,5 @@
-/* Elevate brand: shared tokens, base styles and components.
-   Colours follow the Elevate design system; type is Funnel Display (headings) and Funnel Sans (body). */
+/* Williams & Co brand: shared tokens, base styles and components.
+   Colours follow the brand design system; type is Funnel Display (headings) and Funnel Sans (body). */
 
 :root{
   color-scheme:dark;
@@ -25,6 +25,7 @@
   --body:"Funnel Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --ease:cubic-bezier(.2,.7,.2,1);
   /* Additions */
+  --brand-grad:linear-gradient(120deg,#38BDF8,#6366F1 55%,#A78BFA);
   --success:#10B981;
   --error:#C0452F;
   --shadow-lg:0 2px 6px rgba(0,0,0,.35),0 30px 70px -20px rgba(0,0,0,.75);
@@ -78,12 +79,18 @@ a{color:var(--teal)}
 .btn-sm{padding:12px 18px;font-size:15px;border-radius:10px}
 .btn svg{width:18px;height:18px;flex:none}
 
-/* Logo: gradient tile with rising chevrons + lowercase wordmark */
+/* Logo: W&Co mark (gradient tile, rising W) + "Williams & Co" wordmark with a gradient italic ampersand */
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);min-width:0}
 .logo svg{width:40px;height:40px;flex:none;filter:drop-shadow(0 4px 10px rgba(99,102,241,.28))}
-.wordmark{display:flex;flex-direction:column;line-height:1}
-.wordmark b{font-family:var(--head);font-size:24px;font-weight:700;letter-spacing:-.045em;line-height:.95}
-.wordmark small{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);margin-top:5px;padding-left:1px}
+.wordmark{display:flex;flex-direction:column;line-height:1;min-width:0}
+.wordmark b{font-family:"Inter",var(--body);font-size:21px;font-weight:700;letter-spacing:-.025em;line-height:1;white-space:nowrap}
+.wordmark small{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-top:6px;padding-left:1px}
+.amp{font-family:"Fraunces",Georgia,"Times New Roman",serif;font-style:italic;font-weight:500;font-size:1.16em;line-height:.8;padding:0 .05em 0 .02em;
+  background:var(--brand-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lockup{display:inline-flex;align-items:center;gap:14px;text-decoration:none;color:inherit}
+.lockup svg{width:56px;height:56px;flex:none;filter:drop-shadow(0 6px 14px rgba(99,102,241,.3))}
+.lockup>span{font-family:"Inter",var(--body);font-weight:700;font-size:40px;letter-spacing:-.035em;line-height:1;white-space:nowrap}
+.lockup .amp{font-size:1.42em;padding:0 .04em}
 
 /* Sticky glass nav */
 .nav{position:sticky;top:0;z-index:50;height:76px;background:color-mix(in srgb,var(--ground) 88%,transparent);
@@ -98,12 +105,13 @@ a{color:var(--teal)}
 .footer h4{font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--deep-ink);margin-bottom:14px}
 .footer .logo{color:var(--deep-ink)}
 .footer .wordmark small{color:var(--deep-muted)}
+.footer .lockup{color:var(--deep-ink)}
 .footer-legal{border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:24px;font-size:12.5px;line-height:1.5}
 
 @media (max-width:540px){
   .logo svg{width:34px;height:34px}
-  .wordmark b{font-size:20px}
-  .wordmark small{font-size:8.5px;letter-spacing:.18em;margin-top:4px}
+  .wordmark b{font-size:18px}
+  .wordmark small{font-size:8.5px;letter-spacing:.18em;margin-top:5px}
   .btn-sm{padding:10px 16px;font-size:14px}
 }
 @media (prefers-reduced-motion:reduce){

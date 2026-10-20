@@ -5,7 +5,7 @@
 [functions]
   node_bundler = "esbuild"
 
-# Short link for ads and texts: elevateassetfinance.com.au/apply
+# Short link for ads and texts: your-domain.com.au/apply
 [[redirects]]
   from = "/apply"
   to = "/apply.html"

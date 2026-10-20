@@ -1,4 +1,4 @@
--- Elevate Asset Finance: online application leads
+-- Williams & Co Asset Finance: online application leads
 -- Run once in the Supabase SQL editor (project region: Sydney, ap-southeast-2).
 
 create table if not exists public.leads (

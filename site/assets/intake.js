@@ -1,5 +1,5 @@
-/* Elevate application assistant.
-   Usage: const app = ElevateIntake.mount(element, { onState(state) {}, canFocus() { return true; } });
+/* Williams & Co application assistant.
+   Usage: const app = BrokerIntake.mount(element, { onState(state) {}, canFocus() { return true; } });
    The same code powers the floating panel on the homepage and the full page at /apply.
    Progress is shared between them (stored in this browser), and saved to the broker system
    through /.netlify/functions/lead once contact details are in. */
@@ -8,10 +8,11 @@
 
 /* ---------- Config ---------- */
 const API = '/.netlify/functions/lead';
-const LIVE_HOSTS = /(^|\.)elevateassetfinance\.com\.au$|\.netlify\.app$|^localhost$|^127\.0\.0\.1$/;
+const SITE_DOMAIN = 'your-domain.com.au'; // set to the live domain once it's registered
+const LIVE_HOSTS = new RegExp(`(^|\\.)${SITE_DOMAIN.replace(/\./g, '\\.')}$|\\.netlify\\.app$|^localhost$|^127\\.0\\.0\\.1$`);
 const PREVIEW = !LIVE_HOSTS.test(location.hostname);
 const DOCS = { privacy: '/privacy', creditGuide: '/credit-guide.pdf' };
-const STORE = 'eaf-apply-v1';
+const STORE = 'wco-apply-v1';
 
 /* ---------- Helpers ---------- */
 const STATES = ['QLD', 'NSW', 'VIC', 'SA', 'WA', 'TAS', 'NT', 'ACT'];
@@ -214,7 +215,7 @@ function summarise(a, meta, finished, leadId) {
   const all = steps(a); const done = all.filter(s => s.id in a).length;
   const percent = finished ? 80 : Math.min(79, Math.round(done / Math.max(all.length, isC(a) ? 34 : 28) * 80));
 
-  let notes = `ELEVATE ASSET FINANCE | ONLINE APPLICATION\nRef ${leadId ? leadId.slice(0, 8).toUpperCase() : 'n/a'} | ${finished ? 'Complete' : 'Partial'} (${percent}%)\n`;
+  let notes = `WILLIAMS & CO ASSET FINANCE | ONLINE APPLICATION\nRef ${leadId ? leadId.slice(0, 8).toUpperCase() : 'n/a'} | ${finished ? 'Complete' : 'Partial'} (${percent}%)\n`;
   for (const [k, r] of Object.entries(rows)) notes += `\n${k.toUpperCase()}\n` + r.map(([x, y]) => `  ${x}: ${y}`).join('\n') + '\n';
   if (flags.length) notes += `\nFLAGS\n` + flags.map(f => '  - ' + f[1]).join('\n') + '\n';
   notes += `\nTO COLLECT ON CALL\n` + todo.map(x => '  [ ] ' + x).join('\n') + '\n';
@@ -281,7 +282,7 @@ function mount(root, opts = {}) {
     if (isText) d.textContent = html; else d.innerHTML = html;
     log.appendChild(d); toEnd(); return d;
   }
-  const WELCOME = "Hi, I'm the Elevate application assistant. I'll gather the details a broker needs so you don't have to fill in forms or wait on hold. It takes about 5 minutes, and a real broker reviews everything before anything goes to a lender.";
+  const WELCOME = "Hi, I'm the Williams & Co application assistant. I'll gather the details a broker needs so you don't have to fill in forms or wait on hold. It takes about 5 minutes, and a real broker reviews everything before anything goes to a lender.";
   const NO_ID = "<strong>No ID needed here.</strong> I won't ask for your licence, date of birth or documents. Your broker handles those securely on the call.";
 
   function rebuild() {
@@ -354,7 +355,7 @@ function mount(root, opts = {}) {
     if (fresh) {
       const when = ans.call === 'Text me first' ? 'will text you first to find a good time' :
         `will be in touch ${ans.call === 'After 5pm' ? 'after 5pm' : ans.call === 'Lunchtime' ? 'around lunchtime' : 'in the ' + ans.call.toLowerCase()}`;
-      bubble('bot', `That's everything I need, ${esc(ans.name)}. A broker from Elevate ${when} on the next business day, or sooner if we can.`);
+      bubble('bot', `That's everything I need, ${esc(ans.name)}. A broker from Williams & Co ${when} on the next business day, or sooner if we can.`);
     }
     const ok = meta.sentAt ? true : await save('complete');
     if (ok && !meta.sentAt) { meta.sentAt = new Date().toISOString(); persist(); }
@@ -422,5 +423,5 @@ function mount(root, opts = {}) {
   };
 }
 
-window.ElevateIntake = { mount, PREVIEW };
+window.BrokerIntake = { mount, PREVIEW };
 })();
