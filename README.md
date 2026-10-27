@@ -7,6 +7,7 @@ Website for W&Co Finance (legal name Williams & Co Asset Finance), with a built-
 ```
 site/                     Everything the public sees (Netlify publishes only this folder)
   index.html              Homepage. "Start online" opens the application as a floating panel
+  simple.html             Simplified one-page site at /simple (built from src/simple.html, do not edit directly)
   apply.html              Full-page application, served at /apply (for ads, texts and QR codes)
   assets/
     brand.css             Brand design system: colours, type, buttons, logo, nav, footer
@@ -18,6 +19,8 @@ netlify/
   functions/lead-digest.mjs Runs 7:30am Brisbane time: emails unfinished applications to follow up
   lib/leads.mjs             Shared database and email helpers
 supabase/schema.sql       Creates the locked-down leads table
+src/simple.html           Source for the simple page; the intake is inlined at build time
+scripts/build-simple.mjs  Rebuilds site/simple.html: node scripts/build-simple.mjs (run after changing the intake or src/simple.html)
 netlify.toml              Hosting config
 .env.example              The settings Netlify needs (copy into Netlify, never commit real values)
 ```
@@ -60,6 +63,9 @@ No licence numbers, dates of birth or ID documents are collected online.
 2. Site configuration > Environment variables: add everything in `.env.example` with real values.
 3. Deploy, then run through `/apply` with your own details to test.
 
+## Search engines
+Every page has a noindex tag and Netlify sends an `X-Robots-Tag: noindex` header, so nothing is searchable. Remove both once the employment contract review and licensing are done.
+
 ## Before going live
 - [ ] Add the real Credit Guide at `site/credit-guide.pdf` and a privacy policy page at `site/privacy.html`.
 - [ ] Replace `[Aggregator Name] ACL XXXXXXX` in both page footers.
@@ -68,7 +74,8 @@ No licence numbers, dates of birth or ID documents are collected online.
 - [ ] Confirm the claims on the homepage (30+ lenders, call back in 1 business day) match your aggregator arrangements.
 - [ ] Have your compliance contact review the privacy wording in `site/assets/intake.js` (search for `consent`) and the retention period in `supabase/schema.sql`.
 - [ ] Once the domain is registered: set `SITE_DOMAIN` at the top of `site/assets/intake.js`, `ALLOWED_ORIGINS` and `LEAD_EMAIL_FROM` in Netlify, and replace `hello@[your-domain].com.au` in the homepage contact section.
-- [ ] Fill in the ABN and Credit Representative Number placeholders in both page footers.
+- [ ] Fill in the ABN, Credit Representative Number, aggregator and Australian Credit Licence placeholders in every page footer.
+- [ ] Simple page: set the phone number in the footer and `BOOK_URL` (a booking link such as Calendly) near the bottom of `src/simple.html`, then rebuild.
 
 ## Viewing leads
 Supabase > Table Editor > `leads`, sorted by `updated_at`. Use `status` (`in_progress`, `complete`, `contacted`, `closed`) and `broker_notes` to track follow-up.

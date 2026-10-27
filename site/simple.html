@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<!-- Generated from src/simple.html by scripts/build-simple.mjs. Edit the source, not this file. -->
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Williams &amp; Co Asset Finance</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Asset finance for businesses and families. We compare lenders and disclose every fee before you sign. Start online in about 5 minutes.">
+<meta name="theme-color" content="#F7F8FA">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='18.9' fill='%230A1424' stroke='%234CC3F7' stroke-width='2.2'/%3E%3Cpath d='M11.1 14.2 15.2 26.9 20 17.4 24.8 26.9 28.9 14.2' fill='none' stroke='%234CC3F7' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;600;700&family=Funnel+Sans:wght@400;500;600&display=swap">
+<style>
+/* W&Co, simple version. One calm light page, one dark band for trust. Every call to action opens the same intake sheet. */
+:root{
+  color-scheme:light;
+  --paper:#F7F8FA; --white:#FFFFFF; --navy:#0A1424; --navy-2:#111E34;
+  --ink:#0A1424; --ink-2:#4A5A72; --line:#E1E6EE; --sky:#38BDF8; --sky-ink:#0279B4; --sky-soft:#E3F4FD;
+  --display:"Funnel Display","Funnel Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --text:"Funnel Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --gl:max(20px,env(safe-area-inset-left,0px)); --gr:max(20px,env(safe-area-inset-right,0px));
+
+  /* Tokens the intake assistant uses */
+  --ground:#F7F8FA; --surface:#FFFFFF; --tint:#F1F4F8; --teal:#0279B4; --teal-hover:#025E8C; --teal-soft:#E3F4FD;
+  --gold:#7C6CF2; --gold-ink:#5B4BD6; --gold-soft:#EEEBFE; --deep:#0A1424; --deep-ink:#F2F6FB; --deep-muted:#9AA9C0;
+  --on-accent:#FFFFFF; --success:#10B981; --error:#C0452F; --head:var(--display); --body:var(--text);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{font-family:var(--text);font-size:17px;line-height:1.55;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.035em;line-height:1.05;text-wrap:balance}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--sky-ink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin-inline:auto;padding-left:var(--gl);padding-right:var(--gr)}
+.sec{padding-block:clamp(64px,10vw,120px)}
+.lead{font-size:clamp(17px,2vw,19px);color:var(--ink-2);max-width:46ch}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:14px;border:1.5px solid transparent;
+  font:600 16.5px/1 var(--text);text-decoration:none;transition:background .2s,border-color .2s,transform .2s var(--ease);white-space:nowrap}
+.btn:active{transform:scale(.98)}
+.btn-main{background:var(--navy);color:#fff}
+.btn-main:hover{background:#18294A}
+.btn-ghost{border-color:var(--line);background:var(--white);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink-2)}
+.btn svg{width:18px;height:18px}
+
+/* Header */
+.top{padding-block:18px;padding-top:calc(18px + env(safe-area-inset-top,0px))}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:36px;height:36px;flex:none}
+.brand b{display:block;font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.brand small{display:block;font-size:12px;color:var(--ink-2);margin-top:3px;white-space:nowrap}
+.top a.call{font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line)}
+
+/* Hero */
+.hero{padding-block:clamp(40px,9vw,112px) clamp(56px,8vw,96px)}
+.hero h1{font-size:clamp(46px,10vw,104px);font-weight:600;letter-spacing:-.05em;line-height:.98;max-width:11ch}
+.hero h1 span{font-weight:300}
+.rise{display:block;width:min(420px,70%);height:auto;margin-block:28px 26px;overflow:visible}
+.rise path{fill:none;stroke:var(--sky);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0;animation:draw 1.6s .2s var(--ease) both}
+.rise circle{fill:var(--sky);animation:pop .4s 1.6s var(--ease) both}
+@keyframes draw{from{stroke-dashoffset:1}}
+@keyframes pop{from{transform:scale(0);opacity:0}}
+.rise circle{transform-box:fill-box;transform-origin:center}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.small{margin-top:16px;font-size:14px;color:var(--ink-2)}
+
+/* Split path */
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:36px}
+.path{display:flex;flex-direction:column;gap:10px;text-align:left;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:28px;min-height:200px;
+  transition:border-color .25s,transform .25s var(--ease),box-shadow .25s}
+.path:hover{border-color:var(--ink-2);transform:translateY(-2px);box-shadow:0 18px 40px -24px rgba(10,20,36,.35)}
+.path h3{font-size:clamp(26px,3vw,32px)}
+.path p{color:var(--ink-2);max-width:32ch}
+.path .go{margin-top:auto;display:flex;align-items:center;gap:8px;font-weight:600;font-size:15.5px;color:var(--sky-ink)}
+.path .go svg{width:18px;height:18px;transition:transform .25s var(--ease)}
+.path:hover .go svg{transform:translateX(4px)}
+
+/* Steps */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,48px);margin-top:44px;counter-reset:s}
+.steps li{counter-increment:s;border-top:1.5px solid var(--ink);padding-top:20px;display:grid;gap:8px}
+.steps li::before{content:counter(s);font-family:var(--display);font-size:15px;font-weight:600;color:var(--sky-ink)}
+.steps h3{font-size:24px;letter-spacing:-.025em}
+.steps p{color:var(--ink-2)}
+
+/* Why W&Co (dark band) */
+.why{background:var(--navy);color:#F2F6FB}
+.why .lead{color:#9AA9C0}
+.points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,48px);margin-top:44px}
+.points div{display:grid;gap:8px;align-content:start}
+.points svg{width:26px;height:26px;color:var(--sky);margin-bottom:6px}
+.points h3{font-size:24px;letter-spacing:-.025em}
+.points p{color:#9AA9C0}
+
+/* Anytime */
+.anytime .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) auto;gap:28px;align-items:end}
+.anytime h2,.sec>.wrap>h2{font-size:clamp(34px,5.4vw,58px)}
+
+/* Footer */
+.foot{border-top:1px solid var(--line);padding-block:48px calc(40px + env(safe-area-inset-bottom,0px));font-size:14.5px;color:var(--ink-2)}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:36px}
+.foot h4{font-family:var(--display);font-size:16px;font-weight:600;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em}
+.foot dl{display:grid;gap:6px}
+.foot dl div{display:flex;gap:10px}
+.foot dt{min-width:52px}
+.foot dd{color:var(--ink);font-weight:500;overflow-wrap:anywhere}
+.foot .links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-block:4px 14px}
+.foot .links a{color:var(--ink);font-weight:500}
+.foot p+p{margin-top:10px}
+.foot .legal{margin-top:32px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;line-height:1.55}
+
+/* Intake sheet */
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(10,20,36,.45);opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:90;top:0;right:0;bottom:0;width:min(460px,100vw);height:var(--app-h,100dvh);display:flex;flex-direction:column;background:var(--white);
+  box-shadow:-30px 0 80px -40px rgba(10,20,36,.5);transform:translateX(102%);visibility:hidden;transition:transform .4s var(--ease),visibility 0s .4s}
+.sheet.on{transform:none;visibility:visible;transition:transform .4s var(--ease)}
+.sheet-bar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px 12px 18px;padding-top:calc(12px + env(safe-area-inset-top,0px));border-bottom:1px solid var(--line)}
+.sheet-bar .brand svg{width:28px;height:28px}
+.sheet-bar .brand b{font-size:17px}
+.x{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--white);font-size:14.5px;font-weight:600}
+.x:hover{border-color:var(--ink-2)}
+.x svg{width:16px;height:16px}
+.sheet-body{flex:1;min-height:0}
+.resume{position:fixed;z-index:70;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translate(-50%,0);display:flex;align-items:center;gap:10px;
+  min-height:52px;padding:0 20px;border-radius:999px;border:0;background:var(--navy);color:#fff;font-weight:600;font-size:15.5px;box-shadow:0 18px 40px -16px rgba(10,20,36,.6);
+  transition:transform .35s var(--ease),opacity .25s;white-space:nowrap}
+.resume[hidden]{display:flex;opacity:0;transform:translate(-50%,140%);pointer-events:none}
+.resume i{width:8px;height:8px;border-radius:50%;background:var(--sky)}
+html.lock,html.lock body{overflow:hidden}
+
+/* Reveal: one quiet fade as sections enter (visible at rest without script) */
+.js [data-r]{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+
+@media (max-width:760px){
+  body{font-size:16.5px}
+  .split,.steps,.points,.foot-grid{grid-template-columns:minmax(0,1fr)}
+  .anytime .wrap{grid-template-columns:minmax(0,1fr)}
+  .ctas .btn{flex:1 1 100%}
+  .path{min-height:0;padding:24px}
+  .brand small{display:none}
+  .sheet{width:100vw;transform:translateY(102%);box-shadow:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js [data-r]{opacity:1;transform:none}
+}
+
+/* ---- Intake assistant styles (inlined from site/assets/intake.css) ---- */
+/* W&Co Finance application assistant. Every class is prefixed ei- so it can sit inside any page.
+   Fills whatever box it is placed in (100% height). Adapts to its own width with container queries. */
+
+.ei{container:ei/inline-size;display:flex;flex-direction:column;height:100%;min-height:0;min-width:0;background:var(--surface);color:var(--ink);font-family:var(--body)}
+
+.ei-head{flex:none;padding:20px 24px 14px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.ei-title{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.ei-title h2{font-size:20px;letter-spacing:-.02em;line-height:1.25;font-weight:700}
+.ei-saved{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink-2);background:var(--tint);border:1px solid var(--line);padding:5px 10px;border-radius:8px;white-space:nowrap}
+.ei-saved i{width:7px;height:7px;border-radius:50%;background:var(--ink-2);flex:none}
+.ei-saved.on{color:var(--ink)}
+.ei-saved.on i{background:var(--success);animation:ei-pulse 2s infinite}
+.ei-saved.err i{background:var(--error)}
+@keyframes ei-pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}70%{box-shadow:0 0 0 7px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+.ei-steps{display:flex;gap:6px}
+.ei-steps div{flex:1;min-width:0}
+.ei-steps b{display:block;height:6px;border-radius:999px;background:var(--line);overflow:hidden;position:relative}
+.ei-steps .done b{background:var(--teal)}
+.ei-steps .now b::after{content:"";position:absolute;inset:0 50% 0 0;background:var(--teal);border-radius:999px}
+.ei-steps small{display:block;margin-top:7px;font-size:12px;font-weight:600;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ei-steps .now small{color:var(--ink)}
+.ei-preview{font-size:12.5px;font-weight:600;color:var(--gold-ink);background:var(--gold-soft);border-radius:10px;padding:6px 10px;line-height:1.4}
+
+.ei-log{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.ei-msg{max-width:86%;padding:12px 16px;font-size:16px;line-height:1.55;overflow-wrap:anywhere;border-radius:18px;animation:ei-in .35s var(--ease) both}
+@keyframes ei-in{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
+.ei-bot{background:var(--tint);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:6px}
+.ei-user{background:var(--teal);color:var(--on-accent);align-self:flex-end;font-weight:600;border-bottom-right-radius:6px}
+.ei-note{background:var(--teal-soft);border-color:transparent;font-size:15px}
+.ei-note strong{font-weight:700}
+.ei-msg small{display:block;color:var(--ink-2);font-size:12.5px;line-height:1.5;margin-top:10px}
+.ei-msg ul{list-style:none;margin-top:10px;display:grid;gap:6px;font-size:15px;color:var(--ink-2)}
+.ei-msg ul li{display:grid;grid-template-columns:7px minmax(0,1fr);gap:10px}
+.ei-msg ul li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);margin-top:.6em}
+.ei-docs{display:grid;gap:8px;margin-top:12px}
+.ei-docs a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;background:var(--surface);border:1.5px solid var(--line);
+  text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;transition:border-color .2s}
+.ei-docs a:hover{border-color:var(--teal)}
+.ei-docs a span{color:var(--teal);font-size:14px}
+.ei-typing{align-self:flex-start;display:flex;gap:5px;padding:15px 16px;background:var(--tint);border:1px solid var(--line);border-radius:18px;border-bottom-left-radius:6px}
+.ei-typing i{width:7px;height:7px;border-radius:50%;background:var(--ink-2);animation:ei-dot 1s infinite}
+.ei-typing i:nth-child(2){animation-delay:.15s}.ei-typing i:nth-child(3){animation-delay:.3s}
+@keyframes ei-dot{0%,60%,100%{opacity:.25}30%{opacity:1}}
+
+.ei-next{align-self:stretch;background:var(--deep);color:var(--deep-ink);border-radius:22px;padding:22px 24px;display:grid;gap:12px;margin-top:4px}
+.ei-next h3{font-size:19px;letter-spacing:-.015em;line-height:1.25}
+.ei-next ol{list-style:none;display:grid}
+.ei-next li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;align-items:center;padding:12px 0;border-top:1px solid rgba(255,255,255,.1);font-size:15.5px;color:var(--deep-muted)}
+.ei-check{width:36px;height:36px;border-radius:50%;background:rgba(167,139,250,.16);color:#C4B5FD;display:grid;place-items:center}
+.ei-check svg{width:18px;height:18px}
+.ei-handover{align-self:stretch;border:1.5px dashed var(--line);border-radius:16px;padding:16px;display:grid;gap:10px}
+.ei-handover h4{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-ink)}
+.ei-handover pre{white-space:pre-wrap;font:12.5px/1.55 ui-monospace,Menlo,Consolas,monospace;color:var(--ink-2);max-height:340px;overflow:auto;font-variant-numeric:tabular-nums}
+
+.ei-composer{flex:none;border-top:1px solid var(--line);padding:14px 24px 16px;display:grid;grid-template-columns:minmax(0,1fr);gap:10px;background:var(--surface)}
+.ei-chips{display:flex;flex-wrap:wrap;gap:8px;max-height:min(40vh,240px);overflow-y:auto}
+.ei-chip{font-size:15px;font-weight:600;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);padding:10px 16px;border-radius:12px;min-height:44px;
+  transition:border-color .2s,background .2s,transform .2s var(--ease)}
+.ei-chip:hover{border-color:var(--teal);background:var(--teal-soft)}
+.ei-chip:active{transform:scale(.98)}
+.ei-chip.primary{background:var(--teal);border-color:var(--teal);color:var(--on-accent)}
+.ei-chip.primary:hover{background:var(--teal-hover);border-color:var(--teal-hover)}
+.ei-field{display:flex;gap:8px}
+.ei-field-wrap{flex:1;min-width:0;display:flex;align-items:center;background:var(--ground);border:1.5px solid var(--line);border-radius:14px;transition:border-color .2s,box-shadow .2s}
+.ei-field-wrap:focus-within{border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-soft)}
+.ei-field-wrap .ei-pre{padding-left:15px;color:var(--ink-2);font-weight:600}
+.ei-field-wrap input{flex:1;min-width:0;background:transparent;border:0;outline:none;color:var(--ink);font:500 16.5px var(--body);padding:12px 15px;font-variant-numeric:tabular-nums}
+.ei-field-wrap input::placeholder{color:var(--ink-2);opacity:.8}
+.ei-send{font:600 16px/1 var(--body);background:var(--teal);color:var(--on-accent);border:0;padding:0 22px;border-radius:12px;min-height:48px;transition:background .2s}
+.ei-send:hover{background:var(--teal-hover)}
+.ei-err{color:var(--error);font-size:14px;font-weight:500}
+.ei-err:empty{display:none}
+.ei-foot{display:flex;justify-content:space-between;gap:6px 16px;flex-wrap:wrap;font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+.ei-link{background:none;border:0;color:var(--ink-2);text-decoration:underline;font-size:12.5px;padding:0}
+.ei-link:hover{color:var(--ink)}
+.ei-links{display:flex;gap:14px;margin-left:auto}
+.ei-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* Narrow boxes: a phone, or the floating panel on desktop */
+@container ei (max-width:520px){
+  .ei-head{padding:16px 16px 12px;gap:12px}
+  .ei-title h2{font-size:18px}
+  .ei-steps small{display:none}
+  .ei-log{padding:16px}
+  .ei-msg{max-width:92%;font-size:15.5px}
+  .ei-note{font-size:14.5px}
+  .ei-composer{padding:12px 16px 14px}
+  .ei-chip{padding:10px 15px;font-size:14.5px}
+  .ei-send{padding:0 18px}
+  .ei-foot>span:first-child{display:none}
+  .ei-next{padding:20px}
+}
+/* Very short windows, e.g. a phone on its side */
+@media (max-height:520px){
+  .ei-head{padding-top:10px;padding-bottom:8px;gap:8px}
+  .ei-title h2{font-size:16px}
+  .ei-steps small{display:none}
+  .ei-log{padding-top:12px;padding-bottom:12px}
+  .ei-composer{padding-top:10px;padding-bottom:8px}
+  .ei-chips{max-height:34vh}
+  .ei-foot>span:first-child{display:none}
+}
+
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="mark" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18.9" fill="#0A1424" stroke="#4CC3F7" stroke-width="2.2"/><path d="M11.1 14.2 15.2 26.9 20 17.4 24.8 26.9 28.9 14.2" fill="none" stroke="#4CC3F7" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Williams &amp; Co Asset Finance, home">
+      <svg aria-hidden="true"><use href="#mark"/></svg>
+      <span><b>W&amp;Co</b><small>Williams &amp; Co Asset Finance</small></span>
+    </a>
+    <a class="call" href="#contact" data-book>Book a call</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Asset finance, <span>done straight.</span></h1>
+      <svg class="rise" viewBox="0 0 420 60" aria-hidden="true"><path pathLength="1" d="M2 50 L118 50 L150 30 L190 42 L262 14"/><circle cx="276" cy="8" r="5"/></svg>
+      <p class="lead">For businesses and families. We compare lenders and show every fee before you sign anything.</p>
+      <div class="ctas">
+        <button class="btn btn-main" type="button" data-start>Start your application <svg aria-hidden="true"><use href="#arrow"/></svg></button>
+        <a class="btn btn-ghost" href="#contact" data-book>Book a call</a>
+      </div>
+      <p class="small">About 5 minutes. No credit check to start.</p>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0" aria-labelledby="splitH">
+    <div class="wrap" data-r>
+      <h2 id="splitH">What are you financing?</h2>
+      <div class="split">
+        <button class="path" type="button" data-start="Business use">
+          <h3>For your business</h3>
+          <p>Utes, trucks, equipment and fit-outs for sole traders and SMEs.</p>
+          <span class="go">Start a business application <svg aria-hidden="true"><use href="#arrow"/></svg></span>
+        </button>
+        <button class="path" type="button" data-start="Personal use">
+          <h3>For you personally</h3>
+          <p>Cars, boats, caravans and novated leases.</p>
+          <span class="go">Start a personal application <svg aria-hidden="true"><use href="#arrow"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0" aria-labelledby="howH">
+    <div class="wrap" data-r>
+      <h2 id="howH">Three steps. No surprises.</h2>
+      <ol class="steps">
+        <li><h3>Tell us what you need</h3><p>Online in about 5 minutes, or on a quick call.</p></li>
+        <li><h3>We compare lenders</h3><p>We look across our panel for the right fit.</p></li>
+        <li><h3>You get a clear quote</h3><p>Every cost shown before you commit to anything.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec why" aria-labelledby="whyH">
+    <div class="wrap" data-r>
+      <h2 id="whyH">Why W&amp;Co</h2>
+      <p class="lead" style="margin-top:14px">It's our family name on the door. We look after it.</p>
+      <div class="points">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M8.5 12.5 11 15l4.5-5"/></svg><h3>No pressure</h3><p>No hard sell. Take your time and ask anything.</p></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M9 11h6M9 15h6M9 7h3"/></svg><h3>Everything upfront</h3><p>Fees and costs disclosed before anything is signed.</p></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18 9 12l4 3 7-9"/><path d="M15 6h5v5"/></svg><h3>15 years in finance</h3><p>Experience from inside the industry, now on your side.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec anytime" aria-labelledby="anyH">
+    <div class="wrap" data-r>
+      <div>
+        <h2 id="anyH">Start anytime. Even at 2am.</h2>
+        <p class="lead" style="margin-top:14px">No long forms. Answer a few questions at your own pace and pick up where you left off.</p>
+      </div>
+      <button class="btn btn-main" type="button" data-start>Start your application <svg aria-hidden="true"><use href="#arrow"/></svg></button>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Talk to us</h4>
+        <dl>
+          <div><dt>Call</dt><dd>[0400 000 000]</dd></div>
+          <div><dt>Email</dt><dd>hello@[your-domain].com.au</dd></div>
+          <div><dt>Based</dt><dd>Brisbane, helping Australia wide</dd></div>
+        </dl>
+      </div>
+      <div>
+        <h4>Important information</h4>
+        <div class="links"><a href="/credit-guide.pdf">Credit guide</a><a href="/privacy">Privacy policy</a></div>
+        <p>Have a complaint? Tell us first and we'll work to fix it. If you're not satisfied, you can contact the Australian Financial Complaints Authority (AFCA) for free: <a href="https://www.afca.org.au" target="_blank" rel="noopener">afca.org.au</a>, 1800 931 678, or GPO Box 3, Melbourne VIC 3001.</p>
+      </div>
+    </div>
+    <p class="legal">Williams &amp; Co Asset Finance Pty Ltd ABN [XX XXX XXX XXX] is a Credit Representative (Credit Representative Number [XXXXXX]) of [Aggregator Name], Australian Credit Licence [XXXXXX]. Information on this site is general only and isn't financial advice. Consider your own circumstances before acting. All finance is subject to lender approval. &copy; <span id="yr">2026</span> Williams &amp; Co Asset Finance.</p>
+  </div>
+</footer>
+
+<!-- Intake sheet -->
+<div class="scrim" id="scrim"></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Your application" aria-hidden="true">
+  <div class="sheet-bar">
+    <span class="brand"><svg aria-hidden="true"><use href="#mark"/></svg><b>W&amp;Co</b></span>
+    <button class="x" type="button" id="closeSheet">Close <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="sheet-body" id="app"></div>
+</aside>
+<button class="resume" id="resume" type="button" hidden><i></i><span id="resumeText">Continue your application</span></button>
+
+<script>
+/* ---- Intake assistant (inlined from site/assets/intake.js) ---- */
+/* W&Co Finance application assistant.
+   Usage: const app = BrokerIntake.mount(element, { onState(state) {}, canFocus() { return true; } });
+   The same code powers the floating panel on the homepage and the full page at /apply.
+   Progress is shared between them (stored in this browser), and saved to the broker system
+   through /.netlify/functions/lead once contact details are in. */
+(() => {
+'use strict';
+
+/* ---------- Config ---------- */
+const API = '/.netlify/functions/lead';
+const SITE_DOMAIN = 'your-domain.com.au'; // set to the live domain once it's registered
+const LIVE_HOSTS = new RegExp(`(^|\\.)${SITE_DOMAIN.replace(/\./g, '\\.')}$|\\.netlify\\.app$|^localhost$|^127\\.0\\.0\\.1$`);
+const PREVIEW = !LIVE_HOSTS.test(location.hostname);
+const DOCS = { privacy: '/privacy', creditGuide: '/credit-guide.pdf' };
+const STORE = 'wco-apply-v1';
+
+/* ---------- Helpers ---------- */
+const STATES = ['QLD', 'NSW', 'VIC', 'SA', 'WA', 'TAS', 'NT', 'ACT'];
+const TEN = { 'Under 1 year': 0.5, '1 to 2 years': 1.5, '2 to 3 years': 2.5, '3 years or more': 3 };
+const TENOPTS = Object.keys(TEN);
+const DONE = "That's everything";
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const money = n => Number(n).toLocaleString('en-AU', { style: 'currency', currency: 'AUD', maximumFractionDigits: 0 });
+const monthFmt = v => { if (!v) return ''; const [y, m] = v.split('-'); return new Date(+y, +m - 1, 1).toLocaleDateString('en-AU', { month: 'short', year: 'numeric' }); };
+const isC = a => a.path === 'Personal use';
+const isB = a => a.path === 'Business use';
+const pmt = (P, rate, n) => { const r = rate / 12; return P * r / (1 - Math.pow(1 + r, -n)); };
+const uuid = () => (crypto.randomUUID ? crypto.randomUUID() :
+  'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => { const r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 3 | 8)).toString(16); }));
+const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+const TICK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+
+/* ---------- The question flow ----------
+   Rebuilt from the answers every time, so branches and loops stay consistent
+   and "change last answer" is simply removing one answer. */
+function steps(a) {
+  const S = []; const add = o => { S.push(o); return o.id in a; };
+  const sAbout = 'About you', sFin = 'The finance', sBiz = 'Business', sRes = 'Residency', sWork = 'Work', sInc = 'Income', sCom = 'Loans', sCred = 'Credit', sEnd = 'Wrap up';
+
+  if (!add({ id: 'path', sec: sAbout, type: 'choice', ask: "First up, is this finance for personal use or for a business?", opts: ['Personal use', 'Business use'] })) return S;
+
+  // Privacy collection notice and consent come before any personal details.
+  add({ id: 'consent', sec: sAbout, type: 'choice', opts: ['I agree, let’s start'], primary: true,
+    ask: a => `Before we start, a quick note on your information.
+      <ul><li>We collect it to assess what finance may suit you and to contact you about it.</li>
+      <li>We'll only share it with lenders and our aggregator if you decide to go ahead.</li>
+      <li>You can ask to see or correct it at any time.</li></ul>
+      <div class="ei-docs">
+        <a href="${DOCS.privacy}" target="_blank" rel="noopener">Privacy and Collection Notice <span>Open</span></a>
+        ${isC(a) ? `<a href="${DOCS.creditGuide}" target="_blank" rel="noopener">Credit Guide <span>Open</span></a>` : ''}
+      </div>
+      <small>${isC(a) ? 'The Credit Guide explains who we are, the services we provide, and how to make a complaint. ' : ''}By continuing you agree to us collecting your details and contacting you about your enquiry.</small>` });
+
+  add({ id: 'name', sec: sAbout, type: 'text', ph: 'First name', ask: "Great. What's your first name?" });
+  add({ id: 'mobile', sec: sAbout, type: 'tel', ph: '04xx xxx xxx', ask: a => `Nice to meet you, ${esc(a.name)}. What's the best mobile to reach you on?`,
+    valid: v => /^(\+?61|0)4\d{8}$/.test(v.replace(/[\s()-]/g, '')) || "That doesn't look like an Australian mobile. Try 04xx xxx xxx." });
+  add({ id: 'email', sec: sAbout, type: 'email', ph: 'you@example.com', ask: "And your email address?", valid: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'Please check the email address.' });
+  add({ id: 'suburb', sec: sAbout, type: 'text', ph: 'Suburb', ask: "Which suburb are you in?" });
+  add({ id: 'state', sec: sAbout, type: 'choice', opts: STATES, ask: "And which state?",
+    after: a => `Thanks ${esc(a.name)}. <strong>Your details are saved.</strong> If you need to stop at any point, a broker can pick up from here.` });
+
+  if (isC(a)) {
+    add({ id: 'rel', sec: sAbout, type: 'choice', opts: ['Single', 'Married', 'De facto'], ask: "Are you single, married or in a de facto relationship?" });
+    add({ id: 'living', sec: sAbout, type: 'choice', opts: ['Renting', 'Own with a mortgage', 'Own outright', 'Boarding or with family'], ask: "What's your living situation?" });
+  }
+
+  // Finance
+  const assetOpts = isB(a) ? ['Car or ute', 'Truck or trailer', 'Equipment or machinery', 'Medical or dental equipment', 'Other'] : ['Car', 'Motorbike', 'Boat', 'Caravan or camper', 'Other'];
+  if (add({ id: 'asset', sec: sFin, type: 'choice', opts: assetOpts, ask: "What are you looking to finance?" }) && a.asset === 'Other')
+    add({ id: 'assetOther', sec: sFin, type: 'text', ph: 'Describe it', ask: "No problem. What is it?" });
+  if (a.asset === 'Car' || a.asset === 'Car or ute')
+    add({ id: 'condition', sec: sFin, type: 'choice', opts: ['New', 'Pre-owned'], ask: "Is it new or pre-owned?" });
+  if (add({ id: 'stage', sec: sFin, type: 'choice', opts: ["Yes, I've found it", 'Still shopping around', 'Just working out a budget'], ask: "Have you found the exact one yet?" }) && a.stage === "Yes, I've found it")
+    add({ id: 'detail', sec: sFin, type: 'text', ph: 'e.g. 2023 Toyota RAV4 GXL, dealer sale', ask: "Tell me about it: year, make, model, and whether it's from a dealer or a private sale." });
+  add({ id: 'amount', sec: sFin, type: 'money', ph: '45000',
+    ask: a => a.stage === 'Just working out a budget' ? "Roughly how much are you thinking of borrowing? A ballpark is fine." : "How much are you looking to borrow? A rough figure is fine.",
+    valid: v => (+v >= 2000 && +v <= 5000000) || 'Enter an amount between $2,000 and $5,000,000.',
+    after: a => { const lo = pmt(+a.amount, .075, 60), hi = pmt(+a.amount, .12, 60);
+      return `For a rough feel: over 5 years, ${money(a.amount)} works out around <strong>${money(lo)} to ${money(hi)} a month</strong> before fees, depending on the rate you're approved for. Your broker will compare actual lender rates for your situation.`; } });
+
+  if (isB(a)) {
+    add({ id: 'biz', sec: sBiz, type: 'text', ph: 'Business or trading name', ask: "What's the business called?" });
+    add({ id: 'abn', sec: sBiz, type: 'text', ph: '11 digits', ask: "What's the ABN?", valid: v => /^\d{11}$/.test(v.replace(/\s/g, '')) || 'An ABN is 11 digits.' });
+    add({ id: 'structure', sec: sBiz, type: 'choice', opts: ['Sole trader', 'Company', 'Trust', 'Partnership'], ask: "How is the business set up?" });
+    add({ id: 'trading', sec: sBiz, type: 'choice', opts: ['Under 1 year', '1 to 2 years', '2 years or more'], ask: "How long has the ABN been active?",
+      after: a => a.trading === 'Under 1 year' ? "<strong>Good to know:</strong> newer businesses can still get finance. Some lenders specialise in it." : null });
+    add({ id: 'gst', sec: sBiz, type: 'choice', opts: ['Yes', 'No'], ask: "Is the business registered for GST?" });
+    add({ id: 'industry', sec: sBiz, type: 'text', ph: 'e.g. Landscaping', ask: "What does the business do?" });
+    add({ id: 'turnover', sec: sBiz, type: 'choice', opts: ['Under $75k', '$75k to $250k', '$250k to $1m', 'Over $1m'], ask: "Roughly what's the annual turnover?" });
+  }
+
+  // Residency
+  if (add({ id: 'res', sec: sRes, type: 'choice', opts: ['Australian citizen', 'Permanent resident', 'On a visa'], ask: "Are you an Australian citizen, permanent resident, or on a visa?" }) && a.res === 'On a visa') {
+    add({ id: 'visa', sec: sRes, type: 'text', ph: 'e.g. Subclass 482', ask: "Which visa type or subclass number?" });
+    add({ id: 'visaExp', sec: sRes, type: 'month', ask: "When does it expire?" });
+  }
+
+  if (isC(a)) {
+    // Employment: current role, then earlier roles until about 3 years is covered (two previous at most)
+    let total = 0;
+    for (let i = 0; i < 3; i++) {
+      if (i > 0 && total >= 3) break;
+      const p = `emp${i}_`;
+      const opts = ['Full-time', 'Part-time', 'Casual', 'Contract', 'Self-employed'].concat(i === 0 ? ['Not working right now'] : []);
+      if (!add({ id: p + 'status', sec: sWork, type: 'choice', opts,
+        ask: i === 0 ? "Now your work. What's your current employment status?" :
+          (a.emp0_status === 'Not working right now' && i === 1 ? "What was your most recent job?" : "Lenders like to see about 3 years of work history. What was the job before that?") })) break;
+      if (a[p + 'status'] === 'Not working right now') continue;
+      add({ id: p + 'employer', sec: sWork, type: 'text', ph: 'Employer name', ask: i === 0 ? "Who do you work for?" : "Who was the employer?" });
+      add({ id: p + 'title', sec: sWork, type: 'text', ph: 'Job title', ask: "And your job title or occupation?" });
+      if (!add({ id: p + 'tenure', sec: sWork, type: 'choice', opts: TENOPTS, ask: i === 0 ? "How long have you been there?" : "How long were you there?",
+        after: i === 0 ? (() => "<strong>Good to know:</strong> lenders look at how long you've been in your job and your work history before it. A recent move is common and doesn't rule you out.") : undefined })) break;
+      total += TEN[a[p + 'tenure']];
+    }
+    if (!('emp0_status' in a)) return S;
+
+    if (add({ id: 'incType', sec: sInc, type: 'choice', opts: ['Annual salary before tax', 'What lands in my account each pay', 'No regular pay right now'], ask: "How would you like to tell me your income?" })) {
+      if (a.incType === 'Annual salary before tax') add({ id: 'incAnnual', sec: sInc, type: 'money', ph: '85000', ask: "What's your annual salary before tax?" });
+      if (a.incType === 'What lands in my account each pay') {
+        add({ id: 'payFreq', sec: sInc, type: 'choice', opts: ['Weekly', 'Fortnightly', 'Monthly'], ask: "How often are you paid?" });
+        add({ id: 'payAmt', sec: sInc, type: 'money', ph: '2400', ask: a => `And what lands in your account each ${({ Weekly: 'week', Fortnightly: 'fortnight', Monthly: 'month' })[a.payFreq] || 'pay'}, after tax?` });
+      }
+    }
+    if (a.rel === 'Married' || a.rel === 'De facto') {
+      if (add({ id: 'partner', sec: sInc, type: 'choice', opts: ['Yes, include it', 'No, just mine', 'My partner isn’t working'], ask: "Would you like to include your partner's income? It can make a real difference to what lenders will approve." }) && a.partner === 'Yes, include it') {
+        add({ id: 'pFreq', sec: sInc, type: 'choice', opts: ['Weekly', 'Fortnightly', 'Monthly'], ask: "How often are they paid?" });
+        add({ id: 'pAmt', sec: sInc, type: 'money', ph: '1800', ask: "Roughly what lands in their account each pay, after tax? That's all we need about them for now." });
+      }
+    }
+    if (add({ id: 'cl', sec: sInc, type: 'choice', opts: ['Yes', 'No'], ask: "Do you receive any Centrelink payments, like Family Tax Benefit?" }) && a.cl === 'Yes') {
+      add({ id: 'clType', sec: sInc, type: 'text', ph: 'e.g. Family Tax Benefit A', ask: "Which payment?" });
+      add({ id: 'clAmt', sec: sInc, type: 'money', ph: '450', ask: "About how much per fortnight?" });
+    }
+  }
+
+  // Loans and commitments, added one at a time
+  const lopts = isB(a) ? ['Equipment or vehicle finance', 'Business loan', 'Overdraft or business card', 'ATO payment plan', 'Other']
+                       : ['Credit card', 'Personal loan', 'Car loan', 'Home loan', 'Buy now pay later', 'Other'];
+  for (let i = 0; i < 10; i++) {
+    const id = `liab${i}`;
+    if (!add({ id, sec: sCom, type: 'choice', opts: lopts.concat(i === 0 ? ['None'] : [DONE]),
+      after: i === 0 && !isB(a) ? (x => x.liab0 && x.liab0 !== 'None' ? "<strong>Good to know:</strong> lenders count your full card limits, not just what you owe, so it helps to list each one." : null) : undefined,
+      ask: i === 0 ? (isB(a) ? "Does the business have any finance or debts at the moment? Add them one at a time." : "Do you have any loans or credit cards at the moment? Add them one at a time.") : "Got it. Anything else?" })) break;
+    const t = a[id]; if (t === 'None' || t === DONE) break;
+    const isLimit = /card|Overdraft|Buy now/.test(t);
+    if (!add({ id: id + '_amt', sec: sCom, type: 'money', ph: isLimit ? '5000' : '450', ask: isLimit ? `What's the limit on that ${t.toLowerCase()}?` : "Roughly what's the monthly repayment?" })) break;
+  }
+
+  // Credit history: their own view, plus any past issues. No credit check happens here.
+  add({ id: 'creditSelf', sec: sCred, type: 'choice', opts: ['Excellent', 'Good', 'Average', 'Not great', 'Not sure'],
+    ask: (isB(a) ? "Now a quick one on your personal credit history." : "Now a quick one on your credit history.") + " How would you rate it yourself? Just your best guess, there's no credit check here." });
+  if (add({ id: 'creditIssues', sec: sCred, type: 'choice', opts: ['No, never', 'Yes, a default or late payments', 'Yes, bankruptcy or a debt agreement', 'Not sure'],
+    ask: "Have you ever had any issues with credit, like a default, late payments or bankruptcy? Plenty of people have, and it doesn't rule you out. It just helps us pick the right lender." })
+    && /^Yes/.test(a.creditIssues))
+    add({ id: 'creditDetail', sec: sCred, type: 'text', ph: 'e.g. $900 phone bill default in 2022, now paid',
+      ask: "Thanks for being upfront. Briefly, what happened, roughly when, and has it been paid or finished?" });
+
+  if (add({ id: 'assets', sec: sEnd, type: 'choice', opts: ['Add a quick summary', 'Skip, I’ll cover it on the call'], ask: "Optional: would you like to list any assets, like savings, property or vehicles? Totally fine to skip." }) && a.assets === 'Add a quick summary')
+    add({ id: 'assetsText', sec: sEnd, type: 'text', ph: 'e.g. $15k savings, 2018 Hilux', ask: "Go for it. A rough list is perfect." });
+  add({ id: 'call', sec: sEnd, type: 'choice', opts: ['Morning', 'Lunchtime', 'Afternoon', 'After 5pm', 'Text me first'], ask: "Last one. When's best for a broker to get in touch?" });
+  return S;
+}
+const textOf = (s, a) => typeof s.ask === 'function' ? s.ask(a) : s.ask;
+const display = (s, v) => s.type === 'money' ? money(v) : s.type === 'month' ? monthFmt(v) : v;
+const sectionsFor = a => isB(a) ? ['About you', 'The finance', 'Business', 'Residency', 'Loans', 'Credit', 'Wrap up']
+                                : ['About you', 'The finance', 'Residency', 'Work', 'Income', 'Loans', 'Credit', 'Wrap up'];
+
+/* ---------- Broker summary (sent with each save, used for the handover email) ---------- */
+function summarise(a, meta, finished, leadId) {
+  const C = isC(a), rows = {};
+  const put = (sec, k, v) => { if (v === undefined || v === '') return; (rows[sec] = rows[sec] || []).push([k, String(v)]); };
+  put('Contact', 'Name', a.name); put('Contact', 'Mobile', a.mobile); put('Contact', 'Email', a.email);
+  if (a.suburb) put('Contact', 'Location', [a.suburb, a.state].filter(Boolean).join(', '));
+  put('Contact', 'Best time', a.call);
+  put('Applicant', 'Path', a.path); put('Applicant', 'Relationship', a.rel); put('Applicant', 'Living', a.living);
+  put('Applicant', 'Residency', a.res === 'On a visa' ? `Visa ${a.visa || ''}${a.visaExp ? ', expires ' + monthFmt(a.visaExp) : ''}` : a.res);
+  put('Finance', 'Asset', a.asset === 'Other' ? a.assetOther : a.asset); put('Finance', 'Condition', a.condition); put('Finance', 'Stage', a.stage); put('Finance', 'Details', a.detail);
+  if (a.amount) put('Finance', 'Amount', money(a.amount));
+  put('Business', 'Name', a.biz); put('Business', 'ABN', a.abn); put('Business', 'Structure', a.structure); put('Business', 'ABN age', a.trading);
+  put('Business', 'GST', a.gst); put('Business', 'Industry', a.industry); put('Business', 'Turnover', a.turnover);
+  for (let i = 0; i < 3; i++) { const p = `emp${i}_`; if (!a[p + 'status']) continue;
+    put('Employment', i === 0 ? 'Current' : 'Previous' + (i === 2 ? ' (2)' : ''), [a[p + 'status'], a[p + 'title'], a[p + 'employer'], a[p + 'tenure']].filter(Boolean).join(' | ')); }
+  if (a.incAnnual) put('Income', 'Salary', money(a.incAnnual) + ' p.a. gross');
+  if (a.payAmt) put('Income', 'Net pay', `${money(a.payAmt)} ${(a.payFreq || '').toLowerCase()}`);
+  if (a.incType === 'No regular pay right now') put('Income', 'Pay', 'None declared');
+  if (a.partner) put('Income', 'Partner', a.pAmt ? `${money(a.pAmt)} ${(a.pFreq || '').toLowerCase()} net` : a.partner);
+  if (a.cl) put('Income', 'Centrelink', a.cl === 'Yes' ? `${a.clType || ''}${a.clAmt ? ', ' + money(a.clAmt) + '/fn' : ''}` : 'No');
+  let limits = 0;
+  for (let i = 0; i < 10; i++) { const t = a['liab' + i]; if (!t || t === DONE) break; if (t === 'None') { put('Commitments', 'Declared', 'None'); break; }
+    const v = a['liab' + i + '_amt']; const isLimit = /card|Overdraft|Buy now/.test(t); if (v && isLimit) limits += +v;
+    put('Commitments', t, v ? (isLimit ? money(v) + ' limit' : money(v) + '/mth') : 'pending'); }
+  put('Credit', 'Self-rated', a.creditSelf); put('Credit', 'Past issues', a.creditIssues); put('Credit', 'Details', a.creditDetail);
+  if (a.assets) put('Other', 'Assets', a.assetsText || 'Skipped, confirm on call');
+  if (meta.consentAt) put('Compliance', 'Privacy consent', new Date(meta.consentAt).toLocaleString('en-AU'));
+  if (C && meta.consentAt) put('Compliance', 'Credit Guide', 'Provided in chat');
+
+  const flags = [];
+  if (a.res === 'On a visa' && a.visaExp) { const [y, m] = a.visaExp.split('-').map(Number); const now = new Date(); const months = (y - now.getFullYear()) * 12 + (m - 1 - now.getMonth());
+    if (months < 60) flags.push(['warn', `Visa expires ${monthFmt(a.visaExp)}, about ${Math.max(months, 0)} months away. Shorter than a 5 year term.`]); }
+  if (a.emp0_status === 'Not working right now') flags.push(['warn', 'Not currently employed. Confirm income source.']);
+  if (a.emp0_status === 'Casual' && a.emp0_tenure === 'Under 1 year') flags.push(['warn', 'Casual under 12 months in current role.']);
+  else if (a.emp0_tenure === 'Under 1 year') flags.push(['warn', 'Under 12 months in current role. Check probation.']);
+  if (a.trading === 'Under 1 year') flags.push(['warn', 'ABN under 12 months. Limited lender panel.']);
+  if (/^Yes/.test(a.creditIssues || '')) flags.push(['warn', `Credit issue declared: ${a.creditIssues.replace(/^Yes, /, '')}${a.creditDetail ? ` (${a.creditDetail})` : ''}. Check file before choosing lenders.`]);
+  else if (a.creditSelf === 'Not great') flags.push(['warn', 'Self-rated credit "Not great". Check file before choosing lenders.']);
+  if (a.creditIssues === 'Not sure' || a.creditSelf === 'Not sure') flags.push(['info', 'Unsure of own credit history. Confirm on credit check.']);
+  if (a.cl === 'Yes') flags.push(['info', 'Centrelink income declared. Check lender policy on acceptance.']);
+  if (a.partner === 'Yes, include it') flags.push(['info', 'Partner income included. Partner details and consent needed on call.']);
+  if (limits) flags.push(['info', `Total card and revolving limits ${money(limits)}. Lenders assess around 3.8% of limit monthly.`]);
+  if (a.stage === 'Just working out a budget') flags.push(['info', 'No asset chosen yet. Pre-approval candidate.']);
+  if (a.state && a.state !== 'QLD') flags.push(['info', `Interstate (${a.state}).`]);
+
+  const todo = C ? ['Driver licence and date of birth', 'Identity verification (VOI)', 'Credit check consent', 'Requirements and objectives', 'Dependants and living expenses']
+                 : ['Director licence and date of birth', 'Identity verification (VOI)', 'Credit check consent', 'Recent BAS or financials if required', 'Supplier invoice or quote'];
+  if (a.assets && !a.assetsText) todo.push('Assets and position');
+  if (a.partner === 'Yes, include it') todo.push('Partner details if joint application');
+
+  const all = steps(a); const done = all.filter(s => s.id in a).length;
+  const percent = finished ? 80 : Math.min(79, Math.round(done / Math.max(all.length, isC(a) ? 34 : 28) * 80));
+
+  let notes = `W&CO FINANCE | ONLINE APPLICATION\nRef ${leadId ? leadId.slice(0, 8).toUpperCase() : 'n/a'} | ${finished ? 'Complete' : 'Partial'} (${percent}%)\n`;
+  for (const [k, r] of Object.entries(rows)) notes += `\n${k.toUpperCase()}\n` + r.map(([x, y]) => `  ${x}: ${y}`).join('\n') + '\n';
+  if (flags.length) notes += `\nFLAGS\n` + flags.map(f => '  - ' + f[1]).join('\n') + '\n';
+  notes += `\nTO COLLECT ON CALL\n` + todo.map(x => '  [ ] ' + x).join('\n') + '\n';
+  return { rows, flags, todo, percent, notes };
+}
+
+/* ---------- Mount ---------- */
+function mount(root, opts = {}) {
+  let ans = {}, order = [], meta = {}, busy = false, finished = false, leadId = null;
+  const canFocus = () => (opts.canFocus ? opts.canFocus() : true) && matchMedia('(pointer: fine)').matches;
+
+  root.classList.add('ei');
+  root.innerHTML = `
+    <div class="ei-head">
+      <div class="ei-title"><h2>${esc(opts.title || 'Your application')}</h2><span class="ei-saved"><i></i><span>Not started</span></span></div>
+      <div class="ei-steps"></div>
+      ${PREVIEW ? '<div class="ei-preview">Preview mode. Answers are not saved or sent anywhere.</div>' : ''}
+    </div>
+    <div class="ei-log" aria-live="polite"></div>
+    <div class="ei-composer">
+      <div class="ei-input"></div>
+      <div class="ei-err" role="alert"></div>
+      <div class="ei-foot">
+        <span>General information only. Not a quote or credit advice.</span>
+        <span class="ei-links"><button class="ei-link" type="button" data-act="undo">Change last answer</button><button class="ei-link" type="button" data-act="restart">Start over</button></span>
+      </div>
+      <div class="ei-hp" aria-hidden="true"><label>Leave blank <input name="company_website" tabindex="-1" autocomplete="off"></label></div>
+    </div>`;
+  const $ = s => root.querySelector(s);
+  const log = $('.ei-log'), inputEl = $('.ei-input'), errEl = $('.ei-err'), savedEl = $('.ei-saved'), stepsEl = $('.ei-steps'), hp = $('.ei-hp input');
+  const next = () => steps(ans).find(s => !(s.id in ans));
+  const toEnd = () => { log.scrollTop = log.scrollHeight; };
+
+  /* Persistence in this browser (resume after a refresh, shared across pages) */
+  const persist = () => { try { localStorage.setItem(STORE, JSON.stringify({ leadId, ans, order, meta, finished })); } catch (e) {} };
+  const restore = () => { try { const d = JSON.parse(localStorage.getItem(STORE) || 'null'); if (d && d.leadId) { ({ leadId, ans, order, meta } = d); finished = !!d.finished; return true; } } catch (e) {} return false; };
+  const clearStore = () => { try { localStorage.removeItem(STORE); } catch (e) {} };
+
+  /* Saving to the broker system */
+  const setSaved = (state, text) => { savedEl.className = 'ei-saved' + (state ? ' ' + state : ''); savedEl.lastElementChild.textContent = text; };
+  let saveTimer = null, pending = false;
+  const summary = () => summarise(ans, meta, finished, leadId);
+  const payload = stage => { const s = summary();
+    return { id: leadId, stage, answers: ans, meta, summary: { rows: s.rows, flags: s.flags, todo: s.todo, notes: s.notes, percent: s.percent },
+      hp: hp.value, page: location.pathname, referrer: document.referrer || null }; };
+  async function save(stage) {
+    if (!leadId || !('state' in ans)) return true;
+    pending = false; clearTimeout(saveTimer);
+    if (PREVIEW) { setSaved('on', stage === 'complete' ? 'Sent (preview)' : 'Saved (preview)'); return true; }
+    try {
+      setSaved('', 'Saving');
+      const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload(stage)), keepalive: stage !== 'complete' });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      setSaved('on', stage === 'complete' ? 'Sent to broker' : 'Saved');
+      return true;
+    } catch (e) { setSaved('err', 'Not saved yet'); return false; }
+  }
+  const queueSave = () => { if (!('state' in ans) || finished) return; pending = true; clearTimeout(saveTimer); saveTimer = setTimeout(() => save('progress'), 1200); };
+  addEventListener('pagehide', () => { if (pending && !PREVIEW) navigator.sendBeacon?.(API, new Blob([JSON.stringify(payload('progress'))], { type: 'application/json' })); });
+
+  /* Chat rendering */
+  function bubble(kind, html, isText) {
+    const d = document.createElement('div'); d.className = 'ei-msg ei-' + kind.split(' ').join(' ei-');
+    if (isText) d.textContent = html; else d.innerHTML = html;
+    log.appendChild(d); toEnd(); return d;
+  }
+  const WELCOME = "Hi, I'm the W&Co Finance application assistant. I'll gather the details a broker needs so you don't have to fill in forms or wait on hold. It takes about 5 minutes, and a real broker reviews everything before anything goes to a lender.";
+  const NO_ID = "<strong>No ID needed here.</strong> I won't ask for your licence, date of birth or documents. Your broker handles those securely on the call.";
+
+  function rebuild() {
+    log.innerHTML = '';
+    bubble('bot', WELCOME); bubble('bot note', NO_ID);
+    const a = {};
+    for (const id of order) {
+      const s = steps(a).find(x => x.id === id); if (!s) continue;
+      bubble('bot', textOf(s, a)); a[id] = ans[id];
+      bubble('user', display(s, ans[id]), true);
+      if (s.after) { const h = s.after(a); if (h) bubble('bot note', h); }
+      if (id === 'path' && meta.prefill) bubble('bot note', `Got it: <strong>${esc(meta.prefill.label)}</strong>${meta.prefill.amount ? `, around <strong>${money(meta.prefill.amount)}</strong>` : ''}. I'll skip those questions.`);
+    }
+    render();
+    if (finished) finish(false); else askNext(false);
+  }
+  function askNext(animate = true) {
+    const s = next(); inputEl.innerHTML = ''; errEl.textContent = '';
+    if (!s) { finish(true); return; }
+    const show = () => { bubble('bot', textOf(s, ans)); drawInput(s); busy = false; };
+    if (animate && !reduced()) {
+      busy = true; const t = document.createElement('div'); t.className = 'ei-typing'; t.innerHTML = '<i></i><i></i><i></i>'; log.appendChild(t); toEnd();
+      setTimeout(() => { t.remove(); show(); }, 480);
+    } else show();
+  }
+  function drawInput(s) {
+    inputEl.innerHTML = '';
+    if (s.type === 'choice') {
+      const w = document.createElement('div'); w.className = 'ei-chips';
+      s.opts.forEach(o => { const b = document.createElement('button'); b.type = 'button'; b.className = 'ei-chip' + (s.primary ? ' primary' : ''); b.textContent = o; b.onclick = () => answer(s, o); w.appendChild(b); });
+      inputEl.appendChild(w); toEnd(); return;
+    }
+    const f = document.createElement('form'); f.className = 'ei-field'; f.noValidate = true;
+    const wrap = document.createElement('div'); wrap.className = 'ei-field-wrap';
+    const inp = document.createElement('input'); inp.id = 'ei-answer-' + s.id; inp.placeholder = s.ph || ''; inp.autocomplete = 'off'; inp.setAttribute('aria-label', s.ph || 'Your answer');
+    if (s.type === 'money') { const pre = document.createElement('span'); pre.className = 'ei-pre'; pre.textContent = '$'; wrap.appendChild(pre); inp.inputMode = 'numeric'; inp.type = 'text'; }
+    else if (s.type === 'tel') { inp.type = 'tel'; inp.autocomplete = 'tel'; }
+    else if (s.type === 'email') { inp.type = 'email'; inp.autocomplete = 'email'; }
+    else if (s.type === 'month') { inp.type = 'month'; }
+    else inp.type = 'text';
+    if (s.id === 'name') inp.autocomplete = 'given-name';
+    if (s.id === 'suburb') inp.autocomplete = 'address-level2';
+    wrap.appendChild(inp);
+    const b = document.createElement('button'); b.className = 'ei-send'; b.type = 'submit'; b.textContent = 'Send';
+    f.append(wrap, b);
+    f.onsubmit = e => { e.preventDefault(); let v = inp.value.trim();
+      if (!v) { errEl.textContent = 'Type an answer to continue.'; return; }
+      if (v.length > 200) { errEl.textContent = 'Please keep it under 200 characters. Your broker can get the full story on the call.'; return; }
+      if (s.type === 'money') { v = v.replace(/[^\d.]/g, ''); if (!v || isNaN(+v)) { errEl.textContent = 'Enter a dollar amount, like 25000.'; return; } v = String(Math.round(+v)); }
+      if (s.type === 'month' && !/^\d{4}-\d{2}$/.test(v)) { errEl.textContent = 'Pick a month and year.'; return; }
+      if (s.valid) { const r = s.valid(v); if (r !== true) { errEl.textContent = r; return; } }
+      answer(s, v); };
+    inputEl.appendChild(f); toEnd();
+    if (canFocus()) inp.focus({ preventScroll: true });
+  }
+  function answer(s, v) {
+    if (busy) return;
+    if (!leadId) leadId = uuid();
+    if (s.id === 'consent') meta.consentAt = new Date().toISOString();
+    ans[s.id] = v; order.push(s.id); inputEl.innerHTML = ''; errEl.textContent = '';
+    bubble('user', display(s, v), true);
+    if (s.after) { const h = s.after(ans); if (h) bubble('bot note', h); }
+    persist(); render();
+    if (s.id === 'state') save('progress'); else queueSave();
+    askNext(true);
+  }
+  async function finish(fresh) {
+    finished = true; persist(); render();
+    inputEl.innerHTML = '';
+    if (fresh) {
+      const when = ans.call === 'Text me first' ? 'will text you first to find a good time' :
+        `will be in touch ${ans.call === 'After 5pm' ? 'after 5pm' : ans.call === 'Lunchtime' ? 'around lunchtime' : 'in the ' + ans.call.toLowerCase()}`;
+      bubble('bot', `That's everything I need, ${esc(ans.name)}. A broker from W&Co Finance ${when} on the next business day, or sooner if we can.`);
+    }
+    const ok = meta.sentAt ? true : await save('complete');
+    if (ok && !meta.sentAt) { meta.sentAt = new Date().toISOString(); persist(); }
+    if (!ok) {
+      errEl.textContent = "We couldn't send your application just now. Check your connection and try again.";
+      const b = document.createElement('button'); b.className = 'ei-chip primary'; b.type = 'button'; b.textContent = 'Try again';
+      b.onclick = () => { errEl.textContent = ''; finish(false); };
+      inputEl.appendChild(b); return;
+    }
+    if (!log.querySelector('.ei-next')) {
+      const n = document.createElement('div'); n.className = 'ei-next';
+      n.innerHTML = `<h3>What happens next</h3><ol>
+        <li><span class="ei-check">${TICK}</span><span>A broker reviews your details and calls you${ans.call === 'Text me first' ? ' after a quick text' : ''}.</span></li>
+        <li><span class="ei-check">${TICK}</span><span>They confirm your ID and run a credit check with your consent.</span></li>
+        <li><span class="ei-check">${TICK}</span><span>You get your options from our lender panel, with the costs explained clearly.</span></li></ol>`;
+      log.appendChild(n);
+      if (PREVIEW) {
+        const p = document.createElement('div'); p.className = 'ei-handover';
+        p.innerHTML = '<h4>Preview only: the handover email you would receive</h4>';
+        const pre = document.createElement('pre'); pre.textContent = summary().notes; p.appendChild(pre); log.appendChild(p);
+      }
+      toEnd();
+    }
+    render();
+  }
+
+  root.addEventListener('click', e => {
+    const act = e.target.closest('[data-act]')?.dataset.act; if (!act || busy) return;
+    if (act === 'undo') { if (!order.length) return; const id = order.pop(); delete ans[id]; if (id === 'consent') delete meta.consentAt;
+      if (id === 'path' && meta.prefill) { delete ans.asset; delete ans.amount; delete ans.condition; delete meta.prefill; } finished = false; delete meta.sentAt; persist(); rebuild(); queueSave(); }
+    if (act === 'restart') { ans = {}; order = []; meta = {}; leadId = null; finished = false; clearStore(); setSaved('', 'Not started'); rebuild(); }
+  });
+
+  /* Progress header and state for the host page */
+  function render() {
+    const full = sectionsFor(ans);
+    const cur = finished ? null : (next() || {}).sec;
+    const ci = full.indexOf(cur);
+    stepsEl.innerHTML = full.map((n, i) => `<div class="${finished || i < ci ? 'done' : i === ci ? 'now' : ''}"><b></b><small>${n}</small></div>`).join('');
+    if (order.length && savedEl.lastElementChild.textContent === 'Not started') setSaved('', 'In progress');
+    opts.onState?.({ started: order.length > 0, finished, percent: finished ? 100 : Math.round(summary().percent / 0.8), name: ans.name || null });
+  }
+
+  // Keep the newest message in view whenever the chat area changes size (answer buttons appear, keyboard opens, panel resizes)
+  if (window.ResizeObserver) { let lastH = 0; new ResizeObserver(([e]) => { const h = e.contentRect.height; if (h < lastH || log.scrollHeight - log.scrollTop - h < 160) toEnd(); lastH = h; }).observe(log); }
+
+  if (restore() && order.length) setSaved('on', finished ? (meta.sentAt ? 'Sent to broker' : 'Not sent yet') : 'Resumed');
+  rebuild();
+
+  return {
+    focus() { const el = inputEl.querySelector('input, .ei-chip'); if (el && canFocus()) el.focus({ preventScroll: true }); toEnd(); },
+    scrollToEnd: toEnd,
+    // Start with answers chosen elsewhere on the page (e.g. the homepage sentence). Ignored once an application has started.
+    prefill(p) {
+      if (order.length || !p || !p.path) return false;
+      ans.path = p.path; order.push('path');
+      if (p.asset) ans.asset = p.asset;
+      if (p.amount) ans.amount = String(Math.round(p.amount));
+      if (p.condition) ans.condition = p.condition;
+      if (p.asset) meta.prefill = { label: p.label || p.asset, amount: p.amount || null };
+      if (!leadId) leadId = uuid();
+      persist(); rebuild(); return true;
+    },
+    started: () => order.length > 0,
+  };
+}
+
+window.BrokerIntake = { mount, PREVIEW };
+})();
+
+</script>
+<script>
+(() => {
+  // Point this at a booking page (e.g. Calendly) when you have one. Until then it scrolls to the contact details.
+  const BOOK_URL = '#contact';
+  document.querySelectorAll('[data-book]').forEach(a => { a.href = BOOK_URL; if (/^https?:/.test(BOOK_URL)) { a.target = '_blank'; a.rel = 'noopener'; } });
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const sheet = document.getElementById('sheet'), scrim = document.getElementById('scrim'), resume = document.getElementById('resume');
+  let open = false, state = { started: false, finished: false, percent: 0 }, lastFocus = null;
+
+  const app = BrokerIntake.mount(document.getElementById('app'), {
+    canFocus: () => open,
+    onState: s => { state = s; paintResume(); },
+  });
+
+  function paintResume() {
+    resume.hidden = open || !state.started;
+    document.getElementById('resumeText').textContent = state.finished ? 'Application sent. View it' : `Continue your application (${state.percent}%)`;
+  }
+  function show(path) {
+    if (path) app.prefill({ path });
+    lastFocus = document.activeElement;
+    open = true; sheet.classList.add('on'); scrim.classList.add('on'); sheet.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('lock'); paintResume();
+    setTimeout(() => { app.focus(); if (!matchMedia('(pointer: fine)').matches) document.getElementById('closeSheet').focus({ preventScroll: true }); }, 380);
+  }
+  function hide() {
+    open = false; sheet.classList.remove('on'); scrim.classList.remove('on'); sheet.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('lock'); paintResume();
+    (lastFocus && document.contains(lastFocus) ? lastFocus : resume).focus?.({ preventScroll: true });
+  }
+  document.querySelectorAll('[data-start]').forEach(b => b.addEventListener('click', () => show(b.dataset.start || null)));
+  resume.onclick = () => show();
+  document.getElementById('closeSheet').onclick = hide;
+  scrim.onclick = hide;
+  addEventListener('keydown', e => { if (e.key === 'Escape' && open) hide(); });
+  if (location.hash === '#apply') show();
+
+  // Keep the sheet the height of the visible screen (phone keyboards and browser bars)
+  const fit = () => { const vv = window.visualViewport; document.documentElement.style.setProperty('--app-h', Math.round(vv ? vv.height : innerHeight) + 'px'); if (open) app.scrollToEnd(); };
+  window.visualViewport?.addEventListener('resize', fit); addEventListener('resize', fit); fit();
+
+  // One quiet reveal per section
+  const els = document.querySelectorAll('[data-r]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => io.observe(el));
+  } else els.forEach(el => el.classList.add('in'));
+})();
+</script>
+</body>
+</html>

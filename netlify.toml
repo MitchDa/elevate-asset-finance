@@ -11,12 +11,20 @@
   to = "/apply.html"
   status = 200
 
+# Simplified one-page site
+[[redirects]]
+  from = "/simple"
+  to = "/simple.html"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Content-Type-Options = "nosniff"
+    # Keep the whole site out of search engines until the employment contract review and licensing are done
+    X-Robots-Tag = "noindex, nofollow"
 
 [[headers]]
   for = "/assets/*"

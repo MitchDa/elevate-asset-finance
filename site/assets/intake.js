@@ -82,7 +82,8 @@ function steps(a) {
     add({ id: 'biz', sec: sBiz, type: 'text', ph: 'Business or trading name', ask: "What's the business called?" });
     add({ id: 'abn', sec: sBiz, type: 'text', ph: '11 digits', ask: "What's the ABN?", valid: v => /^\d{11}$/.test(v.replace(/\s/g, '')) || 'An ABN is 11 digits.' });
     add({ id: 'structure', sec: sBiz, type: 'choice', opts: ['Sole trader', 'Company', 'Trust', 'Partnership'], ask: "How is the business set up?" });
-    add({ id: 'trading', sec: sBiz, type: 'choice', opts: ['Under 1 year', '1 to 2 years', '2 years or more'], ask: "How long has the ABN been active?" });
+    add({ id: 'trading', sec: sBiz, type: 'choice', opts: ['Under 1 year', '1 to 2 years', '2 years or more'], ask: "How long has the ABN been active?",
+      after: a => a.trading === 'Under 1 year' ? "<strong>Good to know:</strong> newer businesses can still get finance. Some lenders specialise in it." : null });
     add({ id: 'gst', sec: sBiz, type: 'choice', opts: ['Yes', 'No'], ask: "Is the business registered for GST?" });
     add({ id: 'industry', sec: sBiz, type: 'text', ph: 'e.g. Landscaping', ask: "What does the business do?" });
     add({ id: 'turnover', sec: sBiz, type: 'choice', opts: ['Under $75k', '$75k to $250k', '$250k to $1m', 'Over $1m'], ask: "Roughly what's the annual turnover?" });
@@ -107,7 +108,8 @@ function steps(a) {
       if (a[p + 'status'] === 'Not working right now') continue;
       add({ id: p + 'employer', sec: sWork, type: 'text', ph: 'Employer name', ask: i === 0 ? "Who do you work for?" : "Who was the employer?" });
       add({ id: p + 'title', sec: sWork, type: 'text', ph: 'Job title', ask: "And your job title or occupation?" });
-      if (!add({ id: p + 'tenure', sec: sWork, type: 'choice', opts: TENOPTS, ask: i === 0 ? "How long have you been there?" : "How long were you there?" })) break;
+      if (!add({ id: p + 'tenure', sec: sWork, type: 'choice', opts: TENOPTS, ask: i === 0 ? "How long have you been there?" : "How long were you there?",
+        after: i === 0 ? (() => "<strong>Good to know:</strong> lenders look at how long you've been in your job and your work history before it. A recent move is common and doesn't rule you out.") : undefined })) break;
       total += TEN[a[p + 'tenure']];
     }
     if (!('emp0_status' in a)) return S;
@@ -137,6 +139,7 @@ function steps(a) {
   for (let i = 0; i < 10; i++) {
     const id = `liab${i}`;
     if (!add({ id, sec: sCom, type: 'choice', opts: lopts.concat(i === 0 ? ['None'] : [DONE]),
+      after: i === 0 && !isB(a) ? (x => x.liab0 && x.liab0 !== 'None' ? "<strong>Good to know:</strong> lenders count your full card limits, not just what you owe, so it helps to list each one." : null) : undefined,
       ask: i === 0 ? (isB(a) ? "Does the business have any finance or debts at the moment? Add them one at a time." : "Do you have any loans or credit cards at the moment? Add them one at a time.") : "Got it. Anything else?" })) break;
     const t = a[id]; if (t === 'None' || t === DONE) break;
     const isLimit = /card|Overdraft|Buy now/.test(t);
@@ -293,7 +296,7 @@ function mount(root, opts = {}) {
       const s = steps(a).find(x => x.id === id); if (!s) continue;
       bubble('bot', textOf(s, a)); a[id] = ans[id];
       bubble('user', display(s, ans[id]), true);
-      if (s.after) bubble('bot note', s.after(a));
+      if (s.after) { const h = s.after(a); if (h) bubble('bot note', h); }
       if (id === 'path' && meta.prefill) bubble('bot note', `Got it: <strong>${esc(meta.prefill.label)}</strong>${meta.prefill.amount ? `, around <strong>${money(meta.prefill.amount)}</strong>` : ''}. I'll skip those questions.`);
     }
     render();
@@ -344,7 +347,7 @@ function mount(root, opts = {}) {
     if (s.id === 'consent') meta.consentAt = new Date().toISOString();
     ans[s.id] = v; order.push(s.id); inputEl.innerHTML = ''; errEl.textContent = '';
     bubble('user', display(s, v), true);
-    if (s.after) bubble('bot note', s.after(ans));
+    if (s.after) { const h = s.after(ans); if (h) bubble('bot note', h); }
     persist(); render();
     if (s.id === 'state') save('progress'); else queueSave();
     askNext(true);
