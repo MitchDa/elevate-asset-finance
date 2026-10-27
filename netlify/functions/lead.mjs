@@ -78,6 +78,7 @@ export default async (req) => {
     summary,
     percent: Number.isFinite(+summary.percent) ? Math.max(0, Math.min(100, Math.round(+summary.percent))) : null,
     consent_at: str(meta.consentAt, 40),
+    source: str(meta.source, 60),
     source_page: str(p.page, 120),
     referrer: str(p.referrer, 300),
     user_agent: str(req.headers.get('user-agent'), 300),

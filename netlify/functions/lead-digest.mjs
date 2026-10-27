@@ -10,7 +10,7 @@ export const config = { schedule: '30 21 * * *' }; // 21:30 UTC = 07:30 AEST (Br
 
 export default async () => {
   const cutoff = new Date(Date.now() - 60 * 60 * 1000).toISOString(); // give people an hour to finish first
-  const cols = 'id,first_name,mobile,email,suburb,state,path,asset,amount,percent,best_time,updated_at,summary,status';
+  const cols = 'id,first_name,mobile,email,suburb,state,path,asset,amount,percent,best_time,updated_at,summary,status,source';
 
   const partial = await sb(`leads?status=eq.in_progress&notified_partial_at=is.null&updated_at=lt.${cutoff}&select=${cols}&order=updated_at.asc&limit=100`);
   const missed = await sb(`leads?status=eq.complete&notified_complete_at=is.null&select=${cols}&order=updated_at.asc&limit=50`);
@@ -29,7 +29,7 @@ export default async () => {
     const rows = partial.map(l => `<tr>
       <td style="padding:10px 8px;border-bottom:1px solid #e2e8f0"><b>${esc(l.first_name)}</b><br><span style="color:#64748b">${esc([l.suburb, l.state].filter(Boolean).join(', '))}</span></td>
       <td style="padding:10px 8px;border-bottom:1px solid #e2e8f0"><a href="tel:${esc((l.mobile || '').replace(/[^\d+]/g, ''))}">${esc(l.mobile)}</a><br><a href="mailto:${esc(l.email)}">${esc(l.email)}</a></td>
-      <td style="padding:10px 8px;border-bottom:1px solid #e2e8f0">${esc(l.path || '')}<br>${esc(l.asset || 'asset tbc')} ${esc(money(l.amount))}</td>
+      <td style="padding:10px 8px;border-bottom:1px solid #e2e8f0">${esc(l.path || '')}<br>${esc(l.asset || 'asset tbc')} ${esc(money(l.amount))}${l.source ? `<br><span style="color:#64748b">via ${esc(l.source)}</span>` : ''}</td>
       <td style="padding:10px 8px;border-bottom:1px solid #e2e8f0;white-space:nowrap">${esc(l.percent ?? 0)}%<br><span style="color:#64748b">${esc(new Date(l.updated_at).toLocaleString('en-AU', { timeZone: 'Australia/Brisbane', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' }))}</span></td></tr>`).join('');
     const html = `<!doctype html><html><body style="margin:0;background:#f4f6fb;padding:24px 12px">
 <div style="max-width:720px;margin:0 auto;background:#fff;border-top:4px solid #0ea5e9;padding:24px 24px 28px;font:14px/1.5 Arial,sans-serif;color:#0a0e1a">

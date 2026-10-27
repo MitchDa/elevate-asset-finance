@@ -22,6 +22,7 @@ create table if not exists public.leads (
   completed_at         timestamptz,
   notified_complete_at timestamptz,
   notified_partial_at  timestamptz,
+  source               text,           -- e.g. youtube-novated, from the short link they clicked
   source_page          text,
   referrer             text,
   user_agent           text,
@@ -39,3 +40,6 @@ revoke all on public.leads from anon, authenticated;
 -- Confirm the period with your compliance contact, then schedule it with pg_cron:
 --   select cron.schedule('purge-stale-leads', '0 3 * * 0',
 --     $$delete from public.leads where status in ('in_progress','closed') and updated_at < now() - interval '2 years'$$);
+
+-- Already ran an earlier version of this file? Add the source column with:
+-- alter table public.leads add column if not exists source text;

@@ -571,6 +571,7 @@ function summarise(a, meta, finished, leadId) {
     put('Commitments', t, v ? (isLimit ? money(v) + ' limit' : money(v) + '/mth') : 'pending'); }
   put('Credit', 'Self-rated', a.creditSelf); put('Credit', 'Past issues', a.creditIssues); put('Credit', 'Details', a.creditDetail);
   if (a.assets) put('Other', 'Assets', a.assetsText || 'Skipped, confirm on call');
+  if (meta.source) put('Other', 'Came from', meta.source);
   if (meta.consentAt) put('Compliance', 'Privacy consent', new Date(meta.consentAt).toLocaleString('en-AU'));
   if (C && meta.consentAt) put('Compliance', 'Credit Guide', 'Provided in chat');
 
@@ -640,7 +641,11 @@ function mount(root, opts = {}) {
   /* Saving to the broker system */
   const setSaved = (state, text) => { savedEl.className = 'ei-saved' + (state ? ' ' + state : ''); savedEl.lastElementChild.textContent = text; };
   let saveTimer = null, pending = false;
-  const summary = () => summarise(ans, meta, finished, leadId);
+  // Where this visitor came from: ?src=youtube-novated (our short links) or standard utm tags. First touch wins.
+  const landSrc = (() => { try { const q = new URLSearchParams(location.search);
+    const v = q.get('src') || [q.get('utm_source'), q.get('utm_campaign')].filter(Boolean).join('-');
+    return (v || '').toLowerCase().replace(/[^a-z0-9_-]+/g, '-').slice(0, 60) || null; } catch (e) { return null; } })();
+  const summary = () => { if (!meta.source && landSrc) meta.source = landSrc; return summarise(ans, meta, finished, leadId); };
   const payload = stage => { const s = summary();
     return { id: leadId, stage, answers: ans, meta, summary: { rows: s.rows, flags: s.flags, todo: s.todo, notes: s.notes, percent: s.percent },
       hp: hp.value, page: location.pathname, referrer: document.referrer || null }; };

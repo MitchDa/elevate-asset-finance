@@ -63,6 +63,21 @@ No licence numbers, dates of birth or ID documents are collected online.
 2. Site configuration > Environment variables: add everything in `.env.example` with real values.
 3. Deploy, then run through `/apply` with your own details to test.
 
+## Tracked links for YouTube and socials
+
+Every link can carry a source tag. It is saved on the lead (`source` column), shown on the lead email ("via youtube-novated") and in the morning digest.
+
+| Say or paste | Lands on | Source saved |
+| --- | --- | --- |
+| /yt | /simple | youtube |
+| /yt/novated | /simple | youtube-novated (any code works) |
+| /short | /simple | youtube-shorts |
+| /ig | /simple | instagram |
+| /mj | /simple | mitchjames |
+| /call | booking link (placeholder: /simple#contact) | |
+
+Any page also reads `?src=` or `utm_source` + `utm_campaign`. Add more in netlify.toml. If you created the Supabase table before this change, run: `alter table public.leads add column if not exists source text;`
+
 ## Search engines
 Every page has a noindex tag and Netlify sends an `X-Robots-Tag: noindex` header, so nothing is searchable. Remove both once the employment contract review and licensing are done.
 

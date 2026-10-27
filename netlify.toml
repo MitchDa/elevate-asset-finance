@@ -17,6 +17,39 @@
   to = "/simple.html"
   status = 200
 
+# Tracked short links for YouTube and socials. The src tag is saved with every lead.
+# Say "wcofinance.com.au/yt" in videos; use /yt/<code> to measure one video on its own.
+[[redirects]]
+  from = "/yt"
+  to = "/simple?src=youtube"
+  status = 302
+
+[[redirects]]
+  from = "/yt/:code"
+  to = "/simple?src=youtube-:code"
+  status = 302
+
+[[redirects]]
+  from = "/short"
+  to = "/simple?src=youtube-shorts"
+  status = 302
+
+[[redirects]]
+  from = "/ig"
+  to = "/simple?src=instagram"
+  status = 302
+
+[[redirects]]
+  from = "/mj"
+  to = "/simple?src=mitchjames"
+  status = 302
+
+# Book a call. Point this at your booking page (e.g. Calendly) once it exists.
+[[redirects]]
+  from = "/call"
+  to = "/simple#contact"
+  status = 302
+
 [[headers]]
   for = "/*"
   [headers.values]
